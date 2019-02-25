@@ -50,7 +50,7 @@ performan主要由以下三点来体现：
 有两种可以作用于要处理的数据集的方法：
 *	**partition**:将数据集划分为互斥的子集，便于并行处理。
 *	**replicate**:在多台机器保存同一个数据的副本，用于减少查询时间以及提高容错率。
-![partition and replicate]( "p&r")
+![partition and replicate](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/chapter1-1.png "p&r")
 
 ###	partition
 *	通过限制每个节点所要处理的数据规模以及在同一数据分片内寻找相关数据来提升性能。（有点类似操作系统里面的，先索引分块，再顺序查找）
