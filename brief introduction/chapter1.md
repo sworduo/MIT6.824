@@ -1,6 +1,6 @@
 #	[Chapter1--Distributed systems at a high level](http://book.mixu.net/distsys/intro.html)
 	author:sworduo 	date:Feb 25, Mon, 2019
-[参考]((https://juejin.im/entry/5881c6351b69e60058d003b0):袖珍分布式系统（一）
+[参考](https://juejin.im/entry/5881c6351b69e60058d003b0):袖珍分布式系统（一）
 ![cute](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter1-head.jpg "cute")
 分布式编程是一门关于在多台机器上实现，在一台机器上可以解决的问题，的哲学。  
 一般情况下，计算机系统有两种需要完成的基本任务：1.**存储**；2.**计算**，事实上，如果你拥有无限的内存以及无限的研发时间，我们根本不需要分布式（只考虑计算任务的情况），然而这很明显是不可能的事情。所以，我们很自然地就想通过增加机器来解决大数据问题。然而不幸的是，无脑增加机器不总是能提升解决问题的速度，特别是当机器数量达到一定程度时，由于网络通信时间的消耗，以及复制等各种操作，单纯的增加机器很难提升整个分布式集群的计算能力。所以研究分布式算法，特别是研究如何高效的整合多台机器以提供更加强有力的计算能力的方法，是非常有必要的。

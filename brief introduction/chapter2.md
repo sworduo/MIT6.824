@@ -1,6 +1,6 @@
 #	[Up and down the level of abstraction](http://book.mixu.net/distsys/abstractions.html)
 	author:Sworduo	date:Feb 26, Tue, 2019 
-[参考1](https://cloud.tencent.com/developer/article/1193906):袖珍分布式系统（二）
+[参考1](https://cloud.tencent.com/developer/article/1193906):袖珍分布式系统（二）   
 [参考2](https://www.ruanyifeng.com/blog/2018/07/cap.html):CAP定理的含义  
 ![cute](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter2-head.jpg "cute")
 
