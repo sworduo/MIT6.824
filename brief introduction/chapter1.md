@@ -1,4 +1,7 @@
 #	[Chapter1--Distributed systems at a high level](http://book.mixu.net/distsys/intro.html)
+	author:sworduo 	date:Feb 25, Mon, 2019
+[²Î¿¼]((https://juejin.im/entry/5881c6351b69e60058d003b0):ÐäÕä·Ö²¼Ê½ÏµÍ³£¨Ò»£©
+![cute](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter1-head.jpg "cute")
 ·Ö²¼Ê½±à³ÌÊÇÒ»ÃÅ¹ØÓÚÔÚ¶àÌ¨»úÆ÷ÉÏÊµÏÖ£¬ÔÚÒ»Ì¨»úÆ÷ÉÏ¿ÉÒÔ½â¾öµÄÎÊÌâ£¬µÄÕÜÑ§¡£  
 Ò»°ãÇé¿öÏÂ£¬¼ÆËã»úÏµÍ³ÓÐÁ½ÖÖÐèÒªÍê³ÉµÄ»ù±¾ÈÎÎñ£º1.**´æ´¢**£»2.**¼ÆËã**£¬ÊÂÊµÉÏ£¬Èç¹ûÄãÓµÓÐÎÞÏÞµÄÄÚ´æÒÔ¼°ÎÞÏÞµÄÑÐ·¢Ê±¼ä£¬ÎÒÃÇ¸ù±¾²»ÐèÒª·Ö²¼Ê½£¨Ö»¿¼ÂÇ¼ÆËãÈÎÎñµÄÇé¿ö£©£¬È»¶øÕâºÜÃ÷ÏÔÊÇ²»¿ÉÄÜµÄÊÂÇé¡£ËùÒÔ£¬ÎÒÃÇºÜ×ÔÈ»µØ¾ÍÏëÍ¨¹ýÔö¼Ó»úÆ÷À´½â¾ö´óÊý¾ÝÎÊÌâ¡£È»¶ø²»ÐÒµÄÊÇ£¬ÎÞÄÔÔö¼Ó»úÆ÷²»×ÜÊÇÄÜÌáÉý½â¾öÎÊÌâµÄËÙ¶È£¬ÌØ±ðÊÇµ±»úÆ÷ÊýÁ¿´ïµ½Ò»¶¨³Ì¶ÈÊ±£¬ÓÉÓÚÍøÂçÍ¨ÐÅÊ±¼äµÄÏûºÄ£¬ÒÔ¼°¸´ÖÆµÈ¸÷ÖÖ²Ù×÷£¬µ¥´¿µÄÔö¼Ó»úÆ÷ºÜÄÑÌáÉýÕû¸ö·Ö²¼Ê½¼¯ÈºµÄ¼ÆËãÄÜÁ¦¡£ËùÒÔÑÐ¾¿·Ö²¼Ê½Ëã·¨£¬ÌØ±ðÊÇÑÐ¾¿ÈçºÎ¸ßÐ§µÄÕûºÏ¶àÌ¨»úÆ÷ÒÔÌá¹©¸ü¼ÓÇ¿ÓÐÁ¦µÄ¼ÆËãÄÜÁ¦µÄ·½·¨£¬ÊÇ·Ç³£ÓÐ±ØÒªµÄ¡£
 	
@@ -67,7 +70,7 @@ replicate¾ÍÊÇÔÚ¶àÌ¨»úÆ÷ÉÏ´æ´¢Í¬Ò»¸öÊý¾ÝµÄ±¸·Ý£¬Ê¹µÃ¸ü¶àµÄ·þÎñÆ÷²ÎÓëµ½¼ÆËãÖÐ¡£ÓÐ¸
 *	ÓÅÊÆ£ºÍ¨¹ýreplicate£¬¿ÉÒÔÌáÉýÏµÍ³µÄÀ©Õ¹ÐÔ£¬ÐÔÄÜºÍÈÝ´íÂÊ¡£
 *	ÁÓÊÆ£ºreplicationÒ²´øÀ´ÁËÒ»ÏµÁÐµÄÎÊÌâ£¬±ÈÈçËµÍ¬Ò»¸öÊý¾ÝµÄ¸±±¾´æÔÚÓÚ¶àÌ¨»úÆ÷ÖÐ£¬ÄÇÃ´µ±Ä³Ò»Ì¨»úÆ÷ÉÏµÄ¸±±¾±»ÐÞ¸ÄÊ±£¬ÆäËû»úÆ÷Ò²ÀíÓ¦×÷ÏàÓ¦µÄÐÞ¸Ä£¬Õâ¾ÍÒýÈëÁË¶îÍâµÄÍ¨ÐÅ³É±¾¡£
 
-[²Î¿¼](https://juejin.im/entry/5881c6351b69e60058d003b0)
+
 
 
 
