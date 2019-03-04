@@ -1,4 +1,5 @@
 #	[Replication: preventing divergence](http://book.mixu.net/distsys/replication.html)
+	author:sworduo	date:Feb 28, Thu, 2019
 参考1:[袖珍分布式系统四](https://www.jianshu.com/p/558974ede572)  
 参考2:[理解这两点，也就理解了paxos协议的精髓](https://blog.csdn.net/qq_35440678/article/details/78080431)  
 参考3:[Paxos协议超级详细解释+简单实例](https://blog.csdn.net/cnh294141800/article/details/53768464)  
