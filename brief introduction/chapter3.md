@@ -2,7 +2,7 @@
 	author:sworduo	date:Feb 27, Wed, 2019
 [参考](https://www.jianshu.com/p/f0993c83cdf5):袖珍分布式系统（三）
 
-![cute](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter3-head.jpg "cute")
+![cute](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter3-head.jpg "cute")
 
 首先来看文章提出的第一个问题：
 >what is order and why is is important?
@@ -61,7 +61,7 @@ order可以说是贯穿整个分布式系统的一个基石问题，之前说到
 下面逐一来解释：
 
 ##	Time with a "global-clock" assumption
-![global](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter3-global-clock.png "cute")
+![global](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter3-global-clock.png "cute")
 
 当我们认可全局时钟的概念时，等同于我们接受分布式网络各个节点共享同一个非常精确的，几乎没有偏差的时钟的假设，我们从任何时刻任何节点所看到的时间应该基本等同于其他地方其他节点此时此刻的时间，这也是平时生活中我们习以为常的时钟，同样的，正如上面提到一样，我们可以以较大的偏差来接受这个时钟，而分布式网络则以非常严苛的偏差来接受这个时钟。  
 有了global-clock，那么我们可以通过timestamp来生成一个total order，一定程度上可以把此时的分布式系统看成是单机网络，然而维持较大范围内的时钟同步是一件非常困难的事情，我们只能做到一定范围内的同步。（我觉得一般当问题有两种解决思路时，最佳的解决方法就是两种都用，比如小范围内用时钟同步，大范围内用后面提到的vector clock方法，这样可能效果是最好的，没验证，只是章口就莱。）  
@@ -70,7 +70,7 @@ order可以说是贯穿整个分布式系统的一个基石问题，之前说到
 *	Google's Spanner:时间戳+偏差范围来定义顺序。
 
 ##	Time with a "Local-cloak" assumption
-![local](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter3-local-clock.png "cute")
+![local](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter3-local-clock.png "cute")
 
 >events on each system are ordered but events cannot be ordered across systems by only using a clock.
 此时每个节点有各自的时间，因而节点内部的任务可以通过时间戳来排序，但是不同节点上的时间戳不能比较。
@@ -106,7 +106,7 @@ vector clock里每个节点维护和它直接通信过的、或者是它知道�
 	*	update each element in the vector to be max(local, received)
 	*	increment the logical clock value representing the current node in the vector
 	
-![time](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter3-time.png "cute")
+![time](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter3-time.png "cute")
 
 #	Failure detectors(time for cutoff)
 在分布式环境中，我们怎么知道一个节点已经不可用了呢？我们可以等待一段时间，如果这段时间超过预设的时间阈值，那么就认为对面宕机了。  

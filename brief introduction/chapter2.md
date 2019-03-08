@@ -2,7 +2,7 @@
 	author:Sworduo	date:Feb 26, Tue, 2019 
 [参考1](https://cloud.tencent.com/developer/article/1193906):袖珍分布式系统（二）   
 [参考2](https://www.ruanyifeng.com/blog/2018/07/cap.html):CAP定理的含义  
-![cute](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter2-head.jpg "cute")
+![cute](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter2-head.jpg "cute")
 
 　　分布式编程主要是解决由于分布式而带来的一系列问题。我们希望把分布式系统看成是具有超大规模处理能力的单机系统，然而这种高层次的抽象会失去许多底层的细节，虽然便于理解，但是加大了编程的难度。所以分布式的抽象主要是在“实现”和“理解”之间取得一个平衡。抽象层次越高，理解起来越简单，实现起来越困难，事实上，这是一个贯穿于整个计算机系统各个子领域的权衡问题，没有通用的最优解，只有针对具体的合适的解决方法。我们的目标旨在寻找到一个足够好的抽象模型，尽可能让编程变得简单的同时容易让人可以理解。  
 那么，我们上面说要在“实现”和“理解”之间寻找到一个合适的抽象，那如何定义什么是合适的抽象？

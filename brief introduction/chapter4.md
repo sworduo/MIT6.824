@@ -4,7 +4,7 @@
 参考2:[理解这两点，也就理解了paxos协议的精髓](https://blog.csdn.net/qq_35440678/article/details/78080431)  
 参考3:[Paxos协议超级详细解释+简单实例](https://blog.csdn.net/cnh294141800/article/details/53768464)  
 
-![cute](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter4-head.jpg "cute")
+![cute](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter4-head.jpg "cute")
 
 #	Replication
 replication问题是分布式系统中最重要的问题，现在有非常多实现replicatoin的算法，因各自的考虑和取舍而表现出极大的差异。接下来，本文将讨论所有这些replication算法的共通之处，而不会针对某一个算法深入讲解。本文将会聚焦于以下四个方面：
@@ -13,7 +13,7 @@ replication问题是分布式系统中最重要的问题，现在有非常多实
 *	mutual exclusion,
 *	consensus and global snapshots
 我们首先得知道Replicatoin问题本质上是一个group communication问题。在单机操作系统上，进程间有多种通信方式，共享内存，消息机制等等，然而在分布式系统中，显然系统中的节点只能通过网络通信来进行信息交互。既然设计到网络通信，那么我们首先来考虑一下同步和异步两种通信模型：
-![SAcom](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter4-SAcom.png "同/异步通信模型")
+![SAcom](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter4-SAcom.png "同/异步通信模型")
 
 我们可以把复制步骤分为4步：
 *	(Request) The client sends a request to a server
@@ -24,7 +24,7 @@ replication问题是分布式系统中最重要的问题，现在有非常多实
 
 ##	Synchronous replication
 同步复制（synchronous replication）又称为：active, or eager, or push, or pessimistic replication，其原理如下图：
-![syn](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter4-syn.png "同步通信模型")
+![syn](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter4-syn.png "同步通信模型")
 具体步骤是这样的：
 *	1、client发送请求
 *	2、s1接受到请求，然后阻塞，并将同样的请求发送给其他**所有**主机
@@ -36,7 +36,7 @@ replication问题是分布式系统中最重要的问题，现在有非常多实
 这种模型的好处在于，当client收到回复时，client可以保证此时系统中所有节点都进行了相应的更改。然而有一个非常致命的地方，就是系统几乎不能容忍有节点宕机的情况，并且对延迟非常敏感，使得一次操作可能会非常耗时，且不一定能成功。  
 
 ##	Asynchronous replication
-![asyn](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter4-asyn.png "异步通信模型")
+![asyn](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter4-asyn.png "异步通信模型")
 异步复制在master接收到请求之后，只是做一些简单的local处理，然后直接返回，不阻塞客户端。在这之后再将本次修改同步到网络中的其他节点。  
 从性能角度看，因为复制是异步进行的，延迟非常小，但是系统的一致性是弱一致的，最重要的是系统无法保证数据的持久性，因为写入master的数据，可能在master复制给其他slaver的前，master就故障了，此时数据的就丢失了。
 
@@ -51,7 +51,7 @@ replication问题是分布式系统中最重要的问题，现在有非常多实
 *	6n messages (3-phase commit, Paxos with repeated leader election)
 这些算法的不同之处在于他们考虑的types of faults不同，上面简单的通过算法中交换消息的数量进行了划分，这么划分的原因是因为作者尝试回答：what are we buying with the added message exchanges?  
 先看一张图：
-![google](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter4-goo.png "aha")
+![google](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter4-goo.png "aha")
 上图来自：Google App Engine的co-founder Ryan Barrett在2009年的google i/o上的演讲《Transaction Across DataCenter》。  
 consistency, latency, throughput, data loss and failover characteristics 归根结底来自于两个不同的复制方法：同步还是异步。下面我们具体看下每一种复制方法。
 
@@ -81,7 +81,7 @@ What is a network partition?什么是网络分区
 >A network partition is the failure of a network link to one or several nodes. The nodes themselves continue to stay active, and they may even be able to receive requests from clients on their side of the network partition
 
 这里的network patition可以看成是两个节点相互失去连接。事实上，当两台节点相隔非常远的时候，我们很难确定失联是因为对面的节点挂了还是网络延时造成的，所以不妨把两个节点失联的情况统一看成是网络分区，网络分区的意思是两个节点处于两个不同的网络之中，无法进行交互，因为可能会出现信息冲突的情况。
-![network patition](https://raw.githubusercontent.com/sworduo/MIT6.824/master/brief%20introduction/pic/chapter4-pat.png "network patition")
+![network patition](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/introduction/chapter4-pat.png "network patition")
 网络分区的一个特点是我们很难网络分区和节点故障区分开，一旦网络分区发生，系统中就会有多个部分都是出于active的状态，在Primary/backup中就会出现两个primary。因此，Partition tolerant consensus algorithms必须要解决的一个问题就是：during a network partition, only one partition of the system remains active
 
 解决的方法主要有：
