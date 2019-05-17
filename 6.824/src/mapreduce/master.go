@@ -23,7 +23,7 @@ type Master struct {
 
 	// Per-task information
 	jobName string   // Name of currently executing job
-	files   []string // Input files
+	files   []string // Input files 从代码来看，似乎是一个文件对应一个map节点
 	nReduce int      // Number of reduce partitions
 
 	shutdown chan struct{}

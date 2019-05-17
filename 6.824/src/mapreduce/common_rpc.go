@@ -54,6 +54,7 @@ func call(srv string, rpcname string,
 	if errx != nil {
 		return false
 	}
+	//确定了c打开成功，才能有c.close()
 	defer c.Close()
 
 	err := c.Call(rpcname, args, reply)

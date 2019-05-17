@@ -24,6 +24,7 @@ const (
 
 // Split in words
 func MapFunc(file string, value string) (res []KeyValue) {
+	//debug是定义在common.go里的函数
 	debug("Map %v\n", value)
 	words := strings.Fields(value)
 	for _, w := range words {
