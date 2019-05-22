@@ -1,6 +1,6 @@
 <center><font size=10>MapReduce</font></center>
 
-<div align=center><img width="600" height="600" src="https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC1-MapReduce/MapReduce-2.png" alt="overview"/></div>
+<div align=center><img width="600" height="600" src="https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC01-MapReduce/MapReduce-2.png" alt="overview"/></div>
 
 
 MapReduce是谷歌在2004年发布的一项新技术，该技术旨在解决大数据规模下的日常问题。MapReduce有两部分组成：Map负责将输入的键/值对转换成适合处理的键/值对，而reduce则负责将map产生的键/值对按照要求合并起来。MapReduce隐藏了分布式底层的细节，比如容错性、局部最优化、负载均衡等，使得一个对并行计算一窍不通的人都能很好的利用分布式系统的优势来解决自己的问题。换句话说，MapReduce将分布式计算设置成一个接口，用户可以假设这个接口能提高强大的、正确的、有效的分布式计算能力，用户本身只需要提供自己想要完成的任务即可。MapReduce是数据增长到一定规模的必然产物，类似操作系统一样，对底层分布式的相关细节做一个抽象，将控制和实现分开，大大提升了生产力。  
@@ -12,7 +12,7 @@ MapReduce是谷歌在2004年发布的一项新技术，该技术旨在解决大�
 MapReduce旨在充分利用分布式集群的计算能力，统筹成千上万台服务器并提供强大的计算能力，目标在极短的时间内在几十TB的数据上完成预定操作；并且提供一个易于调用的接口，隐藏内部复杂的实现细节，使得一个对分布式系统一窍不通的人都能利用分布式计算的强大计算力。
 
 #	MapReduce的基本原理：
-![Execution overview](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC1-MapReduce/MapReduce-1.png "overview")
+![Execution overview](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC01-MapReduce/MapReduce-1.png "overview")
 MapReduce程序将数据划分到M个计算节点中做映射操作，产生的中间结果存放到该计算节点的**本地磁盘**里，并将这些中间结果通过划分函数划分为R份，R份对应于R台执行reduce操作的计算节点。当map的计算节点完成任务时，将会通过master通知reduce节点，然后reduce节点会从map节点取走相应的数据，处理完后输出到指定的**输出文件**。一些典型的划分函数时hash(key)mod R,这么做的好处是，不同map计算节点上产生的相同key值的数据将会被映射到同一台reduce计算节点上处理。具体流程如下：  
 1.	在用户程序中MapReduce库首先会将输入文件划分为相同大小的数据片（数据片的大小可由用户指定，一般为16-64MB),然后将程序复制到集群中的所有计算节点中去。
 2.	其中一个节点是master节点，其他节点将会被划分为M个执行map操作的计算节点，和R个执行reduce操作的计算节点，master节点操作空闲的节点并分派map或者reduce任务。

@@ -27,7 +27,7 @@
 &emsp;&emsp;master维护所有的文件系统元数据。元数据包括命名空间（文件名字树）、从文件到chunk的映射、chunk的位置（处于哪一个chunkserver中）。同时也负责负责整体的调度，比如chunk租赁管理（后面会提到），孤立chunk的垃圾回收（不属于任何一个文件但是有内容的chunk），以及chunkserver之间的数据迁移。master会周期性的和每个chunkserver通过心跳信息通信，收集他们的状态。  
 &emsp;&emsp;客户端和chunkserver都不会缓存信息，因为大部分应用都是顺序读取文件，因此缓存文件之间的chunk收益很低。  
 &emsp;&emsp;GFG采用单一Master节点，单一master节点能够保证多个客户请求是有序的，能够使用全局策略执行复杂的chunk布置、指定复制决策等。因为所有client的文件访问都要经过master调度，所以在读写过程中应该尽量减少和master节点的依赖，转而将读写压力放到具体chunkserver中。一般而言，客户端只是从master节点获取文件保存的chunkserver保存的地址，后续的读写操作都会在client和chunkserver之间进行。   
-![GFS-Architecture](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC3-GFS/GFS-Architecture.png "GFS-Architecture")
+![GFS-Architecture](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC03-GFS/GFS-Architecture.png "GFS-Architecture")
 一个典型的文件读操作是这样的：
 1.	应用程序调用GFS client提供的接口，表明要读取的文件名、偏移、长度。
 2.	GFS Client将偏移按照规则翻译成chunk序号，发送给master。
@@ -41,13 +41,13 @@
 #	GFS的一致性保证
 &emsp;&emsp;文件命名空间变化（比如文件创建）是原子的，只有master能处理此种操作：master中提供了命名空间的锁机制，保证了原子性的和正确性；master的操作日志为这些操作定义了一个全局统一的顺序。然而，客户对数据的更改是不确定的，可能会有多个用户同时对同一个文件进行修改，又因为文件的chunk存在副本，每个客户可能访问到同一个文件的不同副本，如果此时不同客户对同一文件的不同副本进行修改，就会带来文件内容不一致的效果。GFS采用租赁机制解决这个问题。  
 首先，GFS将文件修改划分为以下几个状态：  
-![GFS-FRSAM](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC3-GFS/GFS-FRSAM.png "GFS-FRSAM")
+![GFS-FRSAM](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC03-GFS/GFS-FRSAM.png "GFS-FRSAM")
 &emsp;&emsp;在有ABC三个客户，对同一文件分别增加了123（A增加的），456（B增加的），789（C增加的）三行数据的情况下，如果ABC三个客户都看到了123，456，789中的任意一个，那么就称本次修改是defined的。如果三个客户都看到同一个数据，但是这个数据是多个修改混合的结果，比如ABC都看到了148或者257，这种情况下，文件三个副本的内容是一致的，但是文件的修改是多个客户修改混合的结果，这种情况被称为undefined。  
 &emsp;&emsp;为了解决undefined的情况，GFS采用了租赁机制。假设同一个文件有三个副本，租赁机制是指，其中的某一个副本向master申请为这个文件三个副本的主副本，其余两个副本是次副本。当接到多个用户的修改时，这些修改会先同一发到主副本，主副本将这些修改排序，然后将排序后的文件修改顺序同步到其余两个副本，这样一来，三个副本都能按照同一个修改顺序串行更改文件内容。    &emsp;&emsp;这里的串行更像是逻辑上的串行，而不是执行修改操作的顺序。也即是说，这里的串行规定了多个更改的顺序，而执行更改时，可以根据修改的顺序推测处某次修改的文件偏移量，然后多个修改并发进行。比如接到了ABCD四个更改，经过主副本排序后，一致认定以ABCD的顺序进行修改。此时对于B修改而言，只要计算出A修改后的文件偏移量，就能计算出自己修改的文件偏移量，然后和A同时更改文件即可。  
 
 #	GFS的数据写入过程
 在GFS中，数据流与控制流是分开的，如图所示：
-![GFS-WCDF](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC3-GFS/GFS-WCDF.png "GFS-WCDF")
+![GFS-WCDF](https://github.com/sworduo/Course/blob/master/pic/MIT6.824/LEC03-GFS/GFS-WCDF.png "GFS-WCDF")
 1.	Client向master请求Chunk的副本信息，以及哪个副本（Replica）是primary。
 2.	maste回复client，client缓存这些信息在本地。
 3.	client将数据（Data）链式推送到所有副本。
