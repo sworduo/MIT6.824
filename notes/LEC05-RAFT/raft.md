@@ -11,12 +11,14 @@
 [一文搞懂Raft算法](https://www.cnblogs.com/xybaby/p/10124083.html)  
 [raft中文翻译](https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md)  
 
-&emsp;&emsp;Raft是著名的分布式一致性协议，有感于paxos在理解上和实现上的复杂程度，raft设计的初衷便是在保证一致性的同时，尽可能的简洁易懂、易于实现。下面本文将会从五个方面介绍raft算法：  
+&emsp;&emsp;Raft是著名的分布式一致性协议，有感于paxos在理解上和实现上的复杂程度，raft设计的初衷便是在保证一致性的同时，尽可能的简洁易懂、易于实现。下面本文将会从七个方面介绍raft算法：  
 *	[算法基础](#算法基础)
 *	[日志复制](#日志复制)
 *	[leader选举](#leader选举)
 *	[安全性](#安全性)
 *	[成员变更](#成员变更)  
+*	[客户端交互](#客户端交互)
+*	[总结](#总结)  
 
 #	算法基础
 ##	什么是分布式一致性

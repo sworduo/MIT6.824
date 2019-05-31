@@ -94,12 +94,14 @@ func (e *ClientEnd) Call(svcMeth string, args interface{}, reply interface{}) bo
 	req.args = qb.Bytes()
 
 	select {
+	//以req作为rpc的参数，等待远程调用
+	//因为clientEnd用的是network的管道，所以req相当于是放进了network的管道里
 	case e.ch <- req:
 		// ok
 	case <-e.done:
 		return false
 	}
-
+	//已经以req作为参数去进行远程函数调用，等待远程服务器的返回
 	rep := <-req.replyCh
 	if rep.ok {
 		rb := bytes.NewBuffer(rep.reply)
@@ -115,11 +117,11 @@ func (e *ClientEnd) Call(svcMeth string, args interface{}, reply interface{}) bo
 
 type Network struct {
 	mu             sync.Mutex
-	reliable       bool
+	reliable       bool						   // false means drop/delay messages
 	longDelays     bool                        // pause a long time on send on disabled connection
 	longReordering bool                        // sometimes delay replies a long time
 	ends           map[interface{}]*ClientEnd  // ends, by name
-	enabled        map[interface{}]bool        // by end name
+	enabled        map[interface{}]bool        // by end name,denote whether a client enable/disable.
 	servers        map[interface{}]*Server     // servers, by name
 	connections    map[interface{}]interface{} // endname -> servername
 	endCh          chan reqMsg
@@ -141,6 +143,7 @@ func MakeNetwork() *Network {
 	go func() {
 		for {
 			select {
+			//client的req会来到这里，然后作为参数进入ProcessReq中
 			case xreq := <-rn.endCh:
 				atomic.AddInt32(&rn.count, 1)
 				go rn.ProcessReq(xreq)
@@ -157,6 +160,7 @@ func (rn *Network) Cleanup() {
 	close(rn.done)
 }
 
+//rn.reliable=false means drop/delay messages
 func (rn *Network) Reliable(yes bool) {
 	rn.mu.Lock()
 	defer rn.mu.Unlock()
@@ -185,10 +189,13 @@ func (rn *Network) ReadEndnameInfo(endname interface{}) (enabled bool,
 	defer rn.mu.Unlock()
 
 	enabled = rn.enabled[endname]
+	//得到与endname通信的server名字
 	servername = rn.connections[endname]
 	if servername != nil {
+		//根据server名字查找对应的IP地址
 		server = rn.servers[servername]
 	}
+	//reliable表示信息传递是否会延迟
 	reliable = rn.reliable
 	longreordering = rn.longReordering
 	return
@@ -307,6 +314,7 @@ func (rn *Network) MakeEnd(endname interface{}) *ClientEnd {
 
 	e := &ClientEnd{}
 	e.endname = endname
+	//用的是network的管道
 	e.ch = rn.endCh
 	e.done = rn.done
 	rn.ends[endname] = e
