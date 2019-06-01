@@ -6,7 +6,7 @@
 [参考](https://github.com/chaozh/MIT-6.824)  
 - [x] [lab1:MapReduce](https://pdos.csail.mit.edu/6.824/labs/lab-1.html)  
 - [ ] [lab2:Raft](https://pdos.csail.mit.edu/6.824/labs/lab-raft.html)  
-	- [ ] lab2A  
+	- [x] lab2A  
 	- [ ] lab2B  
 	- [ ] lab2C  
 - [ ] [lab3:Fault-tolerant Key/Value Service](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html)  
