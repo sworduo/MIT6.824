@@ -181,6 +181,10 @@ func (cfg *config) start1(i int) {
 				}
 				_, prevok := cfg.logs[i][m.CommandIndex-1]
 				cfg.logs[i][m.CommandIndex] = v
+//=======================================================================================================
+				DPrintf(true, "info", "me:%2d | Apply new command:%3d   commandIndex:%3d\n", i, v, m.CommandIndex)
+//=======================================================================================================
+
 				if m.CommandIndex > cfg.maxIndex {
 					cfg.maxIndex = m.CommandIndex
 				}
@@ -366,6 +370,9 @@ func (cfg *config) nCommitted(index int) (int, interface{}) {
 
 		cfg.mu.Lock()
 		cmd1, ok := cfg.logs[i][index]
+//=======================================================================================================
+		//DPrintf(true, "info", "me:%2d | index:%3d commit when test:%t\n", i, index, ok)
+//=======================================================================================================
 		cfg.mu.Unlock()
 
 		if ok {
@@ -445,7 +452,7 @@ func (cfg *config) one(cmd int, expectedServers int, retry bool) int {
 				}
 			}
 		}
-
+		//index代表节点最后commit的日志下标
 		if index != -1 {
 			// somebody claimed to be the leader and to have
 			// submitted our command; wait a while for agreement.
@@ -468,6 +475,11 @@ func (cfg *config) one(cmd int, expectedServers int, retry bool) int {
 			time.Sleep(50 * time.Millisecond)
 		}
 	}
+//=====================================================================================
+	DPrintf(true, "warn", "\n")
+	DPrintf(true, "warn", "No leader!\n")
+	DPrintf(true, "warn", "\n")
+//=====================================================================================
 	cfg.t.Fatalf("one(%v) failed to reach agreement", cmd)
 	return -1
 }
