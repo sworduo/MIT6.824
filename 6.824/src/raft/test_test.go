@@ -148,6 +148,7 @@ func TestFailNoAgree2B(t *testing.T) {
 
 	// 3 of 5 followers disconnect
 	leader := cfg.checkOneLeader()
+	//这三个server与集群失联了
 	cfg.disconnect((leader + 1) % servers)
 	cfg.disconnect((leader + 2) % servers)
 	cfg.disconnect((leader + 3) % servers)
@@ -296,6 +297,14 @@ func TestRejoin2B(t *testing.T) {
 
 	cfg.begin("Test (2B): rejoin of partitioned leader")
 
+	DPrintf(true, "info", "\n")
+	DPrintf(true, "info", "TestRejoin2B!\n")
+	DPrintf(true, "info", "\n")
+
+	DPrintf(true, "warn", "\n")
+	DPrintf(true, "warn", "TestRejoin2B!\n")
+	DPrintf(true, "warn", "\n")
+
 	cfg.one(101, servers, true)
 
 	// leader network failure
@@ -333,6 +342,14 @@ func TestBackup2B(t *testing.T) {
 	defer cfg.cleanup()
 
 	cfg.begin("Test (2B): leader backs up quickly over incorrect follower logs")
+
+	DPrintf(true, "info", "\n")
+	DPrintf(true, "info", "TestBackup2B!\n")
+	DPrintf(true, "info", "\n")
+
+	DPrintf(true, "warn", "\n")
+	DPrintf(true, "warn", "TestBackup2B!\n")
+	DPrintf(true, "warn", "\n")
 
 	cfg.one(rand.Int(), servers, true)
 

@@ -1,0 +1,327 @@
+Warn:2019/06/03 16:10:50 util.go:48: me: 0 term: -1 | follower timeout!
+Warn:2019/06/03 16:10:50 util.go:48: me: 0 term:  0 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:50 util.go:48: me: 4 term:  0 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:10:50 util.go:48: me: 0 term:  0 |    Candidate change role to Leader!
+Warn:2019/06/03 16:10:50 util.go:48: me: 1 term:  0 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:10:50 util.go:48: me: 2 term:  0 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:10:50 util.go:48: me: 3 term:  0 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:10:50 util.go:48: Sever index:[  0]  Term:[  0]  role:[    Leader] has been killed.Turn off its log
+Warn:2019/06/03 16:10:50 util.go:48: Sever index:[  1]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:10:50 util.go:48: Sever index:[  2]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:10:50 util.go:48: Sever index:[  3]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:10:50 util.go:48: Sever index:[  4]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:10:51 util.go:48: me: 1 term: -1 | follower timeout!
+Warn:2019/06/03 16:10:51 util.go:48: me: 1 term:  0 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:51 util.go:48: me: 1 term:  0 |    Candidate change role to Leader!
+Warn:2019/06/03 16:10:51 util.go:48: me: 0 term:  0 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:10:51 util.go:48: me: 2 term:  0 | follower timeout!
+Warn:2019/06/03 16:10:51 util.go:48: me: 2 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:51 util.go:48: me: 2 term:  1 | role:   Candidate vote to candidate   1
+Warn:2019/06/03 16:10:51 util.go:48: me: 2 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:10:51 util.go:48: me: 0 term:  1 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:10:51 util.go:48: me: 1 term:  1 | role:      Leader vote to candidate   2
+Warn:2019/06/03 16:10:51 util.go:48: me: 1 term:  1 |       Leader change role to follower!
+Warn:2019/06/03 16:10:51 util.go:48: me: 2 term:  1 | follower timeout!
+Warn:2019/06/03 16:10:51 util.go:48: me: 2 term:  2 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:51 util.go:48: me: 2 term:  2 |    Candidate change role to Leader!
+Warn:2019/06/03 16:10:51 util.go:48: me: 1 term:  2 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:10:51 util.go:48: me: 0 term:  2 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:10:53 util.go:48: me: 0 term:  2 | follower timeout!
+Warn:2019/06/03 16:10:53 util.go:48: me: 0 term:  3 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:53 util.go:48: me: 0 term:  3 | candidate timeout!
+Warn:2019/06/03 16:10:53 util.go:48: me: 0 term:  3 |    Candidate change role to follower!
+Warn:2019/06/03 16:10:54 util.go:48: me: 0 term:  3 | follower timeout!
+Warn:2019/06/03 16:10:54 util.go:48: me: 0 term:  4 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:54 util.go:48: me: 0 term:  4 | candidate timeout!
+Warn:2019/06/03 16:10:54 util.go:48: me: 0 term:  4 |    Candidate change role to follower!
+Warn:2019/06/03 16:10:54 util.go:48: me: 2 term:  4 |       Leader change role to follower!
+Warn:2019/06/03 16:10:54 util.go:48: me: 2 term:  4 | new leader: -1 , leader convert to follower!
+Warn:2019/06/03 16:10:54 util.go:48: me: 2 term:  4 |     Follower change role to follower!
+Warn:2019/06/03 16:10:54 util.go:48: me: 2 term:  4 | follower timeout!
+Warn:2019/06/03 16:10:54 util.go:48: me: 2 term:  5 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:54 util.go:48: me: 2 term:  5 |    Candidate change role to Leader!
+Warn:2019/06/03 16:10:54 util.go:48: me: 0 term:  5 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:10:54 util.go:48: me: 1 term:  5 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:10:57 util.go:48: Sever index:[  0]  Term:[  5]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:10:57 util.go:48: Sever index:[  1]  Term:[  5]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:10:57 util.go:48: Sever index:[  2]  Term:[  5]  role:[    Leader] has been killed.Turn off its log
+Warn:2019/06/03 16:10:58 util.go:48: me: 4 term: -1 | follower timeout!
+Warn:2019/06/03 16:10:58 util.go:48: me: 4 term:  0 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:58 util.go:48: me: 3 term:  0 | role:    Follower vote to candidate   4
+Warn:2019/06/03 16:10:58 util.go:48: me: 1 term:  0 | role:    Follower vote to candidate   4
+Warn:2019/06/03 16:10:58 util.go:48: me: 2 term:  0 | role:    Follower vote to candidate   4
+Warn:2019/06/03 16:10:58 util.go:48: me: 4 term:  0 |    Candidate change role to Leader!
+Warn:2019/06/03 16:10:58 util.go:48: me: 0 term:  0 | role:    Follower vote to candidate   4
+Warn:2019/06/03 16:10:59 util.go:48: me: 0 term:  0 | follower timeout!
+Warn:2019/06/03 16:10:59 util.go:48: me: 0 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:59 util.go:48: me: 1 term:  0 | follower timeout!
+Warn:2019/06/03 16:10:59 util.go:48: me: 1 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:59 util.go:48: me: 2 term:  0 | follower timeout!
+Warn:2019/06/03 16:10:59 util.go:48: me: 2 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:10:59 util.go:48: me: 0 term:  1 | candidate timeout!
+Warn:2019/06/03 16:10:59 util.go:48: me: 0 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:10:59 util.go:48: me: 1 term:  1 | candidate timeout!
+Warn:2019/06/03 16:10:59 util.go:48: me: 1 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:10:59 util.go:48: me: 2 term:  1 | candidate timeout!
+Warn:2019/06/03 16:10:59 util.go:48: me: 2 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:00 util.go:48: me: 0 term:  1 | follower timeout!
+Warn:2019/06/03 16:11:00 util.go:48: me: 0 term:  2 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:00 util.go:48: me: 2 term:  1 | follower timeout!
+Warn:2019/06/03 16:11:00 util.go:48: me: 2 term:  2 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:00 util.go:48: me: 1 term:  1 | follower timeout!
+Warn:2019/06/03 16:11:00 util.go:48: me: 1 term:  2 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:00 util.go:48: me: 0 term:  2 | candidate timeout!
+Warn:2019/06/03 16:11:00 util.go:48: me: 0 term:  2 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:00 util.go:48: me: 1 term:  2 | candidate timeout!
+Warn:2019/06/03 16:11:00 util.go:48: me: 1 term:  2 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:01 util.go:48: me: 4 term:  2 |       Leader change role to follower!
+Warn:2019/06/03 16:11:01 util.go:48: me: 4 term:  2 | new leader: -1 , leader convert to follower!
+Warn:2019/06/03 16:11:01 util.go:48: me: 4 term:  2 |     Follower change role to follower!
+Warn:2019/06/03 16:11:01 util.go:48: me: 4 term:  2 | follower timeout!
+Warn:2019/06/03 16:11:01 util.go:48: me: 4 term:  3 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:01 util.go:48: me: 3 term:  3 | role:    Follower vote to candidate   4
+Warn:2019/06/03 16:11:01 util.go:48: me: 4 term:  3 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:01 util.go:48: me: 1 term:  3 | role:    Follower vote to candidate   4
+Warn:2019/06/03 16:11:01 util.go:48: me: 0 term:  3 | role:    Follower vote to candidate   4
+Warn:2019/06/03 16:11:01 util.go:48: me: 2 term:  3 | role:   Candidate vote to candidate   4
+Warn:2019/06/03 16:11:01 util.go:48: me: 2 term:  3 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:01 util.go:48: Sever index:[  0]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:01 util.go:48: Sever index:[  1]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:01 util.go:48: Sever index:[  2]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:01 util.go:48: Sever index:[  3]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:01 util.go:48: Sever index:[  4]  Term:[  3]  role:[    Leader] has been killed.Turn off its log
+Warn:2019/06/03 16:11:02 util.go:48: me: 2 term: -1 | follower timeout!
+Warn:2019/06/03 16:11:02 util.go:48: me: 2 term:  0 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:02 util.go:48: me: 2 term:  0 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:02 util.go:48: me: 0 term:  0 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:11:02 util.go:48: me: 1 term:  0 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:11:02 util.go:48: Sever index:[  0]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:02 util.go:48: Sever index:[  1]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:02 util.go:48: Sever index:[  2]  Term:[  0]  role:[    Leader] has been killed.Turn off its log
+Warn:2019/06/03 16:11:02 util.go:48: 
+Warn:2019/06/03 16:11:02 util.go:48: TestRejoin2B!
+Warn:2019/06/03 16:11:02 util.go:48: 
+Warn:2019/06/03 16:11:03 util.go:48: me: 1 term: -1 | follower timeout!
+Warn:2019/06/03 16:11:03 util.go:48: me: 1 term:  0 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:03 util.go:48: me: 1 term:  0 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:03 util.go:48: me: 0 term:  0 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:11:03 util.go:48: me: 2 term:  0 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:11:04 util.go:48: me: 2 term:  0 | follower timeout!
+Warn:2019/06/03 16:11:04 util.go:48: me: 2 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:04 util.go:48: me: 2 term:  1 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:04 util.go:48: me: 0 term:  1 | role:    Follower vote to candidate   2
+Warn:2019/06/03 16:11:04 util.go:48: me: 1 term:  1 |       Leader change role to follower!
+Warn:2019/06/03 16:11:04 util.go:48: me: 1 term:  1 | new leader: -1 , leader convert to follower!
+Warn:2019/06/03 16:11:04 util.go:48: me: 1 term:  1 |     Follower change role to follower!
+Warn:2019/06/03 16:11:04 util.go:48: me: 1 term:  1 | follower timeout!
+Warn:2019/06/03 16:11:04 util.go:48: me: 1 term:  2 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:05 util.go:48: me: 0 term:  2 | follower timeout!
+Warn:2019/06/03 16:11:05 util.go:48: me: 0 term:  3 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:05 util.go:48: me: 0 term:  3 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:05 util.go:48: me: 1 term:  3 | role:   Candidate vote to candidate   0
+Warn:2019/06/03 16:11:05 util.go:48: me: 1 term:  3 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  3 |       Leader change role to follower!
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  3 | new leader: -1 , leader convert to follower!
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  3 |     Follower change role to follower!
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  3 | follower timeout!
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  4 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:07 util.go:48: me: 1 term:  4 | follower timeout!
+Warn:2019/06/03 16:11:07 util.go:48: me: 1 term:  5 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:07 util.go:48: me: 1 term:  5 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  5 | role:   Candidate vote to candidate   1
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  5 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:07 util.go:48: me: 0 term:  5 | role:      Leader vote to candidate   1
+Warn:2019/06/03 16:11:07 util.go:48: me: 0 term:  5 |       Leader change role to follower!
+Warn:2019/06/03 16:11:07 util.go:48: me: 0 term:  5 | follower timeout!
+Warn:2019/06/03 16:11:07 util.go:48: me: 0 term:  6 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:07 util.go:48: me: 0 term:  6 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:07 util.go:48: me: 1 term:  6 | role:      Leader vote to candidate   0
+Warn:2019/06/03 16:11:07 util.go:48: me: 1 term:  6 |       Leader change role to follower!
+Warn:2019/06/03 16:11:07 util.go:48: me: 2 term:  6 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:11:09 util.go:48: Sever index:[  0]  Term:[  6]  role:[    Leader] has been killed.Turn off its log
+Warn:2019/06/03 16:11:09 util.go:48: Sever index:[  1]  Term:[  6]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:09 util.go:48: Sever index:[  2]  Term:[  6]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:09 util.go:48: 
+Warn:2019/06/03 16:11:09 util.go:48: TestBackup2B!
+Warn:2019/06/03 16:11:09 util.go:48: 
+Warn:2019/06/03 16:11:09 util.go:48: me: 3 term: -1 | follower timeout!
+Warn:2019/06/03 16:11:09 util.go:48: me: 3 term:  0 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:09 util.go:48: me: 4 term:  0 | role:    Follower vote to candidate   3
+Warn:2019/06/03 16:11:09 util.go:48: me: 1 term:  0 | role:    Follower vote to candidate   3
+Warn:2019/06/03 16:11:09 util.go:48: me: 3 term:  0 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:09 util.go:48: me: 0 term:  0 | role:    Follower vote to candidate   3
+Warn:2019/06/03 16:11:09 util.go:48: me: 2 term:  0 | role:    Follower vote to candidate   3
+Warn:2019/06/03 16:11:10 util.go:48: me: 2 term:  0 | follower timeout!
+Warn:2019/06/03 16:11:10 util.go:48: me: 2 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:10 util.go:48: me: 0 term:  0 | follower timeout!
+Warn:2019/06/03 16:11:10 util.go:48: me: 0 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:10 util.go:48: me: 1 term:  0 | follower timeout!
+Warn:2019/06/03 16:11:10 util.go:48: me: 1 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:11 util.go:48: me: 1 term:  1 | candidate timeout!
+Warn:2019/06/03 16:11:11 util.go:48: me: 1 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:11 util.go:48: me: 4 term:  0 | follower timeout!
+Warn:2019/06/03 16:11:11 util.go:48: me: 4 term:  1 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:11 util.go:48: me: 2 term:  1 | candidate timeout!
+Warn:2019/06/03 16:11:11 util.go:48: me: 2 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:11 util.go:48: me: 0 term:  1 | candidate timeout!
+Warn:2019/06/03 16:11:11 util.go:48: me: 0 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:11 util.go:48: me: 1 term:  1 | follower timeout!
+Warn:2019/06/03 16:11:11 util.go:48: me: 1 term:  2 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:11 util.go:48: me: 0 term:  2 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:11:11 util.go:48: me: 1 term:  2 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:11 util.go:48: me: 2 term:  2 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:11:11 util.go:48: me: 4 term:  1 | candidate timeout!
+Warn:2019/06/03 16:11:11 util.go:48: me: 4 term:  1 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:12 util.go:48: me: 4 term:  1 | follower timeout!
+Warn:2019/06/03 16:11:12 util.go:48: me: 4 term:  2 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:12 util.go:48: me: 4 term:  2 | candidate timeout!
+Warn:2019/06/03 16:11:12 util.go:48: me: 4 term:  2 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:13 util.go:48: me: 4 term:  2 | follower timeout!
+Warn:2019/06/03 16:11:13 util.go:48: me: 4 term:  3 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:13 util.go:48: me: 4 term:  3 | candidate timeout!
+Warn:2019/06/03 16:11:13 util.go:48: me: 4 term:  3 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:13 util.go:48: me: 4 term:  3 | follower timeout!
+Warn:2019/06/03 16:11:13 util.go:48: me: 4 term:  4 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:14 util.go:48: me: 4 term:  4 | candidate timeout!
+Warn:2019/06/03 16:11:14 util.go:48: me: 4 term:  4 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:14 util.go:48: me: 4 term:  4 | follower timeout!
+Warn:2019/06/03 16:11:14 util.go:48: me: 4 term:  5 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:15 util.go:48: me: 4 term:  5 | candidate timeout!
+Warn:2019/06/03 16:11:15 util.go:48: me: 4 term:  5 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:15 util.go:48: me: 4 term:  5 | follower timeout!
+Warn:2019/06/03 16:11:15 util.go:48: me: 4 term:  6 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:16 util.go:48: me: 4 term:  6 | candidate timeout!
+Warn:2019/06/03 16:11:16 util.go:48: me: 4 term:  6 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:16 util.go:48: me: 4 term:  6 | follower timeout!
+Warn:2019/06/03 16:11:16 util.go:48: me: 4 term:  7 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:17 util.go:48: me: 4 term:  7 | candidate timeout!
+Warn:2019/06/03 16:11:17 util.go:48: me: 4 term:  7 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:17 util.go:48: me: 4 term:  7 | follower timeout!
+Warn:2019/06/03 16:11:17 util.go:48: me: 4 term:  8 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:18 util.go:48: me: 4 term:  8 | candidate timeout!
+Warn:2019/06/03 16:11:18 util.go:48: me: 4 term:  8 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:18 util.go:48: me: 4 term:  8 | follower timeout!
+Warn:2019/06/03 16:11:18 util.go:48: me: 4 term:  9 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:19 util.go:48: me: 4 term:  9 | candidate timeout!
+Warn:2019/06/03 16:11:19 util.go:48: me: 4 term:  9 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:19 util.go:48: me: 4 term:  9 | follower timeout!
+Warn:2019/06/03 16:11:19 util.go:48: me: 4 term: 10 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:19 util.go:48: me: 4 term: 10 | candidate timeout!
+Warn:2019/06/03 16:11:19 util.go:48: me: 4 term: 10 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:20 util.go:48: me: 4 term: 10 | follower timeout!
+Warn:2019/06/03 16:11:20 util.go:48: me: 4 term: 11 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:21 util.go:48: me: 4 term: 11 | candidate timeout!
+Warn:2019/06/03 16:11:21 util.go:48: me: 4 term: 11 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:21 util.go:48: me: 4 term: 11 | follower timeout!
+Warn:2019/06/03 16:11:21 util.go:48: me: 4 term: 12 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:22 util.go:48: me: 4 term: 12 | candidate timeout!
+Warn:2019/06/03 16:11:22 util.go:48: me: 4 term: 12 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:22 util.go:48: me: 4 term: 12 | follower timeout!
+Warn:2019/06/03 16:11:22 util.go:48: me: 4 term: 13 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:22 util.go:48: me: 0 term:  2 | follower timeout!
+Warn:2019/06/03 16:11:22 util.go:48: me: 0 term:  3 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:22 util.go:48: me: 3 term: 13 |       Leader change role to follower!
+Warn:2019/06/03 16:11:22 util.go:48: me: 3 term: 13 | new leader: -1 , leader convert to follower!
+Warn:2019/06/03 16:11:22 util.go:48: me: 3 term: 13 |     Follower change role to follower!
+Warn:2019/06/03 16:11:22 util.go:48: me: 3 term: 13 | follower timeout!
+Warn:2019/06/03 16:11:22 util.go:48: me: 3 term: 14 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:22 util.go:48: me: 4 term: 14 | role:   Candidate vote to candidate   3
+Warn:2019/06/03 16:11:22 util.go:48: me: 4 term: 14 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:23 util.go:48: me: 3 term: 14 | candidate timeout!
+Warn:2019/06/03 16:11:23 util.go:48: me: 3 term: 14 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:23 util.go:48: me: 2 term:  2 | follower timeout!
+Warn:2019/06/03 16:11:23 util.go:48: me: 2 term:  3 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:23 util.go:48: me: 4 term: 14 | follower timeout!
+Warn:2019/06/03 16:11:23 util.go:48: me: 4 term: 15 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:23 util.go:48: me: 0 term: 15 | candidate timeout!
+Warn:2019/06/03 16:11:23 util.go:48: me: 0 term: 15 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:23 util.go:48: me: 2 term:  3 | candidate timeout!
+Warn:2019/06/03 16:11:23 util.go:48: me: 2 term:  3 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:23 util.go:48: me: 3 term: 15 | follower timeout!
+Warn:2019/06/03 16:11:23 util.go:48: me: 3 term: 16 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:23 util.go:48: me: 4 term: 16 | role:   Candidate vote to candidate   3
+Warn:2019/06/03 16:11:23 util.go:48: me: 4 term: 16 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:23 util.go:48: me: 0 term: 16 | follower timeout!
+Warn:2019/06/03 16:11:23 util.go:48: me: 0 term: 17 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:23 util.go:48: me: 0 term: 17 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:23 util.go:48: me: 4 term: 17 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:11:23 util.go:48: me: 3 term: 17 | role:   Candidate vote to candidate   0
+Warn:2019/06/03 16:11:23 util.go:48: me: 3 term: 17 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:24 util.go:48: me: 2 term:  3 | follower timeout!
+Warn:2019/06/03 16:11:24 util.go:48: me: 2 term:  4 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:24 util.go:48: me: 2 term:  4 | candidate timeout!
+Warn:2019/06/03 16:11:24 util.go:48: me: 2 term:  4 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:25 util.go:48: me: 2 term:  4 | follower timeout!
+Warn:2019/06/03 16:11:25 util.go:48: me: 2 term:  5 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:25 util.go:48: me: 2 term:  5 | candidate timeout!
+Warn:2019/06/03 16:11:25 util.go:48: me: 2 term:  5 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:26 util.go:48: me: 2 term:  5 | follower timeout!
+Warn:2019/06/03 16:11:26 util.go:48: me: 2 term:  6 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:26 util.go:48: me: 2 term:  6 | candidate timeout!
+Warn:2019/06/03 16:11:26 util.go:48: me: 2 term:  6 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:27 util.go:48: me: 2 term:  6 | follower timeout!
+Warn:2019/06/03 16:11:27 util.go:48: me: 2 term:  7 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:27 util.go:48: me: 2 term:  7 | candidate timeout!
+Warn:2019/06/03 16:11:27 util.go:48: me: 2 term:  7 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:28 util.go:48: me: 2 term:  7 | follower timeout!
+Warn:2019/06/03 16:11:28 util.go:48: me: 2 term:  8 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:28 util.go:48: me: 2 term:  8 | candidate timeout!
+Warn:2019/06/03 16:11:28 util.go:48: me: 2 term:  8 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:29 util.go:48: me: 2 term:  8 | follower timeout!
+Warn:2019/06/03 16:11:29 util.go:48: me: 2 term:  9 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:29 util.go:48: me: 2 term:  9 | candidate timeout!
+Warn:2019/06/03 16:11:29 util.go:48: me: 2 term:  9 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:30 util.go:48: me: 2 term:  9 | follower timeout!
+Warn:2019/06/03 16:11:30 util.go:48: me: 2 term: 10 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:30 util.go:48: me: 2 term: 10 | candidate timeout!
+Warn:2019/06/03 16:11:30 util.go:48: me: 2 term: 10 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:31 util.go:48: me: 2 term: 10 | follower timeout!
+Warn:2019/06/03 16:11:31 util.go:48: me: 2 term: 11 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:31 util.go:48: me: 2 term: 11 | candidate timeout!
+Warn:2019/06/03 16:11:31 util.go:48: me: 2 term: 11 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:32 util.go:48: me: 2 term: 11 | follower timeout!
+Warn:2019/06/03 16:11:32 util.go:48: me: 2 term: 12 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:32 util.go:48: me: 2 term: 12 | candidate timeout!
+Warn:2019/06/03 16:11:32 util.go:48: me: 2 term: 12 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:33 util.go:48: me: 2 term: 12 | follower timeout!
+Warn:2019/06/03 16:11:33 util.go:48: me: 2 term: 13 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:33 util.go:48: me: 2 term: 13 | candidate timeout!
+Warn:2019/06/03 16:11:33 util.go:48: me: 2 term: 13 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:33 util.go:48: me: 2 term: 13 | follower timeout!
+Warn:2019/06/03 16:11:33 util.go:48: me: 2 term: 14 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:34 util.go:48: me: 2 term: 14 | candidate timeout!
+Warn:2019/06/03 16:11:34 util.go:48: me: 2 term: 14 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:34 util.go:48: me: 2 term: 14 | follower timeout!
+Warn:2019/06/03 16:11:34 util.go:48: me: 2 term: 15 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:34 util.go:48: me: 1 term: 17 | new leader:  0 , leader convert to follower!
+Warn:2019/06/03 16:11:34 util.go:48: me: 1 term: 17 |       Leader change role to follower!
+Warn:2019/06/03 16:11:34 util.go:48: me: 1 term: 17 | follower timeout!
+Warn:2019/06/03 16:11:34 util.go:48: me: 1 term: 18 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:34 util.go:48: me: 3 term: 18 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:11:34 util.go:48: me: 1 term: 18 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:34 util.go:48: me: 0 term: 18 | role:      Leader vote to candidate   1
+Warn:2019/06/03 16:11:34 util.go:48: me: 0 term: 18 |       Leader change role to follower!
+Warn:2019/06/03 16:11:34 util.go:48: me: 0 term: 18 | follower timeout!
+Warn:2019/06/03 16:11:34 util.go:48: me: 0 term: 19 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:34 util.go:48: me: 2 term: 17 |    Candidate change role to follower!
+Warn:2019/06/03 16:11:34 util.go:48: me: 4 term: 18 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:11:34 util.go:48: me: 2 term: 18 | role:    Follower vote to candidate   1
+Warn:2019/06/03 16:11:34 util.go:48: me: 4 term: 19 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:11:34 util.go:48: me: 0 term: 19 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:34 util.go:48: me: 2 term: 19 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:11:34 util.go:48: me: 1 term: 19 | role:      Leader vote to candidate   0
+Warn:2019/06/03 16:11:34 util.go:48: me: 1 term: 19 |       Leader change role to follower!
+Warn:2019/06/03 16:11:34 util.go:48: me: 3 term: 19 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:11:37 util.go:48: Sever index:[  0]  Term:[ 19]  role:[    Leader] has been killed.Turn off its log
+Warn:2019/06/03 16:11:37 util.go:48: Sever index:[  1]  Term:[ 19]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:37 util.go:48: Sever index:[  2]  Term:[ 19]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:37 util.go:48: Sever index:[  3]  Term:[ 19]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:37 util.go:48: Sever index:[  4]  Term:[ 19]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:37 util.go:48: me: 0 term: -1 | follower timeout!
+Warn:2019/06/03 16:11:37 util.go:48: me: 0 term:  0 |     Follower change role to candidate!
+Warn:2019/06/03 16:11:37 util.go:48: me: 0 term:  0 |    Candidate change role to Leader!
+Warn:2019/06/03 16:11:37 util.go:48: me: 2 term:  0 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:11:37 util.go:48: me: 1 term:  0 | role:    Follower vote to candidate   0
+Warn:2019/06/03 16:11:39 util.go:48: Sever index:[  0]  Term:[  0]  role:[    Leader] has been killed.Turn off its log
+Warn:2019/06/03 16:11:39 util.go:48: Sever index:[  1]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+Warn:2019/06/03 16:11:39 util.go:48: Sever index:[  2]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
