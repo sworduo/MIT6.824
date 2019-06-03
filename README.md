@@ -5,10 +5,10 @@
 [课程笔记翻译](https://github.com/feixiao/Distributed-Systems)  
 [参考](https://github.com/chaozh/MIT-6.824)  
 - [x] [lab1:MapReduce](https://pdos.csail.mit.edu/6.824/labs/lab-1.html)  
-- [ ] [lab2:Raft](https://pdos.csail.mit.edu/6.824/labs/lab-raft.html)  
+- [x] [lab2:Raft](https://pdos.csail.mit.edu/6.824/labs/lab-raft.html)  
 	- [x] lab2A  
-	- [ ] lab2B  
-	- [ ] lab2C  
+	- [x] lab2B  
+	- [x] lab2C  
 - [ ] [lab3:Fault-tolerant Key/Value Service](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html)  
 	- [ ] lab3A  
 	- [ ] lab3B  
