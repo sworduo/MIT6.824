@@ -8,29 +8,31 @@ import "io"
 const Debug = 1
 
 var (
-	Info *log.Logger
-	Warn *log.Logger
-	Error *log.Logger
+	InfoRaft *log.Logger
+	WarnRaft *log.Logger
+
+	InfoKV *log.Logger //lab3 log
 )
 
 //初始化log
 func init(){
-	infoFile, err := os.OpenFile("info.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	infoFile, err := os.OpenFile("infoRaft.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil{
 		log.Fatalln("Open infoFile failed.\n", err)
 	}
-	warnFile, err := os.OpenFile("warn.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	warnFile, err := os.OpenFile("warnRaft.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil{
 		log.Fatalln("Open warnFile failed.\n", err)
 	}
-	errFile, err := os.OpenFile("err.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+
+	InfoKVFile, err := os.OpenFile("infoKV.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil{
-		log.Fatalln("Open warnFile failed.\n", err)
+		log.Fatalln("Open infoKVFile failed.\n", err)
 	}
 	//log.Lshortfile打印出错的函数位置
-	Info = log.New(io.MultiWriter(os.Stderr, infoFile), "Info:", log.Ldate | log.Ltime | log.Lshortfile)
-	Warn = log.New(io.MultiWriter(os.Stderr, warnFile), "Warn:", log.Ldate | log.Ltime | log.Lshortfile)
-	Error = log.New(io.MultiWriter(os.Stderr, errFile), "Error:", log.Ldate | log.Ltime | log.Lshortfile)
+	InfoRaft = log.New(io.MultiWriter(os.Stderr, infoFile), "InfoRaft:", log.Ldate | log.Ltime | log.Lshortfile)
+	WarnRaft = log.New(io.MultiWriter(os.Stderr, warnFile), "WarnRaft:", log.Ldate | log.Ltime | log.Lshortfile)
+	InfoKV = log.New(io.MultiWriter(os.Stderr, InfoKVFile), "InfoKV:", log.Ldate | log.Ltime | log.Lshortfile)
 }
 
 func DPrintf(show bool, level string, format string, a ...interface{}) (n int, err error) {
@@ -43,11 +45,9 @@ func DPrintf(show bool, level string, format string, a ...interface{}) (n int, e
 	}
 
 	if level == "info"{
-		Info.Printf(format, a...)
+		InfoRaft.Printf(format, a...)
 	}else if level == "warn"{
-		Warn.Printf(format, a...)
-	}else{
-		Error.Fatalln("log error!")
+		WarnRaft.Printf(format, a...)
 	}
 	return
 }

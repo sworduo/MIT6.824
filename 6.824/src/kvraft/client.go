@@ -8,6 +8,8 @@ import "math/big"
 type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
+	leader 	int //记录最新的leader，方便下次通信
+	clerkIndex 	int64 //每个clerk独一无二的编号，调用nrand生成，5台机器中有两台机器相同的概率几乎可以忽略不计
 }
 
 func nrand() int64 {
@@ -21,6 +23,8 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
 	// You'll have to add code here.
+	ck.leader = -1
+	ck.clerkIndex = nrand()
 	return ck
 }
 
@@ -54,6 +58,7 @@ func (ck *Clerk) Get(key string) string {
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
 	// You will have to modify this function.
+
 }
 
 func (ck *Clerk) Put(key string, value string) {
@@ -62,3 +67,4 @@ func (ck *Clerk) Put(key string, value string) {
 func (ck *Clerk) Append(key string, value string) {
 	ck.PutAppend(key, value, "Append")
 }
+

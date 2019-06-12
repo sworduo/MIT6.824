@@ -22,6 +22,9 @@ type Op struct {
 	// Your definitions here.
 	// Field names must start with capital letters,
 	// otherwise RPC will break.
+	Opname 	string //Put or Append or Get
+	key 	string
+	value 	string
 }
 
 type KVServer struct {
@@ -33,6 +36,7 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
+
 }
 
 

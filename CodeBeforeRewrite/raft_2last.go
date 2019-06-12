@@ -118,7 +118,7 @@ func (rf *Raft) GetState() (int, bool) {
 	rf.mu.Lock()
 	term = rf.currentTerm
 	isleader = (rf.role == Leader)
-	//DPrintf(rf.log, "WarnRaft", "Server:%3d role:%12s isleader:%t\n", rf.me, rf.role, isleader)
+	//DPrintf(rf.log, "warn", "Server:%3d role:%12s isleader:%t\n", rf.me, rf.role, isleader)
 	rf.mu.Unlock()
 	return term, isleader
 }
@@ -148,7 +148,7 @@ func (rf *Raft) persist() {
 	enc.Encode(rf.logs)
 	data := w.Bytes()
 	rf.persister.SaveRaftState(data)
-	InfoRaft.Printf("me:%2d term:%3d | Role:%10s Persist data! VotedFor:%3d len(Logs):%3d\n",
+	Info.Printf("me:%2d term:%3d | Role:%10s Persist data! VotedFor:%3d len(Logs):%3d\n",
 		rf.me, rf.currentTerm, rf.role, rf.votedFor, len(rf.logs))
 }
 
@@ -185,12 +185,12 @@ func (rf *Raft) readPersist(data []byte) {
 	//还没运行之前调用此函数
 	//所以不用加锁了吧
 	if dec.Decode(&term) != nil || dec.Decode(&votedFor) !=nil || dec.Decode(&logs) != nil{
-		InfoRaft.Printf("me:%2d term:%3d | Failed to read persist data!\n")
+		Info.Printf("me:%2d term:%3d | Failed to read persist data!\n")
 	}else{
 		rf.currentTerm = term
 		rf.votedFor = votedFor
 		rf.logs = logs
-		InfoRaft.Printf("me:%2d term:%3d | Read persist data successful! VotedFor:%3d len(Logs):%3d\n",
+		Info.Printf("me:%2d term:%3d | Read persist data successful! VotedFor:%3d len(Logs):%3d\n",
 			rf.me, rf.currentTerm, rf.votedFor, len(rf.logs))
 	}
 }
@@ -268,7 +268,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		//如果follower日志较少
 		reply.ConflictTerm = rf.getLastLogTerm()
 		reply.ConflictIndex = rf.getLastLogIndex()
-		InfoRaft.Printf("me:%2d term:%3d | receive leader:[%3d] message but lost any message!\n", rf.me, rf.currentTerm, args.LeaderId)
+		Info.Printf("me:%2d term:%3d | receive leader:[%3d] message but lost any message!\n", rf.me, rf.currentTerm, args.LeaderId)
 	} else if log_dismatch{
 		//日志项不匹配，找到follower属于这个term的第一个日志，方便回滚。
 		reply.ConflictTerm = rf.logs[args.PrevLogIndex].Term
@@ -278,7 +278,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 			}
 			reply.ConflictIndex = i
 		}
-		InfoRaft.Printf("me:%2d term:%3d | receive leader:[%3d] message but not match!\n", rf.me, rf.currentTerm, args.LeaderId)
+		Info.Printf("me:%2d term:%3d | receive leader:[%3d] message but not match!\n", rf.me, rf.currentTerm, args.LeaderId)
 	} else {
 		//接收者的日志大于等于prevlogindex，且在prevlogindex处日志匹配
 		rf.currentTerm = args.Term
@@ -304,7 +304,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 			//心跳信号没有修改votedFor、log和currentTerm
 			rf.persist()
-			InfoRaft.Printf("me:%2d term:%3d | receive new command:%3d index:%4d from leader:%3d, size:%3d\n",
+			Info.Printf("me:%2d term:%3d | receive new command:%3d index:%4d from leader:%3d, size:%3d\n",
 				rf.me, rf.currentTerm, rf.logs[rf.getLastLogIndex()].Command, rf.getLastLogIndex(), args.LeaderId, args.PrevLogIndex + len(args.Entries) - rf.commitIndex)
 		}
 
@@ -378,7 +378,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 			reply.VoteGranted = true
 
 			rf.dropAndSet(rf.voteCh)
-			WarnRaft.Printf("me:%2d term:%3d | vote to candidate %3d\n", rf.me, rf.currentTerm, args.CandidateId)
+			Warn.Printf("me:%2d term:%3d | vote to candidate %3d\n", rf.me, rf.currentTerm, args.CandidateId)
 			rf.persist()
 	}
 }
@@ -413,7 +413,7 @@ func (rf *Raft)convertRoleTo(role string){
 	defer rf.persist()
 	switch role {
 	case Leader:
-		WarnRaft.Printf("me:%2d term:%3d | %12s convert role to Leader!\n", rf.me, rf.currentTerm, rf.role)
+		Warn.Printf("me:%2d term:%3d | %12s convert role to Leader!\n", rf.me, rf.currentTerm, rf.role)
 		rf.role = Leader
 		//初始化各个nextIndex数组
 		for i := 0; i < len(rf.peers); i++{
@@ -426,10 +426,10 @@ func (rf *Raft)convertRoleTo(role string){
 	case Candidate:
 		rf.currentTerm = rf.currentTerm + 1
 		rf.votedFor = rf.me
-		WarnRaft.Printf("me:%2d term:%3d | %12s convert role to Candidate!\n", rf.me, rf.currentTerm, rf.role)
+		Warn.Printf("me:%2d term:%3d | %12s convert role to Candidate!\n", rf.me, rf.currentTerm, rf.role)
 		rf.role = Candidate
 	case Follower:
-		WarnRaft.Printf("me:%2d term:%3d | %12s convert role to Follower!\n", rf.me, rf.currentTerm, rf.role)
+		Warn.Printf("me:%2d term:%3d | %12s convert role to Follower!\n", rf.me, rf.currentTerm, rf.role)
 		rf.votedFor = votedNull
 		rf.role = Follower
 	}
@@ -452,7 +452,7 @@ func (rf *Raft) applyLogs(){
 		rf.applyCh <- ApplyMsg{true, rf.logs[i].Command, i}
 	}
 	rf.lastApplied = rf.commitIndex
-	InfoRaft.Printf("me:%2d term:%3d | %12v commit! cmd:%3d CommitIndex:%3d\n",
+	Info.Printf("me:%2d term:%3d | %12v commit! cmd:%3d CommitIndex:%3d\n",
 		rf.me ,rf.currentTerm, rf.role, rf.logs[rf.commitIndex].Command, rf.commitIndex)
 }
 
@@ -524,7 +524,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		//logs有一个占位符，所以其长度为3时，表明里面有2个命令，而新来的命令的提交index就是3,代表是第三个提交的。
 		index = len(rf.logs)
 		rf.logs = append(rf.logs, Entries{rf.currentTerm, index, command})
-		InfoRaft.Printf("me:%2d term:%3d | Leader receive a new command:%3d\n", rf.me, rf.currentTerm, command.(int))
+		Info.Printf("me:%2d term:%3d | Leader receive a new command:%3d\n", rf.me, rf.currentTerm, command.(int))
 
 		rf.persist()
 		}
@@ -541,7 +541,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 //关闭这一个raft实例的log
 func (rf *Raft) Kill() {
 	// Your code here, if desired.
-	WarnRaft.Printf("Sever index:[%3d]  Term:[%3d]  role:[%10s] has been killed.Turn off its log\n", rf.me, rf.currentTerm, rf.role)
+	Warn.Printf("Sever index:[%3d]  Term:[%3d]  role:[%10s] has been killed.Turn off its log\n", rf.me, rf.currentTerm, rf.role)
 	rf.exitCh <- true
 }
 
@@ -591,7 +591,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	//要加这个，每次的rand才会不一样
 	rand.Seed(time.Now().UnixNano())
 
-	InfoRaft.Printf("Create a new server:[%3d]! term:[%3d]! Log length:[%4d]\n", rf.me,rf.currentTerm, rf.getLastLogIndex())
+	Info.Printf("Create a new server:[%3d]! term:[%3d]! Log length:[%4d]\n", rf.me,rf.currentTerm, rf.getLastLogIndex())
 
 	//主程序负责创建raft实例、收发消息、模拟网络环境
 	//每个实例在不同的goroutine里运行，模拟多台机器
@@ -607,7 +607,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 				rf.mu.Lock()
 				role := rf.role
 				eTimeout := rf.electionTimeout()
-				//InfoRaft.Printf("me:%2d term:%3d | role:%10s timeout:%v\n", rf.me, rf.currentTerm, rf.role, eTimeout)
+				//Info.Printf("me:%2d term:%3d | role:%10s timeout:%v\n", rf.me, rf.currentTerm, rf.role, eTimeout)
 				rf.mu.Unlock()
 
 				switch role{
@@ -660,13 +660,10 @@ func (rf *Raft) leaderElection(){
 			continue
 		}
 
-		rf.mu.Lock()
 		if !rf.checkState(Candidate, requestArgs.Term){
 			//发送大半投票时，发现自己已经不是candidate了
-			rf.mu.Unlock()
 			return
 		}
-		rf.mu.Unlock()
 
 		go func(server int) {
 			reply := &RequestVoteReply{}
@@ -765,7 +762,7 @@ func (rf *Raft) broadcastEntries() {
 					rf.currentTerm = reply.Term
 					rf.convertRoleTo(Follower)
 					rf.mu.Unlock()
-					InfoRaft.Printf("me:%2d term:%3d | leader done done! become follower\n", rf.me, rf.currentTerm)
+					Info.Printf("me:%2d term:%3d | leader done done! become follower\n", rf.me, rf.currentTerm)
 					return
 				}
 
@@ -823,7 +820,7 @@ func (rf *Raft) broadcastEntries() {
 							rf.nextIndex[server] = i + 1
 							break
 						}
-					InfoRaft.Printf("me:%2d term:%3d | Msg to %3d append fail,decrease nextIndex to:%3d\n",
+					Info.Printf("me:%2d term:%3d | Msg to %3d append fail,decrease nextIndex to:%3d\n",
 						rf.me, rf.currentTerm, server, rf.nextIndex[server])
 					}
 					rf.mu.Unlock()
