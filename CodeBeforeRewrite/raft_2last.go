@@ -776,12 +776,12 @@ func (rf *Raft) broadcastEntries() {
 					//所以需要忽略晚到的第一次commit
 					curCommitLen := appendArgs.PrevLogIndex +  len(appendArgs.Entries)
 
-					if curCommitLen <= rf.commitIndex{
+					if curCommitLen < rf.commitIndex{
 						rf.mu.Unlock()
 						return
 					}
 
-					if curCommitLen > rf.matchIndex[server]{
+					if curCommitLen >= rf.matchIndex[server]{
 						rf.matchIndex[server] = curCommitLen
 						rf.nextIndex[server] = rf.matchIndex[server] + 1
 					}

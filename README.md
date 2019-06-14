@@ -10,7 +10,7 @@
 	- [x] lab2B  
 	- [x] lab2C  
 - [ ] [lab3:Fault-tolerant Key/Value Service](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html)  
-	- [ ] lab3A  
+	- [x] lab3A  
 	- [ ] lab3B  
 - [ ] [lab4:Sharded Key/Value Service](https://pdos.csail.mit.edu/6.824/labs/lab-shard.html)  
 	- [ ] lab4A  
