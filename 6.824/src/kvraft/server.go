@@ -1,6 +1,7 @@
 package raftkv
 
 import (
+	"bytes"
 	"labgob"
 	"labrpc"
 	"log"
@@ -11,7 +12,7 @@ import (
 
 const (
 	Debug = 0
-	WaitPeriod = time.Duration(500) * time.Millisecond
+	WaitPeriod = time.Duration(1000) * time.Millisecond
 )
 
 func DPrintf(format string, a ...interface{}) (n int, err error) {
@@ -45,6 +46,7 @@ type KVServer struct {
 	clerkLog map[int64]int 	//记录每一个clerk已执行的命令编号
 	kvDB 	map[string]string //保存key value
 	msgCh 	map[int]chan int //消息通知的管道
+	persister 	*raft.Persister
 
 }
 
@@ -213,7 +215,9 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.kvDB = make(map[string]string)
 	kv.clerkLog = make(map[int64]int)
 	kv.msgCh = make(map[int]chan int)
+	kv.persister = persister
 
+	kv.loadSnapshot()
 
 	raft.InfoKV.Printf("me:%2d | Create New KV server!\n", kv.me)
 
@@ -227,10 +231,19 @@ func (kv *KVServer) receiveNewMsg(){
 		for msg := range kv.applyCh {
 			kv.mu.Lock()
 			//按序执行指令
-			op := msg.Command.(Op)
 			index := msg.CommandIndex
 			term := msg.CommitTerm
 			role := msg.Role
+			kv.checkState(index, term)
+
+			if !msg.CommandValid{
+				//snapshot
+				op := msg.Command.([]byte)
+				kv.decodedSnapshot(op)
+				continue
+			}
+
+			op := msg.Command.(Op)
 
 			if ind, ok := kv.clerkLog[op.Clerk]; ok && ind >= op.Index {
 				//如果clerk存在，并且该指令已经执行，啥也不做
@@ -278,4 +291,56 @@ func (kv *KVServer) closeCh(index int){
 	defer kv.mu.Unlock()
 	close(kv.msgCh[index])
 	delete(kv.msgCh, index)
+}
+
+func (kv *KVServer) decodedSnapshot(data []byte){
+	//调用此函数时，，默认调用者持有kv.mu
+	r := bytes.NewBuffer(data)
+	dec := labgob.NewDecoder(r)
+
+	var db	map[string]string
+	var cl  map[int64]int
+
+	if dec.Decode(&db) != nil || dec.Decode(&cl) != nil{
+		raft.InfoKV.Printf("me:%2d | KV Failed to recover by snapshot!\n", kv.me)
+	}else{
+		kv.kvDB = db
+		kv.clerkLog = cl
+		raft.InfoKV.Printf("me:%2d | KV recover frome snapshot successful! \n",
+			kv.me)
+	}
+}
+
+func (kv *KVServer) checkState(index int, term int){
+	//判断raft日志长度
+	if kv.maxraftstate == -1{
+		return
+	}
+
+	//日志长度接近时，启动快照
+	portion := 9 / 10
+	if kv.persister.RaftStateSize() < kv.maxraftstate * portion{
+		return
+	}
+	//因为takeSnapshot需要rf.mu
+	//所以使用goroutine防止rf.mu阻塞
+	go func() {kv.rf.TakeSnapshot(kv.encodeSnapshot(), index, term)}()
+}
+
+func (kv *KVServer) encodeSnapshot() []byte {
+	//调用者默认拥有kv.mu
+	w := new(bytes.Buffer)
+	enc := labgob.NewEncoder(w)
+	enc.Encode(kv.kvDB)
+	enc.Encode(kv.clerkLog)
+	data := w.Bytes()
+	return data
+}
+
+func (kv *KVServer) loadSnapshot(){
+	data := kv.persister.ReadSnapshot()
+	if data == nil || len(data) == 0{
+		return
+	}
+	kv.decodedSnapshot(data)
 }

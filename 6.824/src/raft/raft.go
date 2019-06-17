@@ -43,11 +43,11 @@ import "labrpc"
 // ApplyMsg, but set CommandValid to false for these other uses.
 //
 type ApplyMsg struct {
-	CommandValid bool
+	CommandValid bool  //true为正常信息交付，false为快照
 	Command      interface{}
 	CommandIndex int
 	CommitTerm 	int //交付信息时raft的term
-	Role 	string //交付信息的raft的角色
+	Role 	string //交付信息时raft的角色
 }
 
 //term
@@ -97,6 +97,9 @@ type Raft struct {
 	leaderCh 	chan bool //candidate竞选leader
 
 	applyCh 	chan ApplyMsg //每commit一个log，就执行这个日志的命令，在实验中，执行命令=给applyCh发送信息
+
+	lastIncludedIndex 	int  //现存快照对应的最后一个日志下标
+	lastIncludedTerm 	int  //现存快照对应的最后一个日志所属term
 
 }
 
@@ -148,6 +151,8 @@ func (rf *Raft) persist() {
 	enc.Encode(rf.currentTerm)
 	enc.Encode(rf.votedFor)
 	enc.Encode(rf.logs)
+	enc.Encode(rf.lastIncludedIndex)
+	enc.Encode(rf.lastIncludedTerm)
 	data := w.Bytes()
 	rf.persister.SaveRaftState(data)
 	InfoRaft.Printf("me:%2d term:%3d | Role:%10s Persist data! VotedFor:%3d len(Logs):%3d\n",
@@ -183,15 +188,19 @@ func (rf *Raft) readPersist(data []byte) {
 	var term	int
 	var votedFor	int
 	var logs []Entries
+	var lastIncludedIndex int
+	var lastIncludedTerm int
 
 	//还没运行之前调用此函数
 	//所以不用加锁了吧
-	if dec.Decode(&term) != nil || dec.Decode(&votedFor) !=nil || dec.Decode(&logs) != nil{
+	if dec.Decode(&term) != nil || dec.Decode(&votedFor) !=nil || dec.Decode(&logs) != nil || dec.Decode(&lastIncludedIndex) != nil || dec.Decode(&lastIncludedTerm) != nil{
 		InfoRaft.Printf("me:%2d term:%3d | Failed to read persist data!\n")
 	}else{
 		rf.currentTerm = term
 		rf.votedFor = votedFor
 		rf.logs = logs
+		rf.lastIncludedIndex = lastIncludedIndex
+		rf.lastIncludedTerm = lastIncludedTerm
 		InfoRaft.Printf("me:%2d term:%3d | Read persist data successful! VotedFor:%3d len(Logs):%3d\n",
 			rf.me, rf.currentTerm, rf.votedFor, len(rf.logs))
 	}
@@ -264,7 +273,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	//所以真实日志长度需要-1
 	log_less := rf.getLastLogIndex() < args.PrevLogIndex
 	//接收者日志大于等于leader发来的日志  且 日志项不匹配
-	log_dismatch := !log_less  && rf.logs[args.PrevLogIndex].Term != args.PrevLogTerm
+	log_dismatch := !log_less  && rf.logs[rf.getLogIndex(args.PrevLogIndex)].Term != args.PrevLogTerm
 
 	if log_less{
 		//如果follower日志较少
@@ -274,12 +283,12 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 			rf.me, rf.currentTerm, args.LeaderId, rf.getLastLogIndex(), args.PrevLogIndex, len(args.Entries))
 	} else if log_dismatch{
 		//日志项不匹配，找到follower属于这个term的第一个日志，方便回滚。
-		reply.ConflictTerm = rf.logs[args.PrevLogIndex].Term
-		for i := args.PrevLogIndex; i > 0 ; i--{
+		reply.ConflictTerm = rf.logs[rf.getLogIndex(args.PrevLogIndex)].Term
+		for i := rf.getLogIndex(args.PrevLogIndex); i > 0 ; i--{
 			if rf.logs[i].Term != reply.ConflictTerm{
 				break
 			}
-			reply.ConflictIndex = i
+			reply.ConflictIndex = i + rf.lastIncludedIndex
 		}
 		InfoRaft.Printf("me:%2d term:%3d | receive leader:[%3d] message but not match!\n", rf.me, rf.currentTerm, args.LeaderId)
 	} else {
@@ -292,8 +301,8 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		leng := min(rf.getLastLogIndex()-args.PrevLogIndex, len(args.Entries))
 		i := 0
 		for ; i < leng; i++ {
-			if rf.logs[args.PrevLogIndex+i+1].Term != args.Entries[i].Term {
-				rf.logs = rf.logs[:args.PrevLogIndex+i+1]
+			if rf.logs[rf.getLogIndex(args.PrevLogIndex)+i+1].Term != args.Entries[i].Term {
+				rf.logs = rf.logs[:rf.getLogIndex(args.PrevLogIndex)+i+1]
 				break
 			}
 		}
@@ -313,7 +322,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 		//修改commitIndex
 		if args.LeaderCommit > rf.commitIndex {
-			rf.commitIndex = min(args.LeaderCommit, len(rf.logs)-1)
+			rf.commitIndex = min(args.LeaderCommit, len(rf.logs) - 1 + rf.lastIncludedIndex)
 			rf.applyLogs()
 			}
 
@@ -388,11 +397,11 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 
 func (rf *Raft) getLastLogIndex() int {
 	//logs下标从1开始，logs[0]是占位符
-	return len(rf.logs) - 1
+	return rf.logs[len(rf.logs)-1].Index
 }
 
 func (rf *Raft) getLastLogTerm() int {
-	return rf.logs[rf.getLastLogIndex()].Term
+	return rf.logs[len(rf.logs)-1].Term
 }
 
 func (rf *Raft) getPrevLogIndex(server int) int{
@@ -402,7 +411,15 @@ func (rf *Raft) getPrevLogIndex(server int) int{
 
 func (rf *Raft) getPrevLogTerm(server int) int{
 	//只有leader调用
-	return rf.logs[rf.getPrevLogIndex(server)].Term
+	return rf.logs[rf.getPrevLogIndex(server) - rf.lastIncludedIndex].Term
+}
+
+func (rf *Raft) getLogIndex(i int) int{
+	return i - rf.lastIncludedIndex
+}
+
+func (rf *Raft) getNextIndex(server int) int{
+	return rf.nextIndex[server] - rf.lastIncludedIndex
 }
 
 func (rf *Raft)checkState(role string, term int) bool{
@@ -423,7 +440,7 @@ func (rf *Raft)convertRoleTo(role string){
 			if i == rf.me{
 				continue
 			}
-			rf.nextIndex[i] = len(rf.logs)
+			rf.nextIndex[i] = len(rf.logs) + rf.lastIncludedIndex
 			rf.matchIndex[i] = 0
 		}
 		//解决figure8，上线立刻同步一条信息
@@ -456,7 +473,6 @@ func (rf *Raft) applyLogs(){
 	InfoKV.Printf("me:%2d | start apply log curCommit:%3d total:%3d!\n", rf.me, rf.lastApplied, rf.commitIndex)
 	//不能用goroutine，因为程序要求log按顺序交付
 	for i := rf.lastApplied + 1; i <= rf.commitIndex; i++{
-		valid := true
 		//不行，lab 2B的测试不允许这么做
 		//switch rf.logs[i].Command.(type) {
 		//case string:
@@ -466,7 +482,7 @@ func (rf *Raft) applyLogs(){
 		//	}
 		//default:
 		//}
-		rf.applyCh <- ApplyMsg{valid, rf.logs[i].Command, i, rf.currentTerm, rf.role}
+		rf.applyCh <- ApplyMsg{true, rf.logs[rf.getLogIndex(i)].Command, i, rf.currentTerm, rf.role}
 		InfoRaft.Printf("me:%2d term:%3d | %12v commit! CommitIndex:%3d total:%3d\n",
 			rf.me ,rf.currentTerm, rf.role, i, rf.commitIndex)
 	}
@@ -542,7 +558,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	isLeader = rf.role == Leader
 	if isLeader{
 		//logs有一个占位符，所以其长度为3时，表明里面有2个命令，而新来的命令的提交index就是3,代表是第三个提交的。
-		index = len(rf.logs)
+		index = len(rf.logs) + rf.lastIncludedIndex
 		rf.logs = append(rf.logs, Entries{rf.currentTerm, index, command})
 		InfoRaft.Printf("me:%2d term:%3d | Leader receive a new command:%v\n", rf.me, rf.currentTerm, command)
 
@@ -592,8 +608,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 
 	//log下标从1开始，0是占位符，没有意义
 	rf.logs = make([]Entries, 1)
-	//term为-1,表示第一个leader的term编号是0,test只接受int型的command
-	rf.logs[0] = Entries{-1, 0, -1}
+
 	rf.commitIndex = 0
 	rf.lastApplied = 0
 	rf.nextIndex = make([]int, len(peers))
@@ -606,8 +621,13 @@ func Make(peers []*labrpc.ClientEnd, me int,
 
 	rf.applyCh = applyCh
 
+	rf.lastIncludedIndex = 0
+	rf.lastIncludedTerm = -1
+
 	// initialize from state persisted before a crash
 	rf.readPersist(persister.ReadRaftState())
+	//logs[0]为占位符
+	rf.logs[0] = Entries{rf.lastIncludedTerm, rf.lastIncludedIndex, -1}
 
 	//要加这个，每次的rand才会不一样
 	rand.Seed(time.Now().UnixNano())
@@ -757,7 +777,7 @@ func (rf *Raft) broadcastEntries() {
 					rf.me,
 					rf.getPrevLogIndex(server),
 					rf.getPrevLogTerm(server),
-					rf.logs[rf.nextIndex[server]:],
+					rf.logs[rf.getNextIndex(server):],
 					rf.commitIndex}
 
 				rf.mu.Unlock()
@@ -842,20 +862,35 @@ func (rf *Raft) broadcastEntries() {
 					return
 
 				} else {
+
+					//leader已经快照了follower所需要的日志
+					if reply.ConflictIndex <= rf.lastIncludedIndex || reply.ConflictTerm < rf.logs[0].Term{
+						rf.mu.Unlock()
+						rf.sendSnapshot(server)
+						return
+						}
+
 					//prevLogIndex or prevLogTerm不匹配
 
 					//如果leader没有conflictTerm的日志，那么重新发送所有日志
 
 					//新加入的节点可能没有日志，其conflitIndex是0
-					rf.nextIndex[server] = 1
-					for i := reply.ConflictIndex; i > 0; i--{
-						if rf.logs[i].Term == reply.ConflictTerm{
-							rf.nextIndex[server] = i + 1
+					rf.nextIndex[server] = 1 + rf.lastIncludedIndex
+					i := reply.ConflictIndex
+					for ; i > 0; i--{
+						if rf.logs[rf.getLogIndex(i)].Term == reply.ConflictTerm{
+							rf.nextIndex[server] = i + 1 + rf.lastIncludedIndex
 							break
 						}
+					}
+					if i == 0{
+						//leader没有与follower的term匹配的日志
+						rf.mu.Unlock()
+						rf.sendSnapshot(server)
+						return
+					}
 					InfoRaft.Printf("me:%2d term:%3d | Msg to %3d append fail,decrease nextIndex to:%3d\n",
 						rf.me, rf.currentTerm, server, rf.nextIndex[server])
-					}
 					rf.mu.Unlock()
 				}
 			}
@@ -865,3 +900,129 @@ func (rf *Raft) broadcastEntries() {
 	}
 }
 
+//===============================================================================================================
+//lab3添加的代码如下
+//snapshot
+//===============================================================================================================
+func (rf *Raft) TakeSnapshot(data []byte, index int, term int){
+	InfoKV.Printf("me:%2d term:%3d | Begin snapshot!\n", rf.me, rf.currentTerm)
+	//data kv需要快照的数据，index，快照对应的日志下标，term，下标所属term
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+
+	if index < rf.lastApplied{
+		//忽略发起的旧快照
+		return
+	}
+
+	logs := make([]Entries, 1)
+	logs[0] = Entries{term, index, -1}
+	if rf.getLastLogIndex() <= index{
+		rf.logs = logs
+	}else{
+		lens := rf.getLastLogIndex() - index
+		logs = append(logs, rf.logs[len(rf.logs)-lens:]...)
+		rf.logs = logs
+	}
+
+	rf.lastIncludedTerm = term
+	rf.lastIncludedIndex = index
+
+	w := new(bytes.Buffer)
+	enc := labgob.NewEncoder(w)
+	enc.Encode(rf.currentTerm)
+	enc.Encode(rf.votedFor)
+	enc.Encode(rf.logs)
+	enc.Encode(rf.lastIncludedIndex)
+	enc.Encode(rf.lastIncludedTerm)
+	raftState := w.Bytes()
+	rf.persister.SaveStateAndSnapshot(raftState, data)
+}
+
+type InstallSnapshotArgs struct {
+	Term 	int //leader's term
+	LeaaderId 	int
+	LastIncludedIndex	int
+	LastIncludedTerm	int
+	Data 	[]byte //snapshot
+}
+
+type InstallSnapshotReply struct{
+	Term 	int
+}
+
+func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply){
+
+	rf.mu.Lock()
+	InfoKV.Printf("me:%2d term:%3d | receive snapshot from leader:%2d ", rf.me, rf.currentTerm, args.LeaaderId)
+	reply.Term = rf.currentTerm
+	if rf.currentTerm > args.Term || args.LastIncludedIndex <= rf.lastIncludedIndex{
+		rf.mu.Unlock()
+		return
+	}
+	rf.lastIncludedIndex = args.LastIncludedIndex
+	rf.lastIncludedTerm = args.LastIncludedTerm
+
+	rf.logs = make([]Entries, 0)
+	rf.logs = append(rf.logs, Entries{args.LastIncludedTerm, args.LastIncludedIndex, -1})
+
+	rf.lastApplied = rf.lastIncludedIndex
+	rf.commitIndex = rf.lastIncludedIndex
+
+	msg := ApplyMsg{
+		false,
+		args.Data,
+		rf.lastIncludedIndex,
+		rf.lastIncludedTerm,
+		rf.role,
+	}
+
+	rf.applyCh <- msg
+
+	InfoKV.Printf("me:%2d term:%3d | Install snapshot\n", rf.me, rf.currentTerm)
+	rf.dropAndSet(rf.appendCh)
+	rf.mu.Unlock()
+}
+
+func (rf *Raft) sendSnapshot(server int) {
+	InfoKV.Printf("me:%2d term:%3d | Leader send snapshot to follower %2d\n", rf.me, rf.currentTerm, server)
+	//leader发送快照逻辑
+	rf.mu.Lock()
+	arg := InstallSnapshotArgs{
+		rf.currentTerm,
+		rf.me,
+		rf.lastIncludedIndex,
+		rf.lastIncludedTerm,
+		rf.persister.ReadSnapshot(),
+	}
+
+
+	for{
+		if !rf.checkState(Leader, arg.Term){
+			rf.mu.Unlock()
+			return
+		}
+		reply := InstallSnapshotReply{}
+		rf.mu.Unlock()
+
+		ok := rf.peers[server].Call("Raft.InstallSnapshot", &arg, &reply)
+
+		rf.mu.Lock()
+		if ok{
+			if reply.Term > rf.currentTerm{
+				//follower的term比自己大
+				rf.currentTerm = reply.Term
+				rf.convertRoleTo(Follower)
+			}else{
+				//快照同步成功
+				rf.nextIndex[server] = arg.LastIncludedIndex + 1
+				rf.matchIndex[server] = arg.LastIncludedIndex
+			}
+			rf.mu.Unlock()
+			return
+		}
+		//没收到回复，重复发送
+	}
+
+
+}
