@@ -57,6 +57,7 @@ const(
 	Follower = "Follower"
 	votedNull = -1 //本轮没有投票给任何人
 	heartBeat = time.Duration(100) //leader的心跳时间
+	RPC_CALL_TIMEOUT = time.Duration(500) * time.Millisecond//rpc超时时间
 )
 
 type Entries struct{
@@ -155,8 +156,7 @@ func (rf *Raft) persist() {
 	enc.Encode(rf.lastIncludedTerm)
 	data := w.Bytes()
 	rf.persister.SaveRaftState(data)
-	InfoRaft.Printf("me:%2d term:%3d | Role:%10s Persist data! VotedFor:%3d len(Logs):%3d\n",
-		rf.me, rf.currentTerm, rf.role, rf.votedFor, len(rf.logs)-1)
+	InfoRaft.Printf("Raft:%2d term:%3d | Persist data! Size:%5v logs:%4v\n", rf.me, rf.currentTerm, len(data), len(rf.logs)-1)
 }
 
 
@@ -194,15 +194,17 @@ func (rf *Raft) readPersist(data []byte) {
 	//还没运行之前调用此函数
 	//所以不用加锁了吧
 	if dec.Decode(&term) != nil || dec.Decode(&votedFor) !=nil || dec.Decode(&logs) != nil || dec.Decode(&lastIncludedIndex) != nil || dec.Decode(&lastIncludedTerm) != nil{
-		InfoRaft.Printf("me:%2d term:%3d | Failed to read persist data!\n")
+		InfoRaft.Printf("Raft:%2d term:%3d | Failed to read persist data!\n")
 	}else{
 		rf.currentTerm = term
 		rf.votedFor = votedFor
 		rf.logs = logs
 		rf.lastIncludedIndex = lastIncludedIndex
 		rf.lastIncludedTerm = lastIncludedTerm
-		InfoRaft.Printf("me:%2d term:%3d | Read persist data successful! VotedFor:%3d len(Logs):%3d\n",
-			rf.me, rf.currentTerm, rf.votedFor, len(rf.logs))
+		rf.lastApplied = rf.lastIncludedIndex
+		rf.commitIndex = rf.lastIncludedIndex
+		InfoRaft.Printf("Raft:%2d term:%3d | Read persist data{%5d bytes} successful! VotedFor:%3d len(Logs):%3d\n",
+			rf.me, rf.currentTerm, len(data), rf.votedFor, len(rf.logs))
 	}
 }
 
@@ -238,13 +240,21 @@ func min(a, b int) int {
 	}
 	return b
 }
+func max(a, b int) int {
+	if a < b{
+		return b
+	}
+	return a
+}
 
 //leader调用follower的AppendEntries RPC服务
 //站在follower角度完成下面这个RPC调用
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
 	//follower收到leader的信息
 	rf.mu.Lock()
+	//defer后进先出
 	defer rf.mu.Unlock()
+
 
 	reply.Term = rf.currentTerm
 	reply.Success = false
@@ -271,62 +281,80 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	//args.Term >= rf.currentTerm
 	//logs从下标1开始，log.Entries[0]是占位符
 	//所以真实日志长度需要-1
-	log_less := rf.getLastLogIndex() < args.PrevLogIndex
-	//接收者日志大于等于leader发来的日志  且 日志项不匹配
-	log_dismatch := !log_less  && rf.logs[rf.getLogIndex(args.PrevLogIndex)].Term != args.PrevLogTerm
 
-	if log_less{
+	//如果reply.confictIndex == -1表示follower缺少日志或者leader发送的日志已经被快照
+	//leader需要将nextIndex设置为conflicIndex
+	if rf.getLastLogIndex() < args.PrevLogIndex{
 		//如果follower日志较少
-		reply.ConflictTerm = rf.getLastLogTerm()
-		reply.ConflictIndex = rf.getLastLogIndex()
-		InfoRaft.Printf("me:%2d term:%3d | receive leader:[%3d] message but lost any message! curLen:%4d prevLoglen:%4d len(Entries):%4d\n",
+		reply.ConflictTerm = -1
+		reply.ConflictIndex = rf.getLastLogIndex() + 1
+		InfoRaft.Printf("Raft:%2d term:%3d | receive leader:[%3d] message but lost any message! curLen:%4d prevLoglen:%4d len(Entries):%4d\n",
 			rf.me, rf.currentTerm, args.LeaderId, rf.getLastLogIndex(), args.PrevLogIndex, len(args.Entries))
-	} else if log_dismatch{
-		//日志项不匹配，找到follower属于这个term的第一个日志，方便回滚。
-		reply.ConflictTerm = rf.logs[rf.getLogIndex(args.PrevLogIndex)].Term
-		for i := rf.getLogIndex(args.PrevLogIndex); i > 0 ; i--{
-			if rf.logs[i].Term != reply.ConflictTerm{
-				break
-			}
-			reply.ConflictIndex = i + rf.lastIncludedIndex
-		}
-		InfoRaft.Printf("me:%2d term:%3d | receive leader:[%3d] message but not match!\n", rf.me, rf.currentTerm, args.LeaderId)
-	} else {
-		//接收者的日志大于等于prevlogindex，且在prevlogindex处日志匹配
-		rf.currentTerm = args.Term
-		reply.Success = true
-
-		//修改日志长度
-		//找到接收者和leader（如果有）第一个不相同的日志
-		leng := min(rf.getLastLogIndex()-args.PrevLogIndex, len(args.Entries))
-		i := 0
-		for ; i < leng; i++ {
-			if rf.logs[rf.getLogIndex(args.PrevLogIndex)+i+1].Term != args.Entries[i].Term {
-				rf.logs = rf.logs[:rf.getLogIndex(args.PrevLogIndex)+i+1]
-				break
-			}
-		}
-		if i != len(args.Entries) {
-			rf.logs = append(rf.logs, args.Entries[i:]...)
+		return
 		}
 
-		if len(args.Entries) != 0{
-			//心跳信号不输出
-			//心跳信号可能会促使follower执行命令
-
-			//心跳信号没有修改votedFor、log和currentTerm
-			rf.persist()
-			InfoRaft.Printf("me:%2d term:%3d | receive new command from leader:%3d, term:%3d, size:%3d curLogLen:%4d LeaderCommit:%4d rfCommit:%4d\n",
-				rf.me, rf.currentTerm, args.LeaderId, args.Term, len(args.Entries), len(rf.logs)-1, args.LeaderCommit, rf.commitIndex)
-		}
-
-		//修改commitIndex
-		if args.LeaderCommit > rf.commitIndex {
-			rf.commitIndex = min(args.LeaderCommit, len(rf.logs) - 1 + rf.lastIncludedIndex)
-			rf.applyLogs()
-			}
-
+	if rf.lastIncludedIndex > args.PrevLogIndex{
+		//已经快照了
+		//让leader的nextIndex--，直到leader发送快照
+		reply.ConflictIndex = rf.lastIncludedIndex + 1
+		reply.ConflictTerm = -1
+		return
 	}
+
+	//接收者日志大于等于leader发来的日志  且 日志项不匹配
+	if args.PrevLogTerm != rf.logs[rf.subIdx(args.PrevLogIndex)].Term{
+		//日志项不匹配，找到follower属于这个term的第一个日志，方便回滚。
+		reply.ConflictTerm = rf.logs[rf.subIdx(args.PrevLogIndex)].Term
+		for i := args.PrevLogIndex; i > rf.lastIncludedIndex ; i--{
+			if rf.logs[rf.subIdx(i)].Term != reply.ConflictTerm{
+				break
+			}
+			reply.ConflictIndex = i
+		}
+		InfoRaft.Printf("Raft:%2d term:%3d | receive leader:[%3d] message but not match!\n", rf.me, rf.currentTerm, args.LeaderId)
+		//InfoRaft.Printf("Raft:%2d term:%3d | index:%4d | args: term%4d | cur: term:%4d", rf.me, rf.currentTerm, args.PrevLogIndex, args.PrevLogTerm, rf.logs[rf.subIdx(args.PrevLogIndex)].Term)
+		return
+	}
+
+	//接收者的日志大于等于prevlogindex，且在prevlogindex处日志匹配
+	rf.currentTerm = args.Term
+	reply.Success = true
+
+	//修改日志长度
+	//找到接收者和leader（如果有）第一个不相同的日志
+	i := 0
+	for  ; i < len(args.Entries); i++{
+		ind := rf.subIdx(i + args.PrevLogIndex + 1)
+		if ind < len(rf.logs) && rf.logs[ind].Term != args.Entries[i].Term{
+			//修改不同的日志, 截断+新增
+			rf.logs = rf.logs[:ind]
+			rf.logs = append(rf.logs, args.Entries[i:]...)
+			break
+		}else if ind >= len(rf.logs){
+			//添加新日志
+			rf.logs = append(rf.logs, args.Entries[i:]...)
+			break
+		}
+	}
+
+
+	if len(args.Entries) != 0{
+		//心跳信号不输出
+		//心跳信号可能会促使follower执行命令
+
+		//心跳信号不改变currentTerm、votedFor、logs，改变角色的函数有persist
+		rf.persist()
+		InfoRaft.Printf("Raft:%2d term:%3d | receive new command from leader:%3d, term:%3d, size:%3d curLogLen:%4d LeaderCommit:%4d rfCommit:%4d\n",
+			rf.me, rf.currentTerm, args.LeaderId, args.Term, len(args.Entries), len(rf.logs)-1, args.LeaderCommit, rf.commitIndex)
+	}
+
+	//修改commitIndex
+	if args.LeaderCommit > rf.commitIndex {
+		rf.commitIndex = min(args.LeaderCommit, rf.addIdx(len(rf.logs)-1))
+		rf.applyLogs()
+		}
+
+
 
 }
 
@@ -390,14 +418,14 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 			reply.VoteGranted = true
 
 			rf.dropAndSet(rf.voteCh)
-			WarnRaft.Printf("me:%2d term:%3d | vote to candidate %3d\n", rf.me, rf.currentTerm, args.CandidateId)
+			WarnRaft.Printf("Raft:%2d term:%3d | vote to candidate %3d\n", rf.me, rf.currentTerm, args.CandidateId)
 			rf.persist()
 	}
 }
 
 func (rf *Raft) getLastLogIndex() int {
 	//logs下标从1开始，logs[0]是占位符
-	return rf.logs[len(rf.logs)-1].Index
+	return rf.addIdx(len(rf.logs)-1)
 }
 
 func (rf *Raft) getLastLogTerm() int {
@@ -411,15 +439,15 @@ func (rf *Raft) getPrevLogIndex(server int) int{
 
 func (rf *Raft) getPrevLogTerm(server int) int{
 	//只有leader调用
-	return rf.logs[rf.getPrevLogIndex(server) - rf.lastIncludedIndex].Term
+	return rf.logs[rf.subIdx(rf.getPrevLogIndex(server))].Term
 }
 
-func (rf *Raft) getLogIndex(i int) int{
+func (rf *Raft) subIdx(i int) int{
 	return i - rf.lastIncludedIndex
 }
 
-func (rf *Raft) getNextIndex(server int) int{
-	return rf.nextIndex[server] - rf.lastIncludedIndex
+func (rf *Raft) addIdx(i int) int{
+	return i + rf.lastIncludedIndex
 }
 
 func (rf *Raft)checkState(role string, term int) bool{
@@ -433,7 +461,7 @@ func (rf *Raft)convertRoleTo(role string){
 	defer rf.persist()
 	switch role {
 	case Leader:
-		WarnRaft.Printf("me:%2d term:%3d | %12s convert role to Leader!\n", rf.me, rf.currentTerm, rf.role)
+		WarnRaft.Printf("Raft:%2d term:%3d | %12s convert role to Leader!\n", rf.me, rf.currentTerm, rf.role)
 		rf.role = Leader
 		//初始化各个nextIndex数组
 		for i := 0; i < len(rf.peers); i++{
@@ -449,10 +477,10 @@ func (rf *Raft)convertRoleTo(role string){
 	case Candidate:
 		rf.currentTerm = rf.currentTerm + 1
 		rf.votedFor = rf.me
-		WarnRaft.Printf("me:%2d term:%3d | %12s convert role to Candidate!\n", rf.me, rf.currentTerm, rf.role)
+		WarnRaft.Printf("Raft:%2d term:%3d | %12s convert role to Candidate!\n", rf.me, rf.currentTerm, rf.role)
 		rf.role = Candidate
 	case Follower:
-		WarnRaft.Printf("me:%2d term:%3d | %12s convert role to Follower!\n", rf.me, rf.currentTerm, rf.role)
+		WarnRaft.Printf("Raft:%2d term:%3d | %12s convert role to Follower!\n", rf.me, rf.currentTerm, rf.role)
 		rf.votedFor = votedNull
 		rf.role = Follower
 	}
@@ -470,7 +498,7 @@ func (rf *Raft) dropAndSet(ch chan bool){
 
 //执行命令，提交数据
 func (rf *Raft) applyLogs(){
-	InfoKV.Printf("me:%2d | start apply log curCommit:%3d total:%3d!\n", rf.me, rf.lastApplied, rf.commitIndex)
+	InfoRaft.Printf("Raft:%2d term:%3d | start apply log curCommit:%3d total:%3d!\n", rf.me, rf.currentTerm, rf.lastApplied, rf.commitIndex)
 	//不能用goroutine，因为程序要求log按顺序交付
 	for i := rf.lastApplied + 1; i <= rf.commitIndex; i++{
 		//不行，lab 2B的测试不允许这么做
@@ -482,10 +510,10 @@ func (rf *Raft) applyLogs(){
 		//	}
 		//default:
 		//}
-		rf.applyCh <- ApplyMsg{true, rf.logs[rf.getLogIndex(i)].Command, i, rf.currentTerm, rf.role}
-		InfoRaft.Printf("me:%2d term:%3d | %12v commit! CommitIndex:%3d total:%3d\n",
-			rf.me ,rf.currentTerm, rf.role, i, rf.commitIndex)
+		rf.applyCh <- ApplyMsg{true, rf.logs[rf.subIdx(i)].Command, i, rf.currentTerm, rf.role}
+		//InfoRaft.Printf("Raft:%2d term:%3d | %12v commit! CommitIndex:%3d total:%3d\n", rf.me ,rf.currentTerm, rf.role, i, rf.commitIndex)
 	}
+	InfoRaft.Printf("Raft:%2d term:%3d | Apply log {%4d => %4d} Done!\n", rf.me, rf.currentTerm, rf.lastApplied, rf.commitIndex)
 	rf.lastApplied = rf.commitIndex
 }
 
@@ -560,7 +588,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		//logs有一个占位符，所以其长度为3时，表明里面有2个命令，而新来的命令的提交index就是3,代表是第三个提交的。
 		index = len(rf.logs) + rf.lastIncludedIndex
 		rf.logs = append(rf.logs, Entries{rf.currentTerm, index, command})
-		InfoRaft.Printf("me:%2d term:%3d | Leader receive a new command:%v\n", rf.me, rf.currentTerm, command)
+		InfoRaft.Printf("Raft:%2d term:%3d | Leader receive a new command:%4v cmdIndex:%4v\n", rf.me, rf.currentTerm, command, index)
 
 		rf.persist()
 		}
@@ -578,7 +606,9 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 //关闭这一个raft实例的log
 func (rf *Raft) Kill() {
 	// Your code here, if desired.
+	rf.mu.Lock()
 	WarnRaft.Printf("Sever index:[%3d]  Term:[%3d]  role:[%10s] has been killed.Turn off its log\n", rf.me, rf.currentTerm, rf.role)
+	rf.mu.Unlock()
 	rf.exitCh <- true
 }
 
@@ -632,7 +662,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	//要加这个，每次的rand才会不一样
 	rand.Seed(time.Now().UnixNano())
 
-	InfoRaft.Printf("Create a new server:[%3d]! term:[%3d]! Log length:[%4d]\n", rf.me,rf.currentTerm, rf.getLastLogIndex())
+	InfoRaft.Printf("Create a new Raft:[%3d]! term:[%3d]! Log length:[%4d]\n", rf.me,rf.currentTerm, rf.getLastLogIndex())
 
 	//主程序负责创建raft实例、收发消息、模拟网络环境
 	//每个实例在不同的goroutine里运行，模拟多台机器
@@ -648,7 +678,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 				rf.mu.Lock()
 				role := rf.role
 				eTimeout := rf.electionTimeout()
-				InfoRaft.Printf("me:%2d term:%3d | role:%10s timeout:%v\n", rf.me, rf.currentTerm, rf.role, eTimeout)
+				//InfoRaft.Printf("Raft:%2d term:%3d | role:%10s timeout:%v\n", rf.me, rf.currentTerm, rf.role, eTimeout)
 				rf.mu.Unlock()
 
 				switch role{
@@ -773,11 +803,21 @@ func (rf *Raft) broadcastEntries() {
 					rf.mu.Unlock()
 					return
 				}
+
+				//脱离集群很久的follower回来，nextIndex已经被快照了
+				//先判断nextIndex是否大于rf.lastIncludedIndex
+				next := rf.nextIndex[server]
+				if next <= rf.lastIncludedIndex{
+					//注意，此时持有rf.mu锁
+					rf.sendSnapshot(server)
+					return
+				}
+
 				appendArgs := &AppendEntriesArgs{curTerm,
 					rf.me,
 					rf.getPrevLogIndex(server),
 					rf.getPrevLogTerm(server),
-					rf.logs[rf.getNextIndex(server):],
+					rf.logs[rf.subIdx(next):],
 					rf.commitIndex}
 
 				rf.mu.Unlock()
@@ -794,8 +834,8 @@ func (rf *Raft) broadcastEntries() {
 					//返回的term比发送信息时leader的term还要大
 					rf.currentTerm = reply.Term
 					rf.convertRoleTo(Follower)
+					InfoRaft.Printf("Raft:%2d term:%3d | leader done! become follower\n", rf.me, rf.currentTerm)
 					rf.mu.Unlock()
-					InfoRaft.Printf("me:%2d term:%3d | leader done! become follower\n", rf.me, rf.currentTerm)
 					return
 				}
 
@@ -862,34 +902,33 @@ func (rf *Raft) broadcastEntries() {
 					return
 
 				} else {
-
-					//leader已经快照了follower所需要的日志
-					if reply.ConflictIndex <= rf.lastIncludedIndex || reply.ConflictTerm < rf.logs[0].Term{
-						rf.mu.Unlock()
-						rf.sendSnapshot(server)
-						return
-						}
-
 					//prevLogIndex or prevLogTerm不匹配
 
 					//如果leader没有conflictTerm的日志，那么重新发送所有日志
 
 					//新加入的节点可能没有日志，其conflitIndex是0
-					rf.nextIndex[server] = 1 + rf.lastIncludedIndex
-					i := reply.ConflictIndex
-					for ; i > 0; i--{
-						if rf.logs[rf.getLogIndex(i)].Term == reply.ConflictTerm{
-							rf.nextIndex[server] = i + 1 + rf.lastIncludedIndex
-							break
+
+					if reply.ConflictTerm == -1{
+						//follower缺日志 或者 上一次发送的日志follower已经快照了
+						rf.nextIndex[server] = reply.ConflictIndex
+					}else{
+						//日志不匹配
+						rf.nextIndex[server] = rf.addIdx(1)
+						i := reply.ConflictIndex
+						for ; i > rf.lastIncludedIndex; i--{
+							if rf.logs[rf.subIdx(i)].Term == reply.ConflictTerm{
+								rf.nextIndex[server] = i + 1
+								break
+							}
+						}
+						if i <= rf.lastIncludedIndex && rf.lastIncludedIndex != 0{
+							//leader拥有的日志都不能与follwer匹配
+							//需要发送快照
+							rf.nextIndex[server] = rf.lastIncludedIndex
 						}
 					}
-					if i == 0{
-						//leader没有与follower的term匹配的日志
-						rf.mu.Unlock()
-						rf.sendSnapshot(server)
-						return
-					}
-					InfoRaft.Printf("me:%2d term:%3d | Msg to %3d append fail,decrease nextIndex to:%3d\n",
+
+					InfoRaft.Printf("Raft:%2d term:%3d | Msg to %3d fail,decrease nextIndex to:%3d\n",
 						rf.me, rf.currentTerm, server, rf.nextIndex[server])
 					rf.mu.Unlock()
 				}
@@ -904,30 +943,29 @@ func (rf *Raft) broadcastEntries() {
 //lab3添加的代码如下
 //snapshot
 //===============================================================================================================
-func (rf *Raft) TakeSnapshot(data []byte, index int, term int){
-	InfoKV.Printf("me:%2d term:%3d | Begin snapshot!\n", rf.me, rf.currentTerm)
+func (rf *Raft) TakeSnapshot(rawSnapshot []byte, appliedId int, term int){
 	//data kv需要快照的数据，index，快照对应的日志下标，term，下标所属term
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	InfoKV.Printf("Raft:%2d term:%3d | Begin snapshot! appliedId:%4d term:%4d lastIncludeIndex:%4d\n", rf.me, rf.currentTerm, appliedId, term, rf.lastIncludedIndex)
 
-	if index < rf.lastApplied{
+	if appliedId <= rf.lastIncludedIndex{
 		//忽略发起的旧快照
+		//在一次apply中，由于rf.mu的缘故，会并发发起多个快照操作
 		return
 	}
 
-	logs := make([]Entries, 1)
-	logs[0] = Entries{term, index, -1}
-	if rf.getLastLogIndex() <= index{
-		rf.logs = logs
-	}else{
-		lens := rf.getLastLogIndex() - index
-		logs = append(logs, rf.logs[len(rf.logs)-lens:]...)
-		rf.logs = logs
-	}
+	logs := make([]Entries, 0)
+	//此时logs[0]是快照对应的最后一个日志，是一个占位符。
+	logs = append(logs, rf.logs[rf.subIdx(appliedId):]...)
 
+	rf.logs = logs
 	rf.lastIncludedTerm = term
-	rf.lastIncludedIndex = index
+	rf.lastIncludedIndex = appliedId
+	rf.persistStateAndSnapshot(rawSnapshot)
+}
 
+func (rf *Raft) persistStateAndSnapshot(snapshot []byte){
 	w := new(bytes.Buffer)
 	enc := labgob.NewEncoder(w)
 	enc.Encode(rf.currentTerm)
@@ -936,7 +974,7 @@ func (rf *Raft) TakeSnapshot(data []byte, index int, term int){
 	enc.Encode(rf.lastIncludedIndex)
 	enc.Encode(rf.lastIncludedTerm)
 	raftState := w.Bytes()
-	rf.persister.SaveStateAndSnapshot(raftState, data)
+	rf.persister.SaveStateAndSnapshot(raftState, snapshot)
 }
 
 type InstallSnapshotArgs struct {
@@ -952,22 +990,41 @@ type InstallSnapshotReply struct{
 }
 
 func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply){
-
+	InfoKV.Printf("Raft:%2d term:%3d | receive snapshot from leader:%2d ", rf.me, rf.currentTerm, args.LeaaderId)
 	rf.mu.Lock()
-	InfoKV.Printf("me:%2d term:%3d | receive snapshot from leader:%2d ", rf.me, rf.currentTerm, args.LeaaderId)
+	defer rf.mu.Unlock()
 	reply.Term = rf.currentTerm
 	if rf.currentTerm > args.Term || args.LastIncludedIndex <= rf.lastIncludedIndex{
-		rf.mu.Unlock()
+		InfoKV.Printf("Raft:%2d term:%3d | stale snapshot from leader:%2d | me:{index%4d term%4d} leader:{index%4d term%4d}",
+			rf.me, rf.currentTerm, args.LeaaderId, rf.lastIncludedIndex, rf.lastIncludedTerm, args.LastIncludedIndex, args.LastIncludedTerm)
 		return
 	}
+
+	//InfoKV.Printf("Raft:%2d term:%3d | install snapshot from leader:%2d ", rf.me, rf.currentTerm, args.LeaaderId)
+
+	if args.Term > rf.currentTerm{
+		rf.currentTerm = args.Term
+		rf.convertRoleTo(Follower)
+	}
+
+	rf.dropAndSet(rf.appendCh)
+
+	logs := make([]Entries, 0)
+	if args.LastIncludedIndex <= rf.getLastLogIndex() {
+		logs = append(logs, rf.logs[rf.subIdx(args.LastIncludedIndex):]...)
+	}else{
+		logs = append(logs, Entries{args.LastIncludedTerm,args.LastIncludedIndex,-1})
+	}
+	rf.logs = logs
+
 	rf.lastIncludedIndex = args.LastIncludedIndex
 	rf.lastIncludedTerm = args.LastIncludedTerm
 
-	rf.logs = make([]Entries, 0)
-	rf.logs = append(rf.logs, Entries{args.LastIncludedTerm, args.LastIncludedIndex, -1})
 
-	rf.lastApplied = rf.lastIncludedIndex
-	rf.commitIndex = rf.lastIncludedIndex
+	rf.lastApplied = max(rf.lastIncludedIndex, rf.lastApplied)
+	rf.commitIndex = max(rf.lastIncludedIndex, rf.commitIndex)
+
+	rf.persistStateAndSnapshot(args.Data)
 
 	msg := ApplyMsg{
 		false,
@@ -979,15 +1036,16 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 
 	rf.applyCh <- msg
 
-	InfoKV.Printf("me:%2d term:%3d | Install snapshot\n", rf.me, rf.currentTerm)
-	rf.dropAndSet(rf.appendCh)
-	rf.mu.Unlock()
+	InfoKV.Printf("Raft:%2d term:%3d | Install snapshot Done!\n", rf.me, rf.currentTerm)
+
 }
 
 func (rf *Raft) sendSnapshot(server int) {
-	InfoKV.Printf("me:%2d term:%3d | Leader send snapshot to follower %2d\n", rf.me, rf.currentTerm, server)
+	InfoKV.Printf("Raft:%2d term:%3d | Leader send snapshot{index:%4d term:%4d} to follower %2d\n", rf.me, rf.currentTerm, rf.lastIncludedIndex, rf.lastIncludedTerm, server)
 	//leader发送快照逻辑
-	rf.mu.Lock()
+
+	//进来时拥有rf.mu.lock
+	//只在一个地方进来
 	arg := InstallSnapshotArgs{
 		rf.currentTerm,
 		rf.me,
@@ -995,34 +1053,40 @@ func (rf *Raft) sendSnapshot(server int) {
 		rf.lastIncludedTerm,
 		rf.persister.ReadSnapshot(),
 	}
+	rf.mu.Unlock()
 
+	repCh := make(chan struct{})
+	reply := InstallSnapshotReply{}
 
-	for{
-		if !rf.checkState(Leader, arg.Term){
-			rf.mu.Unlock()
-			return
+	go func() {
+		if ok := rf.peers[server].Call("Raft.InstallSnapshot", &arg, &reply); ok{
+			repCh <- struct{}{}
 		}
-		reply := InstallSnapshotReply{}
-		rf.mu.Unlock()
+	}()
 
-		ok := rf.peers[server].Call("Raft.InstallSnapshot", &arg, &reply)
-
-		rf.mu.Lock()
-		if ok{
-			if reply.Term > rf.currentTerm{
-				//follower的term比自己大
-				rf.currentTerm = reply.Term
-				rf.convertRoleTo(Follower)
-			}else{
-				//快照同步成功
-				rf.nextIndex[server] = arg.LastIncludedIndex + 1
-				rf.matchIndex[server] = arg.LastIncludedIndex
-			}
-			rf.mu.Unlock()
-			return
-		}
-		//没收到回复，重复发送
+	select{
+	case <- time.After(RPC_CALL_TIMEOUT):
+		InfoKV.Printf("Raft:%2d term:%3d | Timeout! Leader send snapshot to follower %2d failed\n", rf.me, rf.currentTerm, server)
+		return
+	case <- repCh:
 	}
 
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	if reply.Term > rf.currentTerm{
+		//follower的term比自己大
+		rf.currentTerm = reply.Term
+		rf.convertRoleTo(Follower)
+		return
+	}
 
+	if !rf.checkState(Leader, arg.Term){
+		//rpc回来后不再是leader
+		return
+	}
+	//快照发送成功
+	rf.nextIndex[server] = arg.LastIncludedIndex + 1
+	rf.matchIndex[server] = arg.LastIncludedIndex
+
+	//InfoKV.Printf("Raft:%2d term:%3d | OK! Leader send snapshot to follower %2d\n", rf.me, rf.currentTerm, server)
 }

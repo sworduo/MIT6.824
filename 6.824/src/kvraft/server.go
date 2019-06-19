@@ -54,7 +54,7 @@ type KVServer struct {
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
 	op := Op{"Get", args.Key, "", args.ClerkID, args.CmdIndex}
-	raft.InfoKV.Printf("me:%2d | receive RPC! Clerk:[%20v] index:[%4d]\n", kv.me, op.Clerk, op.Index)
+	//raft.InfoKV.Printf("KVServer:%2d | receive RPC! Clerk:[%20v] index:[%4d]\n", kv.me, op.Clerk, op.Index)
 	reply.Err = ErrNoKey
 	reply.WrongLeader = true
 
@@ -63,7 +63,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 		kv.mu.Unlock()
 		//该指令已经执行
 		//就算不是follower,见到已经执行的请求，直接返回true
-		raft.InfoKV.Printf("me:%2d | Cmd has been finished: Method:[%s] clerk:[%v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
+		//raft.InfoKV.Printf("KVServer:%2d | Cmd has been finished: Method:[%s] clerk:[%v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
 		reply.Value = kv.kvDB[args.Key]
 		reply.WrongLeader = false
 		reply.Err = OK
@@ -71,16 +71,15 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	}
 	kv.mu.Unlock()
 
-	raft.InfoKV.Printf("me:%2d | Begin Method:[%s] clerk:[%20v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
+	//raft.InfoKV.Printf("KVServer:%2d | Begin Method:[%s] clerk:[%20v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
 	index, term, isLeader := kv.rf.Start(op)
 	if !isLeader{
-		raft.InfoKV.Printf("me:%2d | Sry, I am not leader\n", kv.me)
+		//raft.InfoKV.Printf("KVServer:%2d | Sry, I am not leader\n", kv.me)
 		return
 	}
 
-	raft.InfoKV.Printf(("me:%2d | leader msgIndex:%4d\n"), kv.me, index)
-
 	kv.mu.Lock()
+	raft.InfoKV.Printf(("KVServer:%2d | leader msgIndex:%4d\n"), kv.me, index)
 	//新建ch再放入msgCh的好处是，下面select直接用ch即可
 	//而不是直接等待kv.msgCh[index]
 	ch := make(chan int)
@@ -90,12 +89,12 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	select{
 	case <- time.After(WaitPeriod):
 		//超时还没有提交，多半是废了
-		raft.InfoKV.Printf("me:%2d |Get failed! Timeout!\n", kv.me)
+		raft.InfoKV.Printf("KVServer:%2d |Get {index:%4d term:%4d} failed! Timeout!\n", kv.me, index, term)
 	case msgTerm := <- ch:
 		if msgTerm == term {
 			//命令执行
-			raft.InfoKV.Printf("me:%2d | Get OK!\n", kv.me)
 			kv.mu.Lock()
+			raft.InfoKV.Printf("KVServer:%2d | Get {index:%4d term:%4d} OK!\n", kv.me, index, term)
 			if val, ok := kv.kvDB[args.Key]; ok{
 				reply.Value = val
 				reply.Err = OK
@@ -103,7 +102,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 			kv.mu.Unlock()
 			reply.WrongLeader = false
 		}else{
-			raft.InfoKV.Printf("me:%2d |Get failed! Not leader any more!\n", kv.me)
+			raft.InfoKV.Printf("KVServer:%2d |Get {index:%4d term:%4d} failed! Not leader any more!\n", kv.me, index, term)
 		}
 	}
 
@@ -114,28 +113,27 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
 	op := Op{args.Op, args.Key, args.Value, args.ClerkID, args.CmdIndex}
-	raft.InfoKV.Printf("me:%2d | receive RPC! Clerk:[%20v] index:[%4d]\n", kv.me, op.Clerk, op.Index)
+	//raft.InfoKV.Printf("KVServer:%2d | receive RPC! Clerk:[%20v] index:[%4d]\n", kv.me, op.Clerk, op.Index)
 	reply.Err = OK
 	kv.mu.Lock()
 
 	if ind, ok := kv.clerkLog[args.ClerkID]; ok && ind >= args.CmdIndex{
 		//该指令已经执行
 		kv.mu.Unlock()
-		raft.InfoKV.Printf("me:%2d | Cmd has been finished: Method:[%s] clerk:[%v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
+		//raft.InfoKV.Printf("KVServer:%2d | Cmd has been finished: Method:[%s] clerk:[%v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
 		reply.WrongLeader = false
 		return
 	}
 	kv.mu.Unlock()
 
 
-	raft.InfoKV.Printf("me:%2d | Begin Method:[%s] clerk:[%20v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
+	//raft.InfoKV.Printf("KVServer:%2d | Begin Method:[%s] clerk:[%20v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
 	index, term, isLeader := kv.rf.Start(op)
 	if !isLeader{
-		raft.InfoKV.Printf("me:%2d | Sry, I am not leader\n", kv.me)
+		//raft.InfoKV.Printf("KVServer:%2d | Sry, I am not leader\n", kv.me)
 		reply.WrongLeader = true
 		return
 	}
-	raft.InfoKV.Printf(("me:%2d | leader msgIndex:%4d\n"), kv.me, index)
 
 	//start之后才做这个有问题
 	//start，表示命令已经提交给raft实例
@@ -147,6 +145,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	//但是把start和申请管道放在同一个锁里，就能保证start和申请管道原子操作
 	//start是调用本机的其他程序， 不是RPC调用，放在一个锁里应该没关系吧
 	kv.mu.Lock()
+	raft.InfoKV.Printf(("KVServer:%2d | leader msgIndex:%4d\n"), kv.me, index)
 	ch := make(chan int)
 	kv.msgCh[index] = ch
 	kv.mu.Unlock()
@@ -155,14 +154,14 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	select{
 	case <- time.After(WaitPeriod):
 		//超时还没有提交，多半是废了
-		raft.InfoKV.Printf("me:%2d | Put Failed, timeout!\n", kv.me)
+		raft.InfoKV.Printf("KVServer:%2d | Put {index:%4d term:%4d} Failed, timeout!\n", kv.me, index, term)
 	case msgTerm := <- ch:
 		if msgTerm == term {
 			//命令执行，或者已经执行过了
-			raft.InfoKV.Printf("me:%2d | Put OK!\n", kv.me)
+			raft.InfoKV.Printf("KVServer:%2d | Put {index:%4d term:%4d} OK!\n", kv.me, index, term)
 			reply.WrongLeader = false
 		}else{
-			raft.InfoKV.Printf("me:%2d | Put Failed, not leader!\n", kv.me)
+			raft.InfoKV.Printf("KVServer:%2d | Put {index:%4d term:%4d} Failed, not leader!\n", kv.me, index, term)
 		}
 	}
 	go func() {kv.closeCh(index)}()
@@ -178,7 +177,9 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 func (kv *KVServer) Kill() {
 	kv.rf.Kill()
 	// Your code here, if desired.
-	raft.InfoKV.Printf("me:%2d | KV server is died!\n", kv.me)
+	kv.mu.Lock()
+	raft.InfoKV.Printf("KVServer:%2d | KV server is died!\n", kv.me)
+	kv.mu.Unlock()
 	//底层rf删掉之后，上层的kv server不再交流和更新信息，相当于挂了，所以不用做任何事情
 }
 
@@ -219,7 +220,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 
 	kv.loadSnapshot()
 
-	raft.InfoKV.Printf("me:%2d | Create New KV server!\n", kv.me)
+	raft.InfoKV.Printf("KVServer:%2d | Create New KV server!\n", kv.me)
 
 	go kv.receiveNewMsg()
 
@@ -233,13 +234,13 @@ func (kv *KVServer) receiveNewMsg(){
 			//按序执行指令
 			index := msg.CommandIndex
 			term := msg.CommitTerm
-			role := msg.Role
-			kv.checkState(index, term)
+			//role := msg.Role
 
 			if !msg.CommandValid{
 				//snapshot
 				op := msg.Command.([]byte)
 				kv.decodedSnapshot(op)
+				kv.mu.Unlock()
 				continue
 			}
 
@@ -251,29 +252,29 @@ func (kv *KVServer) receiveNewMsg(){
 				//会不会出现index顺序为6 8 7的情况？
 				//不会，因为只有前一条指令成功执行,clerk才会发送后一条指令
 				//只会有重复指令，而不会出现跳跃指令
-				raft.InfoKV.Printf("me:%2d | Cmd has been finished: Method:[%s] clerk:[%v] Cindex:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
+				//raft.InfoKV.Printf("KVServer:%2d | Cmd has been finished: Method:[%s] clerk:[%v] Cindex:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
 			}else{
 				//执行指令
 				kv.clerkLog[op.Clerk] = op.Index
 				switch op.Method {
 				case "Put":
 					kv.kvDB[op.Key] = op.Value
-					if role == raft.Leader {
-						raft.InfoKV.Printf("me:%2d | Put successful!  clerk:[%v] Cindex:[%4d] Mindex:[%4d]\n", kv.me, op.Clerk, op.Index, index)
-					}
+					//if role == raft.Leader {
+					//	raft.InfoKV.Printf("KVServer:%2d | Put successful!  clerk:[%v] Cindex:[%4d] Mindex:[%4d]\n", kv.me, op.Clerk, op.Index, index)
+					//}
 				case "Append":
 					if _, ok := kv.kvDB[op.Key]; ok {
 						kv.kvDB[op.Key] = kv.kvDB[op.Key] + op.Value
 					} else {
 						kv.kvDB[op.Key] = op.Value
 					}
-					if role == raft.Leader {
-						raft.InfoKV.Printf("me:%2d | Append successful! clerk:[%v] Cindex:[%4d] Mindex:[%4d]\n", kv.me, op.Clerk, op.Index, index)
-					}
+					//if role == raft.Leader {
+					//	raft.InfoKV.Printf("KVServer:%2d | Append successful! clerk:[%v] Cindex:[%4d] Mindex:[%4d]\n", kv.me, op.Clerk, op.Index, index)
+					//}
 				case "Get":
-					if role == raft.Leader {
-						raft.InfoKV.Printf("me:%2d | Get successful! clerk:[%v] Cindex:[%4d] Mindex:[%4d]\n", kv.me, op.Clerk, op.Index, index)
-					}
+					//if role == raft.Leader {
+					//	raft.InfoKV.Printf("KVServer:%2d | Get successful! clerk:[%v] Cindex:[%4d] Mindex:[%4d]\n", kv.me, op.Clerk, op.Index, index)
+					//}
 				}
 			}
 			//只有leader才有管道，所以只有leader才会通知
@@ -282,6 +283,11 @@ func (kv *KVServer) receiveNewMsg(){
 			if ch, ok := kv.msgCh[index]; ok{
 				ch <- term
 			}
+
+			//要放在指令执行之后才检查状态
+			//因为index是所保存快照最后一条执行的指令
+			//如果放在index指令执行前检测，那么保存的快照将不包含index这条指令
+			kv.checkState(index, term)
 			kv.mu.Unlock()
 		}
 }
@@ -302,12 +308,11 @@ func (kv *KVServer) decodedSnapshot(data []byte){
 	var cl  map[int64]int
 
 	if dec.Decode(&db) != nil || dec.Decode(&cl) != nil{
-		raft.InfoKV.Printf("me:%2d | KV Failed to recover by snapshot!\n", kv.me)
+		raft.InfoKV.Printf("KVServer:%2d | KV Failed to recover by snapshot!\n", kv.me)
 	}else{
 		kv.kvDB = db
 		kv.clerkLog = cl
-		raft.InfoKV.Printf("me:%2d | KV recover frome snapshot successful! \n",
-			kv.me)
+		raft.InfoKV.Printf("KVServer:%2d | KV recover frome snapshot successful! \n", kv.me)
 	}
 }
 
@@ -318,13 +323,23 @@ func (kv *KVServer) checkState(index int, term int){
 	}
 
 	//日志长度接近时，启动快照
-	portion := 9 / 10
+	//因为rf连续提交日志后才会释放rf.mu，所以需要提前发出快照调用
+	portion := 2 / 3
+	//一个log的字节长度不是1，而可能是几十字节，所以可能仅仅几十个命令的raftStateSize就超过1000了。
+	//几个log的字节大小可能就几百字节了，所以快照要趁早
 	if kv.persister.RaftStateSize() < kv.maxraftstate * portion{
 		return
 	}
 	//因为takeSnapshot需要rf.mu
 	//所以使用goroutine防止rf.mu阻塞
-	go func() {kv.rf.TakeSnapshot(kv.encodeSnapshot(), index, term)}()
+
+	//下面这个会报错
+	//goroutine还没执行，本函数返回，然后取新的命令，执行命令修改kvDB
+	//但同时！下面的goroutine执行了，而且执行时不需要拿kv.mu锁
+	//因此造成了在encodeSnapshot里读，在主goroutine里写，两种情况同时发生。
+	//go func() {kv.rf.TakeSnapshot(kv.encodeSnapshot(), index, term)}()
+	rawSnapshot := kv.encodeSnapshot()
+	go func() {kv.rf.TakeSnapshot(rawSnapshot, index, term)}()
 }
 
 func (kv *KVServer) encodeSnapshot() []byte {

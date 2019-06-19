@@ -30,7 +30,7 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck.leader = 0 //默认一开始找第一个通信
 	ck.me = nrand()
 	ck.cmdIndex = 0
-	raft.InfoKV.Printf("me:%20v  | Create new clerk!\n", ck.me)
+	raft.InfoKV.Printf("Client:%20v  | Create new clerk!\n", ck.me)
 	return ck
 }
 
@@ -51,7 +51,7 @@ func (ck *Clerk) Get(key string) string {
 	ck.cmdIndex++
 	args := GetArgs{key, ck.me, ck.cmdIndex}
 	leader := ck.leader
-	raft.InfoKV.Printf("me:%20v cmdIndex:%4d| Begin! Get:[%v] from server:%3d\n", ck.me, ck.cmdIndex, key, leader)
+	raft.InfoKV.Printf("Client:%20v cmdIndex:%4d| Begin! Get:[%v] from server:%3d\n", ck.me, ck.cmdIndex, key, leader)
 
 
 	for{
@@ -62,15 +62,15 @@ func (ck *Clerk) Get(key string) string {
 			//收到回复信息
 			if reply.Value == ErrNoKey{
 				//kv DB暂时没有这个key
-				raft.InfoKV.Printf("me:20v cmdIndex:%4d | Get Failed! No such key\n", ck.me, ck.cmdIndex)
+				//raft.InfoKV.Printf("Client:20v cmdIndex:%4d | Get Failed! No such key\n", ck.me, ck.cmdIndex)
 				return ""
 			}
-			raft.InfoKV.Printf("me:%20v cmdIndex:%4d| Successful! Get:[%v] from server:%3d value:[%v]\n", ck.me, ck.cmdIndex, key, leader, reply.Value)
+			raft.InfoKV.Printf("Client:%20v cmdIndex:%4d| Successful! Get:[%v] from server:%3d value:[%v]\n", ck.me, ck.cmdIndex, key, leader, reply.Value)
 			return reply.Value
 		}
 		//对面不是leader Or 没收到回复
 		leader = (leader + 1) % len(ck.servers)
-		raft.InfoKV.Printf("me:%20v cmdIndex:%4d| Failed! Change server to %3d\n", ck.me, ck.cmdIndex, leader)
+		//raft.InfoKV.Printf("Client:%20v cmdIndex:%4d| Failed! Change server to %3d\n", ck.me, ck.cmdIndex, leader)
 	}
 
 }
@@ -90,18 +90,18 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 	ck.cmdIndex++
 	args := PutAppendArgs{key, value, op, ck.me, ck.cmdIndex}
 	leader := ck.leader
-	raft.InfoKV.Printf("me:%20v cmdIndex:%4d| Begin! %6s key:[%s] value:[%s] to server:%3d\n", ck.me, ck.cmdIndex, op, key, value, leader)
+	raft.InfoKV.Printf("Client:%20v cmdIndex:%4d| Begin! %6s key:[%s] value:[%s] to server:%3d\n", ck.me, ck.cmdIndex, op, key, value, leader)
 
 	for{
 		reply := PutAppendReply{}
 		if ok := ck.servers[leader].Call("KVServer.PutAppend", &args, &reply); ok && !reply.WrongLeader && reply.Err == OK{
-			raft.InfoKV.Printf("me:%20v cmdIndex:%4d| Successful! %6s key:[%s] value:[%s] to server:%3d\n", ck.me, ck.cmdIndex, op, key, value, leader)
+			raft.InfoKV.Printf("Client:%20v cmdIndex:%4d| Successful! %6s key:[%s] value:[%s] to server:%3d\n", ck.me, ck.cmdIndex, op, key, value, leader)
 			ck.leader = leader
 			return
 		}
 		//对面不是leader  Or 没收到回复
 		leader = (leader + 1) % len(ck.servers)
-		raft.InfoKV.Printf("me:%20v cmdIndex:%4d| Failed! Change server to %3d\n", ck.me, ck.cmdIndex, leader)
+		//raft.InfoKV.Printf("Client:%20v cmdIndex:%4d| Failed! Change server to %3d\n", ck.me, ck.cmdIndex, leader)
 	}
 
 }

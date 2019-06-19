@@ -1,0 +1,1146 @@
+WarnRaft:2019/06/19 23:47:25 raft.go:480: Raft: 1 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:47:25 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:47:25 raft.go:421: Raft: 2 term:  0 | vote to candidate   1
+WarnRaft:2019/06/19 23:47:25 raft.go:464: Raft: 1 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:47:25 raft.go:483: Raft: 0 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:47:25 raft.go:421: Raft: 0 term:  0 | vote to candidate   1
+WarnRaft:2019/06/19 23:47:25 raft.go:480: Raft: 2 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:47:26 raft.go:480: Raft: 2 term:  2 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:26 raft.go:480: Raft: 2 term:  3 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:26 raft.go:480: Raft: 2 term:  4 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:27 raft.go:480: Raft: 2 term:  5 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:27 raft.go:480: Raft: 2 term:  6 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:28 raft.go:480: Raft: 2 term:  7 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:28 raft.go:480: Raft: 2 term:  8 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:28 raft.go:480: Raft: 2 term:  9 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:29 raft.go:480: Raft: 2 term: 10 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:29 raft.go:480: Raft: 2 term: 11 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:30 raft.go:480: Raft: 2 term: 12 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:30 raft.go:480: Raft: 2 term: 13 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:30 raft.go:480: Raft: 2 term: 14 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:31 raft.go:480: Raft: 2 term: 15 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:31 raft.go:480: Raft: 2 term: 16 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:31 raft.go:480: Raft: 0 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:47:31 raft.go:483: Raft: 0 term:  1 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:47:31 raft.go:480: Raft: 2 term: 17 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:31 raft.go:483: Raft: 0 term: 17 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:47:32 raft.go:480: Raft: 2 term: 18 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:47:32 raft.go:483: Raft: 0 term: 18 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:47:32 raft.go:480: Raft: 0 term: 19 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:47:32 raft.go:483: Raft: 2 term: 19 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:47:32 raft.go:421: Raft: 2 term: 19 | vote to candidate   0
+WarnRaft:2019/06/19 23:47:32 raft.go:464: Raft: 0 term: 19 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:47:33 raft.go:483: Raft: 1 term: 19 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:47:33 raft.go:483: Raft: 1 term: 19 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:47:34 raft.go:610: Sever index:[  0]  Term:[ 19]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:47:34 raft.go:610: Sever index:[  1]  Term:[ 19]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:47:34 raft.go:610: Sever index:[  2]  Term:[ 19]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:47:34 raft.go:480: Raft: 0 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:47:34 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:47:34 raft.go:421: Raft: 2 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:47:34 raft.go:464: Raft: 0 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:47:34 raft.go:483: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:47:34 raft.go:421: Raft: 1 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:47:34 raft.go:480: Raft: 2 term: 20 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:47:34 raft.go:480: Raft: 1 term: 20 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:48:55 raft.go:610: Sever index:[  0]  Term:[  0]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:48:55 raft.go:610: Sever index:[  1]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:48:55 raft.go:610: Sever index:[  2]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:48:56 raft.go:480: Raft: 3 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:48:56 raft.go:483: Raft: 4 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:48:56 raft.go:483: Raft: 0 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:48:56 raft.go:483: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:48:56 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:48:56 raft.go:421: Raft: 4 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:48:56 raft.go:421: Raft: 1 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:48:56 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:48:56 raft.go:421: Raft: 2 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:48:56 raft.go:464: Raft: 3 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:48:56 raft.go:480: Raft: 1 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:48:56 raft.go:480: Raft: 2 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:00 raft.go:610: Sever index:[  0]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:00 raft.go:610: Sever index:[  1]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:00 raft.go:610: Sever index:[  2]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:00 raft.go:610: Sever index:[  3]  Term:[  0]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:00 raft.go:610: Sever index:[  4]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:01 raft.go:480: Raft: 1 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:01 raft.go:480: Raft: 0 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:01 raft.go:480: Raft: 2 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:01 raft.go:480: Raft: 4 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:02 raft.go:480: Raft: 0 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:02 raft.go:483: Raft: 4 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:02 raft.go:421: Raft: 4 term:  1 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:02 raft.go:483: Raft: 1 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:02 raft.go:421: Raft: 1 term:  1 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:02 raft.go:483: Raft: 2 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:02 raft.go:421: Raft: 2 term:  1 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:02 raft.go:483: Raft: 3 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:02 raft.go:464: Raft: 0 term:  1 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:07 raft.go:610: Sever index:[  0]  Term:[  1]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:07 raft.go:610: Sever index:[  1]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:07 raft.go:610: Sever index:[  2]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:07 raft.go:610: Sever index:[  3]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:07 raft.go:610: Sever index:[  4]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:07 raft.go:480: Raft: 2 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:07 raft.go:480: Raft: 1 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:07 raft.go:480: Raft: 4 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:07 raft.go:480: Raft: 3 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:08 raft.go:480: Raft: 1 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:08 raft.go:483: Raft: 4 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:08 raft.go:483: Raft: 3 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:08 raft.go:483: Raft: 0 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:08 raft.go:483: Raft: 2 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:08 raft.go:421: Raft: 4 term:  2 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:08 raft.go:421: Raft: 2 term:  2 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:08 raft.go:421: Raft: 3 term:  2 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:08 raft.go:464: Raft: 1 term:  2 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:14 raft.go:610: Sever index:[  0]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:14 raft.go:610: Sever index:[  1]  Term:[  2]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:14 raft.go:610: Sever index:[  2]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:14 raft.go:610: Sever index:[  3]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:14 raft.go:610: Sever index:[  4]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:14 raft.go:480: Raft: 0 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:14 raft.go:480: Raft: 3 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:14 raft.go:480: Raft: 2 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:14 raft.go:480: Raft: 4 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:15 raft.go:480: Raft: 1 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 4 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 2 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 4 term:  3 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 2 term:  3 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:15 raft.go:464: Raft: 1 term:  3 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 3 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 3 term:  3 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 0 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 0 term:  3 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:15 raft.go:610: Sever index:[  0]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:15 raft.go:610: Sever index:[  1]  Term:[  3]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:15 raft.go:610: Sever index:[  2]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:15 raft.go:610: Sever index:[  3]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:15 raft.go:610: Sever index:[  4]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:15 raft.go:480: Raft: 0 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 4 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 4 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 1 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:15 raft.go:464: Raft: 0 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:483: Raft: 3 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 3 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:15 raft.go:480: Raft: 4 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:15 raft.go:421: Raft: 2 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:15 raft.go:480: Raft: 3 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:15 raft.go:480: Raft: 0 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:15 raft.go:480: Raft: 2 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:20 raft.go:610: Sever index:[  0]  Term:[  0]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:20 raft.go:610: Sever index:[  1]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:20 raft.go:610: Sever index:[  2]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:20 raft.go:610: Sever index:[  3]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:20 raft.go:610: Sever index:[  4]  Term:[  0]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:20 raft.go:480: Raft: 4 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:20 raft.go:480: Raft: 2 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:20 raft.go:480: Raft: 1 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:20 raft.go:480: Raft: 3 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:21 raft.go:480: Raft: 3 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:21 raft.go:483: Raft: 4 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:21 raft.go:421: Raft: 4 term:  1 | vote to candidate   3
+WarnRaft:2019/06/19 23:49:21 raft.go:483: Raft: 0 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:21 raft.go:421: Raft: 0 term:  1 | vote to candidate   3
+WarnRaft:2019/06/19 23:49:21 raft.go:464: Raft: 3 term:  1 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:21 raft.go:483: Raft: 1 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:21 raft.go:421: Raft: 1 term:  1 | vote to candidate   3
+WarnRaft:2019/06/19 23:49:21 raft.go:483: Raft: 2 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:21 raft.go:421: Raft: 2 term:  1 | vote to candidate   3
+WarnRaft:2019/06/19 23:49:28 raft.go:610: Sever index:[  0]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:28 raft.go:610: Sever index:[  1]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:28 raft.go:610: Sever index:[  2]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:28 raft.go:610: Sever index:[  3]  Term:[  1]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:28 raft.go:610: Sever index:[  4]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:29 raft.go:480: Raft: 0 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:29 raft.go:480: Raft: 2 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:29 raft.go:480: Raft: 1 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:29 raft.go:480: Raft: 4 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:30 raft.go:480: Raft: 4 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:30 raft.go:483: Raft: 3 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:30 raft.go:483: Raft: 1 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:30 raft.go:421: Raft: 1 term:  2 | vote to candidate   4
+WarnRaft:2019/06/19 23:49:30 raft.go:483: Raft: 2 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:30 raft.go:421: Raft: 2 term:  2 | vote to candidate   4
+WarnRaft:2019/06/19 23:49:30 raft.go:464: Raft: 4 term:  2 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:30 raft.go:483: Raft: 0 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:30 raft.go:421: Raft: 0 term:  2 | vote to candidate   4
+WarnRaft:2019/06/19 23:49:37 raft.go:610: Sever index:[  0]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:37 raft.go:610: Sever index:[  1]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:37 raft.go:610: Sever index:[  2]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:37 raft.go:610: Sever index:[  3]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:37 raft.go:610: Sever index:[  4]  Term:[  2]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:37 raft.go:480: Raft: 3 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:37 raft.go:480: Raft: 0 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:37 raft.go:480: Raft: 1 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:37 raft.go:480: Raft: 2 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:38 raft.go:480: Raft: 1 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:38 raft.go:483: Raft: 4 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:38 raft.go:483: Raft: 0 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:38 raft.go:421: Raft: 0 term:  3 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:38 raft.go:483: Raft: 2 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:38 raft.go:421: Raft: 2 term:  3 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:38 raft.go:464: Raft: 1 term:  3 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:38 raft.go:483: Raft: 3 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:38 raft.go:421: Raft: 3 term:  3 | vote to candidate   1
+WarnRaft:2019/06/19 23:49:40 raft.go:610: Sever index:[  0]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:40 raft.go:610: Sever index:[  1]  Term:[  3]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:40 raft.go:610: Sever index:[  2]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:40 raft.go:610: Sever index:[  3]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:40 raft.go:610: Sever index:[  4]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:41 raft.go:480: Raft: 0 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:41 raft.go:480: Raft: 4 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:41 raft.go:480: Raft: 0 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:41 raft.go:483: Raft: 4 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:41 raft.go:421: Raft: 4 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:41 raft.go:483: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:41 raft.go:421: Raft: 1 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:41 raft.go:464: Raft: 0 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:41 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:41 raft.go:421: Raft: 2 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:41 raft.go:483: Raft: 3 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:41 raft.go:421: Raft: 3 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:41 raft.go:480: Raft: 3 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:41 raft.go:480: Raft: 2 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:43 raft.go:480: Raft: 1 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 3 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 4 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 2 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 0 term:  1 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 0 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 0 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:480: Raft: 2 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:43 raft.go:480: Raft: 3 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 4 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:421: Raft: 4 term:  2 | vote to candidate   3
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 1 term:  2 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:421: Raft: 1 term:  2 | vote to candidate   3
+WarnRaft:2019/06/19 23:49:43 raft.go:464: Raft: 3 term:  2 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:43 raft.go:483: Raft: 0 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:43 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:43 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:44 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:44 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:44 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:44 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:45 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:45 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:45 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:45 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:45 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:45 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:45 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:46 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:47 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:48 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:49 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:50 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:50 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:50 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:51 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:51 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:51 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:51 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:52 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:53 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:54 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:54 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:54 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:54 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:54 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:54 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:55 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:55 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:55 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:55 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:55 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:56 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:57 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:57 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:57 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:57 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:57 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:57 raft.go:610: Sever index:[  0]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:57 raft.go:610: Sever index:[  1]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:57 raft.go:610: Sever index:[  2]  Term:[  2]  role:[ Candidate] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:57 raft.go:610: Sever index:[  3]  Term:[  2]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:57 raft.go:610: Sever index:[  4]  Term:[  2]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:49:57 raft.go:421: Raft: 0 term:  2 | vote to candidate   2
+WarnRaft:2019/06/19 23:49:58 raft.go:480: Raft: 2 term:  3 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:49:58 raft.go:480: Raft: 1 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:58 raft.go:480: Raft: 3 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:58 raft.go:483: Raft: 4 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:58 raft.go:421: Raft: 4 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:49:58 raft.go:480: Raft: 0 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:58 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:58 raft.go:421: Raft: 2 term:  0 | vote to candidate   0
+WarnRaft:2019/06/19 23:49:58 raft.go:480: Raft: 1 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:58 raft.go:480: Raft: 4 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:58 raft.go:480: Raft: 4 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:49:58 raft.go:483: Raft: 0 term:  1 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:49:58 raft.go:421: Raft: 0 term:  1 | vote to candidate   4
+WarnRaft:2019/06/19 23:49:58 raft.go:483: Raft: 1 term:  1 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:49:58 raft.go:421: Raft: 1 term:  1 | vote to candidate   4
+WarnRaft:2019/06/19 23:49:58 raft.go:464: Raft: 4 term:  1 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:49:58 raft.go:483: Raft: 2 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:49:58 raft.go:421: Raft: 2 term:  1 | vote to candidate   4
+WarnRaft:2019/06/19 23:49:58 raft.go:483: Raft: 3 term:  1 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:49:58 raft.go:421: Raft: 3 term:  1 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:02 raft.go:610: Sever index:[  0]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:02 raft.go:610: Sever index:[  1]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:02 raft.go:610: Sever index:[  2]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:02 raft.go:610: Sever index:[  3]  Term:[  1]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:02 raft.go:610: Sever index:[  4]  Term:[  1]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:03 raft.go:480: Raft: 2 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:03 raft.go:480: Raft: 0 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:03 raft.go:480: Raft: 1 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:03 raft.go:480: Raft: 3 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:04 raft.go:480: Raft: 1 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:04 raft.go:480: Raft: 2 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:04 raft.go:483: Raft: 4 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:04 raft.go:480: Raft: 0 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:04 raft.go:483: Raft: 3 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:04 raft.go:421: Raft: 3 term:  2 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:04 raft.go:480: Raft: 4 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:04 raft.go:483: Raft: 2 term:  3 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:04 raft.go:421: Raft: 2 term:  3 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:04 raft.go:483: Raft: 0 term:  3 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:04 raft.go:421: Raft: 0 term:  3 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:04 raft.go:464: Raft: 4 term:  3 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:04 raft.go:483: Raft: 3 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:04 raft.go:483: Raft: 1 term:  3 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:04 raft.go:421: Raft: 1 term:  3 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:04 raft.go:421: Raft: 3 term:  3 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:10 raft.go:610: Sever index:[  0]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:10 raft.go:610: Sever index:[  1]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:10 raft.go:610: Sever index:[  2]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:10 raft.go:610: Sever index:[  3]  Term:[  3]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:10 raft.go:610: Sever index:[  4]  Term:[  3]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:10 raft.go:480: Raft: 2 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:10 raft.go:480: Raft: 3 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:10 raft.go:480: Raft: 1 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:10 raft.go:480: Raft: 0 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:11 raft.go:480: Raft: 2 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:11 raft.go:480: Raft: 1 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:11 raft.go:480: Raft: 3 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:11 raft.go:483: Raft: 4 term:  4 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:11 raft.go:483: Raft: 0 term:  4 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:11 raft.go:421: Raft: 0 term:  4 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:11 raft.go:480: Raft: 4 term:  5 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:11 raft.go:483: Raft: 2 term:  5 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:11 raft.go:421: Raft: 2 term:  5 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:11 raft.go:483: Raft: 3 term:  5 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:11 raft.go:421: Raft: 3 term:  5 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:11 raft.go:483: Raft: 0 term:  5 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:11 raft.go:421: Raft: 0 term:  5 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:11 raft.go:464: Raft: 4 term:  5 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:11 raft.go:483: Raft: 1 term:  5 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:17 raft.go:610: Sever index:[  0]  Term:[  5]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:17 raft.go:610: Sever index:[  1]  Term:[  5]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:17 raft.go:610: Sever index:[  2]  Term:[  5]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:17 raft.go:610: Sever index:[  3]  Term:[  5]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:17 raft.go:610: Sever index:[  4]  Term:[  5]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:17 raft.go:480: Raft: 2 term:  6 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:17 raft.go:480: Raft: 3 term:  6 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:17 raft.go:480: Raft: 0 term:  6 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:17 raft.go:480: Raft: 1 term:  6 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:18 raft.go:480: Raft: 4 term:  6 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:18 raft.go:483: Raft: 0 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:18 raft.go:421: Raft: 0 term:  6 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:18 raft.go:483: Raft: 2 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:18 raft.go:421: Raft: 2 term:  6 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:18 raft.go:464: Raft: 4 term:  6 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:18 raft.go:483: Raft: 3 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:18 raft.go:421: Raft: 3 term:  6 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:18 raft.go:483: Raft: 1 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:19 raft.go:610: Sever index:[  0]  Term:[  6]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:19 raft.go:610: Sever index:[  1]  Term:[  6]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:19 raft.go:610: Sever index:[  2]  Term:[  6]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:19 raft.go:610: Sever index:[  3]  Term:[  6]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:19 raft.go:610: Sever index:[  4]  Term:[  6]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:19 raft.go:480: Raft: 1 term:  7 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:19 raft.go:480: Raft: 2 term:  7 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:19 raft.go:480: Raft: 3 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:19 raft.go:483: Raft: 0 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:19 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:19 raft.go:480: Raft: 1 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:19 raft.go:483: Raft: 4 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:19 raft.go:421: Raft: 4 term:  0 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:19 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:19 raft.go:421: Raft: 2 term:  0 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:19 raft.go:464: Raft: 1 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:19 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:19 raft.go:480: Raft: 0 term:  7 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:19 raft.go:480: Raft: 3 term:  7 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:19 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:19 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:20 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:20 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:20 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:20 raft.go:480: Raft: 3 term:  1 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:20 raft.go:483: Raft: 4 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:20 raft.go:421: Raft: 4 term:  1 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:20 raft.go:480: Raft: 0 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:480: Raft: 3 term:  2 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:480: Raft: 4 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:483: Raft: 0 term:  2 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:21 raft.go:421: Raft: 0 term:  2 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:21 raft.go:480: Raft: 3 term:  3 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:483: Raft: 4 term:  3 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:21 raft.go:421: Raft: 4 term:  3 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:21 raft.go:480: Raft: 0 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:483: Raft: 1 term:  3 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:21 raft.go:480: Raft: 4 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:483: Raft: 3 term:  4 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:21 raft.go:421: Raft: 3 term:  4 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:21 raft.go:480: Raft: 2 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:421: Raft: 1 term:  3 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:21 raft.go:483: Raft: 2 term:  1 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:21 raft.go:480: Raft: 0 term:  4 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:21 raft.go:483: Raft: 1 term:  4 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:21 raft.go:483: Raft: 2 term:  4 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:480: Raft: 4 term:  5 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 3 term:  5 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:421: Raft: 3 term:  5 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:22 raft.go:480: Raft: 2 term:  5 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 0 term:  5 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:421: Raft: 0 term:  5 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 1 term:  5 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:421: Raft: 1 term:  5 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:22 raft.go:480: Raft: 4 term:  6 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 3 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:421: Raft: 3 term:  6 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:22 raft.go:480: Raft: 1 term:  6 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 2 term:  6 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:421: Raft: 2 term:  6 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 0 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:421: Raft: 0 term:  6 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:22 raft.go:464: Raft: 1 term:  6 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:22 raft.go:480: Raft: 4 term:  7 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 2 term:  7 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:483: Raft: 3 term:  7 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:22 raft.go:421: Raft: 3 term:  7 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:23 raft.go:480: Raft: 2 term:  8 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:23 raft.go:483: Raft: 3 term:  8 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:23 raft.go:421: Raft: 3 term:  8 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:23 raft.go:480: Raft: 4 term:  8 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:23 raft.go:480: Raft: 2 term:  9 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:23 raft.go:483: Raft: 4 term:  9 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:23 raft.go:421: Raft: 4 term:  9 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:23 raft.go:483: Raft: 3 term:  9 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:23 raft.go:421: Raft: 3 term:  9 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:23 raft.go:464: Raft: 2 term:  9 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:23 raft.go:483: Raft: 1 term:  9 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:23 raft.go:483: Raft: 0 term:  9 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:23 raft.go:483: Raft: 1 term:  9 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:23 raft.go:483: Raft: 1 term:  9 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:25 raft.go:480: Raft: 4 term: 10 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:25 raft.go:483: Raft: 3 term: 10 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:25 raft.go:421: Raft: 3 term: 10 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:25 raft.go:480: Raft: 3 term: 11 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:25 raft.go:483: Raft: 4 term: 11 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:25 raft.go:480: Raft: 4 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:25 raft.go:483: Raft: 3 term: 12 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:25 raft.go:421: Raft: 3 term: 12 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:26 raft.go:480: Raft: 3 term: 13 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:26 raft.go:480: Raft: 4 term: 13 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:26 raft.go:483: Raft: 0 term: 13 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:26 raft.go:483: Raft: 2 term: 13 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:26 raft.go:483: Raft: 1 term: 13 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:26 raft.go:480: Raft: 1 term: 14 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:26 raft.go:483: Raft: 0 term: 14 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:26 raft.go:421: Raft: 0 term: 14 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:26 raft.go:483: Raft: 2 term: 14 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:26 raft.go:421: Raft: 2 term: 14 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:26 raft.go:464: Raft: 1 term: 14 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:26 raft.go:483: Raft: 4 term: 14 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:26 raft.go:421: Raft: 4 term: 14 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:26 raft.go:483: Raft: 3 term: 14 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:27 raft.go:610: Sever index:[  0]  Term:[ 14]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:27 raft.go:610: Sever index:[  1]  Term:[ 14]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:27 raft.go:610: Sever index:[  2]  Term:[ 14]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:27 raft.go:610: Sever index:[  3]  Term:[ 14]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:27 raft.go:610: Sever index:[  4]  Term:[ 14]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:27 raft.go:480: Raft: 4 term: 15 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:27 raft.go:480: Raft: 2 term: 15 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:27 raft.go:480: Raft: 0 term: 15 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:27 raft.go:480: Raft: 3 term: 15 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:28 raft.go:480: Raft: 4 term: 15 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:28 raft.go:480: Raft: 2 term: 15 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:28 raft.go:483: Raft: 3 term: 15 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:28 raft.go:421: Raft: 3 term: 15 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:28 raft.go:483: Raft: 1 term: 15 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:28 raft.go:421: Raft: 1 term: 15 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:28 raft.go:464: Raft: 2 term: 15 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:28 raft.go:483: Raft: 0 term: 15 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:28 raft.go:421: Raft: 0 term: 15 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:30 raft.go:480: Raft: 3 term: 16 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:30 raft.go:483: Raft: 0 term: 16 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:30 raft.go:421: Raft: 0 term: 16 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:30 raft.go:480: Raft: 0 term: 17 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:30 raft.go:480: Raft: 3 term: 17 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:31 raft.go:480: Raft: 3 term: 18 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:31 raft.go:480: Raft: 0 term: 18 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:31 raft.go:480: Raft: 3 term: 19 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:31 raft.go:480: Raft: 0 term: 19 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:31 raft.go:480: Raft: 0 term: 20 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:31 raft.go:483: Raft: 3 term: 20 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:31 raft.go:421: Raft: 3 term: 20 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 3 term: 21 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 0 term: 21 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 2 term: 21 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 4 term: 16 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 0 term: 22 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 2 term: 22 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 1 term: 16 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 4 term: 16 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:421: Raft: 4 term: 16 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 1 term: 16 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 3 term: 22 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 4 term: 22 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 1 term: 22 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 2 term: 23 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 0 term: 23 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:421: Raft: 0 term: 23 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:32 raft.go:480: Raft: 1 term: 23 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 4 term: 23 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:421: Raft: 4 term: 23 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:32 raft.go:483: Raft: 3 term: 23 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:32 raft.go:421: Raft: 3 term: 23 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:32 raft.go:464: Raft: 1 term: 23 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:33 raft.go:480: Raft: 2 term: 24 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 0 term: 24 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:421: Raft: 0 term: 24 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 1 term: 24 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:480: Raft: 2 term: 25 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 4 term: 25 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 3 term: 25 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:421: Raft: 3 term: 25 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 1 term: 25 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:480: Raft: 0 term: 25 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:33 raft.go:480: Raft: 3 term: 26 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 4 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 1 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 2 term: 26 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:480: Raft: 2 term: 27 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 1 term: 27 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 4 term: 27 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 3 term: 27 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:421: Raft: 3 term: 27 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:33 raft.go:480: Raft: 4 term: 28 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 1 term: 28 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:421: Raft: 1 term: 28 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 3 term: 28 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:421: Raft: 3 term: 28 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:33 raft.go:464: Raft: 4 term: 28 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:33 raft.go:483: Raft: 2 term: 28 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:33 raft.go:421: Raft: 2 term: 28 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:33 raft.go:480: Raft: 0 term: 26 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:34 raft.go:480: Raft: 0 term: 27 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:34 raft.go:483: Raft: 0 term: 28 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:34 raft.go:480: Raft: 1 term: 29 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:35 raft.go:480: Raft: 1 term: 30 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 4 term: 30 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:480: Raft: 1 term: 31 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 4 term: 31 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 2 term: 31 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 3 term: 31 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:480: Raft: 2 term: 32 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 1 term: 32 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:421: Raft: 1 term: 32 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 3 term: 32 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:421: Raft: 3 term: 32 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:35 raft.go:464: Raft: 2 term: 32 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 4 term: 32 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:421: Raft: 4 term: 32 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:35 raft.go:483: Raft: 0 term: 32 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:35 raft.go:421: Raft: 0 term: 32 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:36 raft.go:610: Sever index:[  0]  Term:[ 32]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:36 raft.go:610: Sever index:[  1]  Term:[ 32]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:36 raft.go:610: Sever index:[  2]  Term:[ 32]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:36 raft.go:610: Sever index:[  3]  Term:[ 32]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:36 raft.go:610: Sever index:[  4]  Term:[ 32]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:36 raft.go:480: Raft: 1 term: 33 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:36 raft.go:480: Raft: 0 term: 33 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:36 raft.go:480: Raft: 4 term: 33 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:36 raft.go:480: Raft: 3 term: 33 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:37 raft.go:480: Raft: 4 term: 33 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:37 raft.go:483: Raft: 1 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:37 raft.go:421: Raft: 1 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:37 raft.go:483: Raft: 2 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:37 raft.go:421: Raft: 2 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:37 raft.go:483: Raft: 0 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:37 raft.go:421: Raft: 0 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:37 raft.go:464: Raft: 4 term: 33 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:37 raft.go:483: Raft: 3 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:37 raft.go:421: Raft: 3 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:40 raft.go:480: Raft: 2 term: 34 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:40 raft.go:483: Raft: 0 term: 34 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:40 raft.go:480: Raft: 0 term: 35 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:40 raft.go:483: Raft: 2 term: 35 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:40 raft.go:421: Raft: 2 term: 35 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:40 raft.go:480: Raft: 2 term: 36 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:40 raft.go:480: Raft: 0 term: 36 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:40 raft.go:480: Raft: 0 term: 37 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:40 raft.go:483: Raft: 4 term: 36 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:40 raft.go:480: Raft: 2 term: 37 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:40 raft.go:483: Raft: 1 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:40 raft.go:483: Raft: 4 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:40 raft.go:483: Raft: 3 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 2 term: 38 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 4 term: 38 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 1 term: 38 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 3 term: 38 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 3 term: 39 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 1 term: 39 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 4 term: 39 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 1 term: 40 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 0 term: 38 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 2 term: 40 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:421: Raft: 2 term: 40 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 3 term: 40 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:421: Raft: 3 term: 40 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 4 term: 40 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 0 term: 39 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 3 term: 41 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 4 term: 41 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 1 term: 41 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:480: Raft: 1 term: 42 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 2 term: 41 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:421: Raft: 2 term: 41 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 4 term: 41 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 4 term: 42 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:421: Raft: 4 term: 42 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 3 term: 41 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:421: Raft: 3 term: 41 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:41 raft.go:483: Raft: 2 term: 42 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:41 raft.go:421: Raft: 2 term: 42 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 0 term: 40 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 3 term: 42 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 0 term: 40 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 4 term: 43 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 3 term: 42 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 1 term: 43 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 3 term: 43 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 3 term: 43 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 2 term: 43 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 2 term: 43 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 0 term: 41 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 0 term: 41 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 0 term: 41 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 3 term: 44 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 4 term: 44 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 2 term: 44 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 1 term: 44 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 4 term: 45 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 0 term: 44 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 0 term: 44 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 3 term: 45 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 3 term: 45 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 0 term: 45 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 1 term: 45 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 2 term: 45 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 2 term: 45 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 1 term: 46 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:480: Raft: 4 term: 46 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 3 term: 46 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 2 term: 46 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 2 term: 46 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:42 raft.go:483: Raft: 0 term: 46 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:42 raft.go:421: Raft: 0 term: 46 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:42 raft.go:464: Raft: 1 term: 46 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:43 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:44 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:44 raft.go:421: Raft: 3 term: 46 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:44 raft.go:480: Raft: 2 term: 47 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:44 raft.go:483: Raft: 3 term: 47 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:44 raft.go:421: Raft: 3 term: 47 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:44 raft.go:480: Raft: 3 term: 48 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:44 raft.go:483: Raft: 2 term: 48 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:44 raft.go:421: Raft: 2 term: 48 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:45 raft.go:480: Raft: 2 term: 49 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:45 raft.go:480: Raft: 3 term: 49 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 1 term: 49 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 4 term: 46 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 4 term: 46 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:480: Raft: 2 term: 50 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 0 term: 50 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 1 term: 50 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 4 term: 50 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:480: Raft: 3 term: 50 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:45 raft.go:480: Raft: 4 term: 51 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 0 term: 51 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:421: Raft: 0 term: 51 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 1 term: 51 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:421: Raft: 1 term: 51 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:45 raft.go:464: Raft: 4 term: 51 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 3 term: 51 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:421: Raft: 3 term: 51 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:45 raft.go:483: Raft: 2 term: 51 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:45 raft.go:421: Raft: 2 term: 51 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:46 raft.go:610: Sever index:[  0]  Term:[ 51]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:46 raft.go:610: Sever index:[  1]  Term:[ 51]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:46 raft.go:610: Sever index:[  2]  Term:[ 51]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:46 raft.go:610: Sever index:[  3]  Term:[ 51]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:46 raft.go:610: Sever index:[  4]  Term:[ 51]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:46 raft.go:480: Raft: 0 term: 52 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:46 raft.go:480: Raft: 1 term: 52 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:46 raft.go:480: Raft: 3 term: 52 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:46 raft.go:480: Raft: 2 term: 52 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:47 raft.go:480: Raft: 0 term: 52 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:47 raft.go:483: Raft: 3 term: 52 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:47 raft.go:421: Raft: 3 term: 52 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:47 raft.go:483: Raft: 2 term: 52 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:47 raft.go:421: Raft: 2 term: 52 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:47 raft.go:464: Raft: 0 term: 52 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:47 raft.go:483: Raft: 1 term: 52 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:47 raft.go:421: Raft: 1 term: 52 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:47 raft.go:483: Raft: 4 term: 52 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:47 raft.go:421: Raft: 4 term: 52 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:48 raft.go:610: Sever index:[  0]  Term:[ 52]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:48 raft.go:610: Sever index:[  1]  Term:[ 52]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:48 raft.go:610: Sever index:[  2]  Term:[ 52]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:48 raft.go:610: Sever index:[  3]  Term:[ 52]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:48 raft.go:610: Sever index:[  4]  Term:[ 52]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:48 raft.go:480: Raft: 3 term: 53 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:48 raft.go:480: Raft: 1 term: 53 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:48 raft.go:480: Raft: 2 term: 53 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:48 raft.go:480: Raft: 4 term: 53 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:48 raft.go:480: Raft: 3 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:48 raft.go:483: Raft: 5 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:48 raft.go:421: Raft: 5 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:48 raft.go:483: Raft: 0 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:48 raft.go:421: Raft: 0 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:48 raft.go:483: Raft: 4 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:48 raft.go:421: Raft: 4 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:48 raft.go:483: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:48 raft.go:421: Raft: 2 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:48 raft.go:464: Raft: 3 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:48 raft.go:483: Raft: 6 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:48 raft.go:483: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:48 raft.go:421: Raft: 1 term:  0 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:49 raft.go:480: Raft: 1 term:  1 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:49 raft.go:483: Raft: 0 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:49 raft.go:421: Raft: 0 term:  1 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:49 raft.go:483: Raft: 6 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:49 raft.go:421: Raft: 6 term:  1 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:49 raft.go:483: Raft: 5 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:49 raft.go:421: Raft: 5 term:  1 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:49 raft.go:464: Raft: 1 term:  1 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:50 raft.go:483: Raft: 4 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:50 raft.go:483: Raft: 3 term:  1 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:50 raft.go:483: Raft: 3 term:  1 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:50 raft.go:480: Raft: 5 term:  2 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:50 raft.go:483: Raft: 2 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:50 raft.go:421: Raft: 2 term:  2 | vote to candidate   5
+WarnRaft:2019/06/19 23:50:50 raft.go:483: Raft: 0 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:50 raft.go:421: Raft: 0 term:  2 | vote to candidate   5
+WarnRaft:2019/06/19 23:50:50 raft.go:483: Raft: 3 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:50 raft.go:421: Raft: 3 term:  2 | vote to candidate   5
+WarnRaft:2019/06/19 23:50:50 raft.go:464: Raft: 5 term:  2 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:51 raft.go:483: Raft: 1 term:  2 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:51 raft.go:483: Raft: 4 term:  2 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:51 raft.go:480: Raft: 3 term:  3 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:51 raft.go:483: Raft: 6 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:51 raft.go:483: Raft: 1 term:  3 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:51 raft.go:480: Raft: 6 term:  4 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:51 raft.go:483: Raft: 3 term:  4 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:51 raft.go:421: Raft: 3 term:  4 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:51 raft.go:483: Raft: 1 term:  4 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:51 raft.go:421: Raft: 1 term:  4 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:52 raft.go:480: Raft: 6 term:  5 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 1 term:  5 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:421: Raft: 1 term:  5 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 3 term:  5 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:421: Raft: 3 term:  5 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 5 term:  5 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 5 term:  5 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 5 term:  5 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:480: Raft: 1 term:  6 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 6 term:  6 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:421: Raft: 6 term:  6 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 5 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 2 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 0 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 4 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:421: Raft: 4 term:  6 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:52 raft.go:483: Raft: 3 term:  6 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:52 raft.go:421: Raft: 3 term:  6 | vote to candidate   1
+WarnRaft:2019/06/19 23:50:52 raft.go:464: Raft: 1 term:  6 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:54 raft.go:480: Raft: 5 term:  7 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:54 raft.go:480: Raft: 5 term:  8 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:54 raft.go:480: Raft: 5 term:  9 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:54 raft.go:483: Raft: 1 term:  9 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:480: Raft: 5 term: 10 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 6 term: 10 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 1 term: 10 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 0 term: 10 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 3 term: 10 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 2 term: 10 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 4 term: 10 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:480: Raft: 6 term: 11 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 4 term: 11 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 4 term: 11 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 5 term: 11 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 5 term: 11 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 2 term: 11 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 2 term: 11 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:55 raft.go:464: Raft: 6 term: 11 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:55 raft.go:480: Raft: 3 term: 11 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 1 term: 11 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 1 term: 11 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:55 raft.go:483: Raft: 0 term: 11 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 0 term: 11 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 0 term: 11 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 0 term: 11 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 0 term: 11 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 0 term: 11 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:55 raft.go:421: Raft: 0 term: 11 | vote to candidate   3
+WarnRaft:2019/06/19 23:50:55 raft.go:610: Sever index:[  0]  Term:[ 11]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:55 raft.go:610: Sever index:[  1]  Term:[ 11]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:55 raft.go:610: Sever index:[  2]  Term:[ 11]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:55 raft.go:610: Sever index:[  3]  Term:[ 11]  role:[ Candidate] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:55 raft.go:610: Sever index:[  4]  Term:[ 11]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:55 raft.go:610: Sever index:[  5]  Term:[ 11]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:55 raft.go:610: Sever index:[  6]  Term:[ 11]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:50:56 raft.go:480: Raft: 3 term: 12 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:50:56 raft.go:480: Raft: 0 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:56 raft.go:480: Raft: 2 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:56 raft.go:480: Raft: 4 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:56 raft.go:480: Raft: 5 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:56 raft.go:480: Raft: 1 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:57 raft.go:480: Raft: 2 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:57 raft.go:480: Raft: 5 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 3 term: 12 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 3 term: 12 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 6 term: 12 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:480: Raft: 1 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 4 term: 12 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 4 term: 12 | vote to candidate   2
+WarnRaft:2019/06/19 23:50:57 raft.go:480: Raft: 6 term: 13 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 3 term: 13 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 3 term: 13 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 2 term: 12 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 1 term: 12 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 4 term: 13 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 4 term: 13 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:57 raft.go:480: Raft: 0 term: 12 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 0 term: 13 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 0 term: 13 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:57 raft.go:464: Raft: 6 term: 13 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 1 term: 12 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 5 term: 13 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 1 term: 12 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 1 term: 13 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 1 term: 13 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:57 raft.go:483: Raft: 2 term: 13 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 2 term: 13 | vote to candidate   6
+WarnRaft:2019/06/19 23:50:57 raft.go:421: Raft: 5 term: 13 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:58 raft.go:480: Raft: 1 term: 14 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:58 raft.go:483: Raft: 3 term: 14 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:58 raft.go:483: Raft: 4 term: 14 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:58 raft.go:480: Raft: 0 term: 14 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:58 raft.go:480: Raft: 4 term: 15 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:58 raft.go:483: Raft: 1 term: 15 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:58 raft.go:421: Raft: 1 term: 15 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:58 raft.go:483: Raft: 0 term: 15 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:58 raft.go:421: Raft: 0 term: 15 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:58 raft.go:483: Raft: 3 term: 15 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:58 raft.go:421: Raft: 3 term: 15 | vote to candidate   4
+WarnRaft:2019/06/19 23:50:58 raft.go:464: Raft: 4 term: 15 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:50:59 raft.go:483: Raft: 6 term: 15 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:50:59 raft.go:480: Raft: 5 term: 14 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:59 raft.go:480: Raft: 0 term: 16 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:50:59 raft.go:483: Raft: 5 term: 14 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:50:59 raft.go:483: Raft: 2 term: 14 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:59 raft.go:483: Raft: 6 term: 16 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:59 raft.go:421: Raft: 6 term: 16 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:59 raft.go:483: Raft: 5 term: 14 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:59 raft.go:483: Raft: 5 term: 16 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:59 raft.go:421: Raft: 5 term: 16 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:59 raft.go:483: Raft: 2 term: 16 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:50:59 raft.go:421: Raft: 2 term: 16 | vote to candidate   0
+WarnRaft:2019/06/19 23:50:59 raft.go:464: Raft: 0 term: 16 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:51:00 raft.go:483: Raft: 4 term: 16 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:51:00 raft.go:483: Raft: 4 term: 16 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:00 raft.go:480: Raft: 3 term: 16 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:00 raft.go:480: Raft: 1 term: 16 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:00 raft.go:480: Raft: 3 term: 17 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:00 raft.go:483: Raft: 1 term: 17 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:00 raft.go:421: Raft: 1 term: 17 | vote to candidate   3
+WarnRaft:2019/06/19 23:51:01 raft.go:480: Raft: 3 term: 18 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 1 term: 18 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:421: Raft: 1 term: 18 | vote to candidate   3
+WarnRaft:2019/06/19 23:51:01 raft.go:480: Raft: 3 term: 19 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 5 term: 19 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 2 term: 19 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 1 term: 19 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:421: Raft: 1 term: 19 | vote to candidate   3
+WarnRaft:2019/06/19 23:51:01 raft.go:480: Raft: 5 term: 20 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 1 term: 20 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:421: Raft: 1 term: 20 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 3 term: 20 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:421: Raft: 3 term: 20 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 2 term: 20 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:421: Raft: 2 term: 20 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:01 raft.go:480: Raft: 5 term: 21 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:01 raft.go:483: Raft: 3 term: 21 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:01 raft.go:421: Raft: 3 term: 21 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 2 term: 21 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:421: Raft: 2 term: 21 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 1 term: 21 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:421: Raft: 1 term: 21 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:02 raft.go:464: Raft: 5 term: 21 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 0 term: 21 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 4 term: 21 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:480: Raft: 3 term: 22 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 2 term: 22 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 6 term: 22 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 0 term: 22 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:480: Raft: 2 term: 23 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 6 term: 23 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:421: Raft: 6 term: 23 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 3 term: 23 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:421: Raft: 3 term: 23 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:02 raft.go:483: Raft: 0 term: 23 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:02 raft.go:421: Raft: 0 term: 23 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:02 raft.go:464: Raft: 2 term: 23 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:51:03 raft.go:483: Raft: 1 term: 23 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:03 raft.go:483: Raft: 5 term: 23 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:51:03 raft.go:483: Raft: 4 term: 23 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:04 raft.go:610: Sever index:[  0]  Term:[ 23]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:04 raft.go:610: Sever index:[  1]  Term:[ 23]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:04 raft.go:610: Sever index:[  2]  Term:[ 23]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:04 raft.go:610: Sever index:[  3]  Term:[ 23]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:04 raft.go:610: Sever index:[  4]  Term:[ 23]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:04 raft.go:610: Sever index:[  5]  Term:[ 23]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:04 raft.go:610: Sever index:[  6]  Term:[ 23]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:04 raft.go:480: Raft: 0 term: 24 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:04 raft.go:480: Raft: 5 term: 24 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:04 raft.go:480: Raft: 3 term: 24 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:04 raft.go:480: Raft: 6 term: 24 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:04 raft.go:480: Raft: 4 term: 24 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:04 raft.go:480: Raft: 1 term: 24 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:05 raft.go:480: Raft: 2 term: 24 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:05 raft.go:483: Raft: 1 term: 24 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:05 raft.go:421: Raft: 1 term: 24 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:05 raft.go:483: Raft: 6 term: 24 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:05 raft.go:421: Raft: 6 term: 24 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:05 raft.go:483: Raft: 3 term: 24 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:05 raft.go:421: Raft: 3 term: 24 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:05 raft.go:483: Raft: 0 term: 24 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:05 raft.go:421: Raft: 0 term: 24 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:05 raft.go:464: Raft: 2 term: 24 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:51:05 raft.go:483: Raft: 5 term: 24 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:05 raft.go:421: Raft: 5 term: 24 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:05 raft.go:483: Raft: 4 term: 24 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:05 raft.go:421: Raft: 4 term: 24 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:06 raft.go:480: Raft: 4 term: 25 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:06 raft.go:483: Raft: 3 term: 25 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:06 raft.go:483: Raft: 5 term: 25 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:06 raft.go:483: Raft: 0 term: 25 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:06 raft.go:480: Raft: 0 term: 26 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:06 raft.go:483: Raft: 4 term: 26 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:06 raft.go:421: Raft: 4 term: 26 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:06 raft.go:483: Raft: 5 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:06 raft.go:421: Raft: 5 term: 26 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:06 raft.go:483: Raft: 6 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:06 raft.go:421: Raft: 6 term: 26 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:06 raft.go:483: Raft: 3 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:06 raft.go:421: Raft: 3 term: 26 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:06 raft.go:464: Raft: 0 term: 26 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:51:07 raft.go:483: Raft: 2 term: 26 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:51:07 raft.go:483: Raft: 2 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:07 raft.go:483: Raft: 2 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:07 raft.go:483: Raft: 1 term: 26 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:08 raft.go:480: Raft: 3 term: 27 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:08 raft.go:480: Raft: 3 term: 28 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:08 raft.go:483: Raft: 0 term: 28 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:51:08 raft.go:480: Raft: 3 term: 29 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 0 term: 29 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 4 term: 29 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 5 term: 29 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 2 term: 27 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 1 term: 27 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 1 term: 27 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 6 term: 27 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 5 term: 30 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 4 term: 30 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 4 term: 30 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 0 term: 30 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 3 term: 30 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 3 term: 30 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 0 term: 31 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 5 term: 31 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 5 term: 31 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 4 term: 31 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 4 term: 31 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 2 term: 28 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 6 term: 28 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 6 term: 29 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 1 term: 28 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 1 term: 28 | vote to candidate   2
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 1 term: 29 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 1 term: 29 | vote to candidate   6
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 2 term: 29 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 2 term: 29 | vote to candidate   6
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 3 term: 31 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 4 term: 32 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 0 term: 32 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 5 term: 32 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 5 term: 32 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 3 term: 32 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 3 term: 32 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:09 raft.go:480: Raft: 6 term: 30 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 1 term: 30 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 1 term: 30 | vote to candidate   6
+WarnRaft:2019/06/19 23:51:09 raft.go:483: Raft: 2 term: 30 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:09 raft.go:421: Raft: 2 term: 30 | vote to candidate   6
+WarnRaft:2019/06/19 23:51:10 raft.go:480: Raft: 4 term: 33 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:10 raft.go:483: Raft: 1 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:10 raft.go:421: Raft: 1 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:10 raft.go:483: Raft: 3 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:10 raft.go:421: Raft: 3 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:10 raft.go:483: Raft: 5 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:10 raft.go:421: Raft: 5 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:10 raft.go:464: Raft: 4 term: 33 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:51:10 raft.go:483: Raft: 2 term: 33 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:10 raft.go:483: Raft: 0 term: 33 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:10 raft.go:421: Raft: 2 term: 33 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:10 raft.go:483: Raft: 6 term: 33 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:11 raft.go:480: Raft: 0 term: 34 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:11 raft.go:483: Raft: 5 term: 34 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:11 raft.go:421: Raft: 5 term: 34 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:11 raft.go:480: Raft: 3 term: 34 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:11 raft.go:480: Raft: 5 term: 35 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:11 raft.go:480: Raft: 0 term: 35 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:11 raft.go:483: Raft: 3 term: 35 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:11 raft.go:421: Raft: 3 term: 35 | vote to candidate   5
+WarnRaft:2019/06/19 23:51:12 raft.go:480: Raft: 3 term: 36 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 0 term: 36 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 0 term: 36 | vote to candidate   3
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 5 term: 36 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 5 term: 36 | vote to candidate   3
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 4 term: 36 |       Leader convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:480: Raft: 0 term: 37 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 6 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 2 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 3 term: 37 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 3 term: 37 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 4 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 1 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 5 term: 37 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 5 term: 37 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:12 raft.go:480: Raft: 1 term: 38 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 2 term: 38 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 2 term: 38 | vote to candidate   1
+WarnRaft:2019/06/19 23:51:12 raft.go:480: Raft: 6 term: 38 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 0 term: 38 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 0 term: 38 | vote to candidate   6
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 4 term: 38 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 4 term: 38 | vote to candidate   6
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 3 term: 38 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 3 term: 38 | vote to candidate   6
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 5 term: 38 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 5 term: 38 | vote to candidate   1
+WarnRaft:2019/06/19 23:51:12 raft.go:480: Raft: 0 term: 39 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 1 term: 39 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 5 term: 39 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 5 term: 39 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 3 term: 39 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 3 term: 39 | vote to candidate   0
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 4 term: 39 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 2 term: 39 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:480: Raft: 1 term: 40 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 5 term: 40 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 5 term: 40 | vote to candidate   1
+WarnRaft:2019/06/19 23:51:12 raft.go:480: Raft: 4 term: 40 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 2 term: 40 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 2 term: 40 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 6 term: 40 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 6 term: 40 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 3 term: 40 |     Follower convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:483: Raft: 0 term: 40 |    Candidate convert role to Follower!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 3 term: 40 | vote to candidate   1
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 0 term: 40 | vote to candidate   1
+WarnRaft:2019/06/19 23:51:12 raft.go:464: Raft: 1 term: 40 |    Candidate convert role to Leader!
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 2 term: 40 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:12 raft.go:421: Raft: 6 term: 40 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:13 raft.go:421: Raft: 2 term: 40 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:13 raft.go:421: Raft: 6 term: 40 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:13 raft.go:610: Sever index:[  0]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:13 raft.go:610: Sever index:[  1]  Term:[ 40]  role:[    Leader] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:13 raft.go:610: Sever index:[  2]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:13 raft.go:610: Sever index:[  3]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:13 raft.go:610: Sever index:[  4]  Term:[ 40]  role:[ Candidate] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:13 raft.go:610: Sever index:[  5]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:13 raft.go:610: Sever index:[  6]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:13 raft.go:421: Raft: 2 term: 40 | vote to candidate   4
+WarnRaft:2019/06/19 23:51:13 raft.go:480: Raft: 5 term: 41 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:13 raft.go:480: Raft: 3 term: 41 |     Follower convert role to Candidate!
+WarnRaft:2019/06/19 23:51:13 raft.go:480: Raft: 4 term: 41 |    Candidate convert role to Candidate!
+WarnRaft:2019/06/19 23:51:14 raft.go:610: Sever index:[  0]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:14 raft.go:610: Sever index:[  1]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:14 raft.go:610: Sever index:[  2]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:14 raft.go:610: Sever index:[  3]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:14 raft.go:610: Sever index:[  4]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:14 raft.go:610: Sever index:[  5]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
+WarnRaft:2019/06/19 23:51:14 raft.go:610: Sever index:[  6]  Term:[ 40]  role:[  Follower] has been killed.Turn off its log
