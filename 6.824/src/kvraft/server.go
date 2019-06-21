@@ -58,19 +58,6 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	reply.Err = ErrNoKey
 	reply.WrongLeader = true
 
-	kv.mu.Lock()
-	if ind, ok := kv.clerkLog[args.ClerkID]; ok && ind >= args.CmdIndex{
-		kv.mu.Unlock()
-		//该指令已经执行
-		//就算不是follower,见到已经执行的请求，直接返回true
-		//raft.InfoKV.Printf("KVServer:%2d | Cmd has been finished: Method:[%s] clerk:[%v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
-		reply.Value = kv.kvDB[args.Key]
-		reply.WrongLeader = false
-		reply.Err = OK
-		return
-	}
-	kv.mu.Unlock()
-
 	//raft.InfoKV.Printf("KVServer:%2d | Begin Method:[%s] clerk:[%20v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
 	index, term, isLeader := kv.rf.Start(op)
 	if !isLeader{
@@ -79,6 +66,16 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	}
 
 	kv.mu.Lock()
+	if ind, ok := kv.clerkLog[args.ClerkID]; ok && ind >= args.CmdIndex{
+		kv.mu.Unlock()
+		//该指令已经执行
+		//raft.InfoKV.Printf("KVServer:%2d | Cmd has been finished: Method:[%s] clerk:[%v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
+		reply.Value = kv.kvDB[args.Key]
+		reply.WrongLeader = false
+		reply.Err = OK
+		return
+	}
+
 	raft.InfoKV.Printf(("KVServer:%2d | leader msgIndex:%4d\n"), kv.me, index)
 	//新建ch再放入msgCh的好处是，下面select直接用ch即可
 	//而不是直接等待kv.msgCh[index]
@@ -117,6 +114,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	reply.Err = OK
 	kv.mu.Lock()
 
+	//follower收到已经执行的put append请求，直接返回
 	if ind, ok := kv.clerkLog[args.ClerkID]; ok && ind >= args.CmdIndex{
 		//该指令已经执行
 		kv.mu.Unlock()
