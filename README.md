@@ -3,7 +3,9 @@
 
 #	reference
 [课程笔记翻译](https://github.com/feixiao/Distributed-Systems)  
-[参考](https://github.com/chaozh/MIT-6.824)  
+[个人笔记](http://sworduo.net/)  
+
+#	lab
 - [x] [lab1:MapReduce](https://pdos.csail.mit.edu/6.824/labs/lab-1.html)  
 - [x] [lab2:Raft](https://pdos.csail.mit.edu/6.824/labs/lab-raft.html)  
 	- [x] lab2A  
