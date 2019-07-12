@@ -16,6 +16,8 @@ type ShardMaster struct {
 	// Your data here.
 
 	configs []Config // indexed by config num
+
+	g2shard map[int]int //每个group对应的shard
 }
 
 
@@ -23,6 +25,17 @@ type Op struct {
 	// Your data here.
 }
 
+func (sm *ShardMaster) addConfig(){
+	//单纯复制config并加
+	//不做额外操作
+	oldCfg := sm.configs[len(sm.configs)-1]
+	newShard := oldCfg.Shards //数组是值复制
+	newGroup := make(map[int][]string)//map是引用复制
+	for k,v = range oldCfg.Groups{
+		newShard[k] = v
+	}
+	sm.configs = append(sm.configs, Config{oldCfg.Num+1, newShard, newGroup})
+}
 
 func (sm *ShardMaster) Join(args *JoinArgs, reply *JoinReply) {
 	// Your code here.

@@ -16,16 +16,16 @@ var (
 
 //初始化log
 func init(){
-	infoFile, err := os.OpenFile("infoRaft.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	infoFile, err := os.OpenFile("raftInfo.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil{
 		log.Fatalln("Open infoFile failed.\n", err)
 	}
-	warnFile, err := os.OpenFile("warnRaft.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	warnFile, err := os.OpenFile("raftWarn.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil{
 		log.Fatalln("Open warnFile failed.\n", err)
 	}
 
-	InfoKVFile, err := os.OpenFile("infoKV.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	InfoKVFile, err := os.OpenFile("kvInfo.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil{
 		log.Fatalln("Open infoKVFile failed.\n", err)
 	}
