@@ -15,6 +15,6 @@
 	- [x] lab3A  
 	- [x] lab3B  
 - [ ] [lab4:Sharded Key/Value Service](https://pdos.csail.mit.edu/6.824/labs/lab-shard.html)  
-	- [ ] lab4A  
+	- [x] lab4A  
 	- [ ] lab4B  
 

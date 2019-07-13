@@ -1066,7 +1066,7 @@ func (rf *Raft) sendSnapshot(server int) {
 
 	select{
 	case <- time.After(RPC_CALL_TIMEOUT):
-		InfoKV.Printf("Raft:%2d term:%3d | Timeout! Leader send snapshot to follower %2d failed\n", rf.me, rf.currentTerm, server)
+		InfoKV.Printf("Raft:%2d term:%3d | Timeout! Leader send snapshot to follower %2d failed\n", arg.LeaaderId, arg.Term, server)
 		return
 	case <- repCh:
 	}

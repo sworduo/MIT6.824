@@ -67,10 +67,10 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 
 	kv.mu.Lock()
 	if ind, ok := kv.clerkLog[args.ClerkID]; ok && ind >= args.CmdIndex{
-		kv.mu.Unlock()
 		//该指令已经执行
 		//raft.InfoKV.Printf("KVServer:%2d | Cmd has been finished: Method:[%s] clerk:[%v] index:[%4d]\n", kv.me, op.Method, op.Clerk, op.Index)
 		reply.Value = kv.kvDB[args.Key]
+		kv.mu.Unlock()
 		reply.WrongLeader = false
 		reply.Err = OK
 		return
