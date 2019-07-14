@@ -12,7 +12,7 @@ import (
 
 const (
 	Debug = 0
-	WaitPeriod = time.Duration(1000) * time.Millisecond
+	WaitPeriod = time.Duration(1000) * time.Millisecond //请求响应的等待超时时间
 )
 
 func DPrintf(format string, a ...interface{}) (n int, err error) {

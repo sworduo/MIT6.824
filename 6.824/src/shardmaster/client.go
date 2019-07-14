@@ -26,15 +26,17 @@ func nrand() int64 {
 func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
+
+	// Your code here.
 	ck.me = nrand()
 	ck.cmdIndex = 0
-	// Your code here.
 	return ck
 }
 
 func (ck *Clerk) Query(num int) Config {
 	args := &QueryArgs{}
 	// Your code here.
+	ck.cmdIndex++
 	args.Clerk = ck.me
 	args.Index = ck.cmdIndex
 	args.Num = num
@@ -54,6 +56,7 @@ func (ck *Clerk) Query(num int) Config {
 func (ck *Clerk) Join(servers map[int][]string) {
 	args := &JoinArgs{}
 	// Your code here.
+	ck.cmdIndex++
 	args.Clerk = ck.me
 	args.Index = ck.cmdIndex
 	args.Servers = servers
@@ -74,6 +77,7 @@ func (ck *Clerk) Join(servers map[int][]string) {
 func (ck *Clerk) Leave(gids []int) {
 	args := &LeaveArgs{}
 	// Your code here.
+	ck.cmdIndex++
 	args.Clerk = ck.me
 	args.Index = ck.cmdIndex
 	args.GIDs = gids
@@ -94,6 +98,7 @@ func (ck *Clerk) Leave(gids []int) {
 func (ck *Clerk) Move(shard int, gid int) {
 	args := &MoveArgs{}
 	// Your code here.
+	ck.cmdIndex++
 	args.Clerk = ck.me
 	args.Index = ck.cmdIndex
 	args.Shard = shard

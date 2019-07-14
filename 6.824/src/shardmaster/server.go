@@ -242,7 +242,7 @@ func (sm *ShardMaster) executeOp(op Op)bool{
 	if !isLeader{
 		return true
 	}
-	raft.ShardInfo.Printf("Shard:%2d | receive %v index %d\n", sm.me, op.Operation, index)
+	//raft.ShardInfo.Printf("Shard:%2d | receive %v index %d\n", sm.me, op.Operation, index)
 	//新建ch再放入msgCh的好处是，下面select直接用ch即可
 	//而不是直接等待kv.msgCh[index]
 	ch := make(chan struct{})
@@ -253,11 +253,11 @@ func (sm *ShardMaster) executeOp(op Op)bool{
 	select {
 	case <- time.After(raftkv.WaitPeriod):
 		go sm.closhCh(index)
-		raft.ShardInfo.Printf("Shard:%2d | operation %v index %d timeout!\n", sm.me, op.Operation, index)
+		//raft.ShardInfo.Printf("Shard:%2d | operation %v index %d timeout!\n", sm.me, op.Operation, index)
 		return true
 	case <- ch:
 		go sm.closhCh(index)
-		raft.ShardInfo.Printf("Shard:%2d | operation %v index %d Done!\n", sm.me, op.Operation, index)
+		//raft.ShardInfo.Printf("Shard:%2d | operation %v index %d Done!\n", sm.me, op.Operation, index)
 		return false
 	}
 
@@ -271,7 +271,7 @@ func (sm *ShardMaster) executeOp(op Op)bool{
 //
 func (sm *ShardMaster) Kill() {
 	sm.rf.Kill()
-	raft.ShardInfo.Printf("Shard:%2d | I am died\n", sm.me)
+	raft.ShardInfo.Printf("ShardMaster:%2d | I am died\n", sm.me)
 	// Your code here, if desired.
 }
 
@@ -300,7 +300,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister)
 	sm.msgCh = make(map[int]chan struct{})
 	sm.clerkLog = make(map[int64]int)
 	// Your code here.
-	raft.ShardInfo.Printf("Shard:%2d |Create a new shardmaster!\n", sm.me)
+	raft.ShardInfo.Printf("ShardMaster:%2d |Create a new shardmaster!\n", sm.me)
 	go sm.run()
 
 	return sm

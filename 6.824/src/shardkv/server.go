@@ -2,17 +2,32 @@ package shardkv
 
 
 // import "shardmaster"
-import "labrpc"
+import (
+	"labrpc"
+	"shardmaster"
+)
 import "raft"
 import "sync"
 import "labgob"
 
-
+const (
+	putOp = "put"
+	appendOp = "append"
+	getOp = "get"
+	//日志同步成功，判断本集群是否还负责此shard
+	cmdOk = true
+	noLongerHandleThis = false
+)
 
 type Op struct {
 	// Your definitions here.
 	// Field names must start with capital letters,
 	// otherwise RPC will break.
+	Operation 	string //Put or Append or Get
+	Key 	string
+	Value 	string
+	Clerk 	int64
+	CmdIndex 	int
 }
 
 type ShardKV struct {
@@ -26,6 +41,12 @@ type ShardKV struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
+	msgCh 	map[int]bool
+	clerkLog 	map[int64]int
+	kvDB 	map[string]string
+	sm *shardmaster.Clerk
+	shards 	[]int //集群所管理的shard
+	index 	int // 用于保证shard迁移只执行一次
 }
 
 
@@ -46,6 +67,7 @@ func (kv *ShardKV) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 func (kv *ShardKV) Kill() {
 	kv.rf.Kill()
 	// Your code here, if desired.
+	raft.ShardInfo.Printf("gid:%2d Me:%2d  <- I am died!\n", kv.gid, kv.me)
 }
 
 
@@ -96,7 +118,18 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
+	kv.sm = shardmaster.MakeClerk(kv.masters)
+	kv.msgCh = make(map[int]bool)
+	kv.clerkLog = make(map[int64]int)
+	kv.kvDB = make(map[string]string)
+	kv.shards = make([]int, 0)
 
+	raft.ShardInfo.Printf("gid:%2d Me:%2d -> Create a new server!\n", kv.gid, kv.me)
+	go kv.run()
 
 	return kv
+}
+
+func (kv *ShardKV) run(){
+	return
 }
