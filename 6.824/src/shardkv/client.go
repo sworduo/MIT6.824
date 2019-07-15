@@ -103,6 +103,8 @@ func (ck *Clerk) Get(key string) string {
 	return ""
 }
 
+
+
 //
 // shared by Put and Append.
 // You will have to modify this function.
@@ -139,6 +141,7 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 		ck.config = ck.sm.Query(-1)
 	}
 }
+
 
 func (ck *Clerk) Put(key string, value string) {
 	ck.PutAppend(key, value, "Put")

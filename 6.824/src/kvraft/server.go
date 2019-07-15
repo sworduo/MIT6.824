@@ -278,6 +278,8 @@ func (kv *KVServer) receiveNewMsg(){
 			//只有leader才有管道，所以只有leader才会通知
 			//旧laeder通知时，term不一样，rpc调用失败
 			//新leader没有管道，但是已执行指令，下一次RPC到来时直接返回
+
+			//其实旧leader也可以返回执行成功，因为这代表该指令已经成功执行了，没必要再发送一次
 			if ch, ok := kv.msgCh[index]; ok{
 				ch <- term
 			}

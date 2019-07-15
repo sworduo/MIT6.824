@@ -227,7 +227,7 @@ func (sm *ShardMaster) Query(args *QueryArgs, reply *QueryReply) {
 	return
 }
 
-func (sm *ShardMaster) executeOp(op Op)bool{
+func (sm *ShardMaster) executeOp(op Op) (res bool){
 	sm.mu.Lock()
 	//命令已经执行过了
 	if index, ok := sm.clerkLog[op.Clerk]; ok{
@@ -252,15 +252,14 @@ func (sm *ShardMaster) executeOp(op Op)bool{
 
 	select {
 	case <- time.After(raftkv.WaitPeriod):
-		go sm.closhCh(index)
 		//raft.ShardInfo.Printf("Shard:%2d | operation %v index %d timeout!\n", sm.me, op.Operation, index)
-		return true
+		res = true
 	case <- ch:
-		go sm.closhCh(index)
 		//raft.ShardInfo.Printf("Shard:%2d | operation %v index %d Done!\n", sm.me, op.Operation, index)
-		return false
+		res = false
 	}
-
+	go sm.closhCh(index)
+	return
 }
 
 //
