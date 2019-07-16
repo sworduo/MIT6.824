@@ -261,6 +261,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	reply.ConflictIndex = -1
 	reply.ConflictTerm = -1
 
+	//ShardInfo.Printf("me:%2d term:%3d | receive %v\n", rf.me, rf.currentTerm, args)
 	if args.Term < rf.currentTerm {
 		return
 	}
@@ -823,6 +824,7 @@ func (rf *Raft) broadcastEntries() {
 				rf.mu.Unlock()
 				reply := &AppendEntriesReply{}
 
+				//ShardInfo.Printf("me:%2d term:%3d | send %v to %2d\n", rf.me, rf.currentTerm, appendArgs, server)
 				ok := rf.sendAppendEntries(server, appendArgs, reply);
 
 				if !ok{
@@ -947,7 +949,7 @@ func (rf *Raft) TakeSnapshot(rawSnapshot []byte, appliedId int, term int){
 	//data kv需要快照的数据，index，快照对应的日志下标，term，下标所属term
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	InfoKV.Printf("Raft:%2d term:%3d | Begin snapshot! appliedId:%4d term:%4d lastIncludeIndex:%4d\n", rf.me, rf.currentTerm, appliedId, term, rf.lastIncludedIndex)
+	//InfoKV.Printf("Raft:%2d term:%3d | Begin snapshot! appliedId:%4d term:%4d lastIncludeIndex:%4d\n", rf.me, rf.currentTerm, appliedId, term, rf.lastIncludedIndex)
 
 	if appliedId <= rf.lastIncludedIndex{
 		//忽略发起的旧快照
