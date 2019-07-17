@@ -1,0 +1,391 @@
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  0]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  1]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  2]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  0]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  1]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  2]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  0]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  1]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  2]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  0]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  1]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:56 raft.go:666: Create a new Raft:[  2]! term:[ -1]! Log length:[   0]
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  100 logs:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3659592825229931877    1 query map[] []    0   -1} cmdIndex:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  314 logs:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1805461484100958199    1 query map[] []    0   -1} cmdIndex:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  360 logs:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{738162732728396558    1 join map[ 100:[server-100-0 server-100-1 server-100-2]] []    0    0} cmdIndex:   3
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  446 logs:   3
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3324922172243674284    1 query map[] []    0   -1} cmdIndex:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  492 logs:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1864543216466087437    1 query map[] []    0   -1} cmdIndex:   5
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  538 logs:   5
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{2325385397228646570    1 query map[] []    0   -1} cmdIndex:   6
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  585 logs:   6
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3379045316859153353    1 query map[] []    0   -1} cmdIndex:   7
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  631 logs:   7
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{771441539823808208    1 query map[] []    0   -1} cmdIndex:   8
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  677 logs:   8
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3191766283734789700    1 query map[] []    0   -1} cmdIndex:   9
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  723 logs:   9
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{4571858957673292314    1 query map[] []    0   -1} cmdIndex:  10
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  769 logs:  10
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  769 logs:  10
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size: 10 curLogLen:  10 LeaderCommit:   0 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  0 total: 10!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  769 logs:  10
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size: 10 curLogLen:  10 LeaderCommit:   0 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {   0 =>   10} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{738162732728396558    2 join map[ 101:[server-101-0 server-101-1 server-101-2]] []    0    0} cmdIndex:  11
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  854 logs:  11
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  854 logs:  11
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  11 LeaderCommit:  10 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  0 total: 10!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {   0 =>   10} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 10 total: 11!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  10 =>   11} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  854 logs:  11
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  11 LeaderCommit:  11 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  0 total: 11!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   0 =>   11} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3659592825229931877    2 query map[] []    0   -1} cmdIndex:  12
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  900 logs:  12
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1805461484100958199    2 query map[] []    0   -1} cmdIndex:  13
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  946 logs:  13
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3324922172243674284    2 query map[] []    0   -1} cmdIndex:  14
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  992 logs:  14
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1864543216466087437    2 query map[] []    0   -1} cmdIndex:  15
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1038 logs:  15
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3379045316859153353    2 query map[] []    0   -1} cmdIndex:  16
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1084 logs:  16
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{2325385397228646570    2 query map[] []    0   -1} cmdIndex:  17
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1130 logs:  17
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{4571858957673292314    2 query map[] []    0   -1} cmdIndex:  18
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1176 logs:  18
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{771441539823808208    2 query map[] []    0   -1} cmdIndex:  19
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1222 logs:  19
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3191766283734789700    2 query map[] []    0   -1} cmdIndex:  20
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1268 logs:  20
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 1268 logs:  20
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  9 curLogLen:  20 LeaderCommit:  11 rfCommit:  10
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 10 total: 11!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {  10 =>   11} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 1268 logs:  20
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  9 curLogLen:  20 LeaderCommit:  11 rfCommit:  11
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1755071782858945213    1 query map[] []    0   -1} cmdIndex:  21
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1314 logs:  21
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 11 total: 20!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  11 =>   20} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{newShard    7                  -1   -1    2 map[] map[] map[]} cmdIndex:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  398 logs:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  398 logs:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   1 LeaderCommit:   0 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  0 total:  1!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   0 =>    1} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  398 logs:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   1 LeaderCommit:   0 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{newShard    5                  -1   -1    2 map[] map[] map[]} cmdIndex:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  441 logs:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1805461484100958199    3 query map[] []    0   -1} cmdIndex:  22
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1360 logs:  22
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3379045316859153353    3 query map[] []    0   -1} cmdIndex:  23
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1406 logs:  23
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{2325385397228646570    3 query map[] []    0   -1} cmdIndex:  24
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1452 logs:  24
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{4571858957673292314    3 query map[] []    0   -1} cmdIndex:  25
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 1406 logs:  23
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  3 curLogLen:  23 LeaderCommit:  20 rfCommit:  11
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 11 total: 20!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {  11 =>   20} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1498 logs:  25
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3191766283734789700    3 query map[] []    0   -1} cmdIndex:  26
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1544 logs:  26
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3324922172243674284    3 query map[] []    0   -1} cmdIndex:  27
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1590 logs:  27
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3659592825229931877    3 query map[] []    0   -1} cmdIndex:  28
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1636 logs:  28
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 1636 logs:  28
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  28 LeaderCommit:  20 rfCommit:  11
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 11 total: 20!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {  11 =>   20} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 20 total: 28!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  20 =>   28} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1864543216466087437    3 query map[] []    0   -1} cmdIndex:  29
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1682 logs:  29
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  441 logs:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   2 LeaderCommit:   1 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  0 total:  1!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {   0 =>    1} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  1 total:  2!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   1 =>    2} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  441 logs:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   2 LeaderCommit:   1 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{newShard    6                  -1   -1    2 map[] map[] map[]} cmdIndex:   3
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  484 logs:   3
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  0 total:  1!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {   0 =>    1} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 1682 logs:  29
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  9 curLogLen:  29 LeaderCommit:  28 rfCommit:  20
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 20 total: 28!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {  20 =>   28} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 1682 logs:  29
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  29 LeaderCommit:  28 rfCommit:  20
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 20 total: 28!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 28 total: 29!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  28 =>   29} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {  20 =>   28} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1805461484100958199    4 query map[] []    0   -1} cmdIndex:  30
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1728 logs:  30
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3191766283734789700    4 query map[] []    0   -1} cmdIndex:  31
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1774 logs:  31
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{2325385397228646570    4 query map[] []    0   -1} cmdIndex:  32
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1820 logs:  32
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3324922172243674284    4 query map[] []    0   -1} cmdIndex:  33
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1866 logs:  33
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{4571858957673292314    4 query map[] []    0   -1} cmdIndex:  34
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1912 logs:  34
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3379045316859153353    4 query map[] []    0   -1} cmdIndex:  35
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 1958 logs:  35
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3659592825229931877    4 query map[] []    0   -1} cmdIndex:  36
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2004 logs:  36
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1755071782858945213    2 query map[] []    0   -1} cmdIndex:  37
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2050 logs:  37
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  484 logs:   3
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   3 LeaderCommit:   2 rfCommit:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  1 total:  2!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {   1 =>    2} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  2 total:  3!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   2 =>    3} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  484 logs:   3
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   3 LeaderCommit:   2 rfCommit:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  1 total:  2!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {   1 =>    2} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 2050 logs:  37
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  37 LeaderCommit:  29 rfCommit:  28
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 28 total: 29!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {  28 =>   29} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1864543216466087437    4 query map[] []    0   -1} cmdIndex:  38
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 2050 logs:  37
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  37 LeaderCommit:  29 rfCommit:  28
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 28 total: 29!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {  28 =>   29} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2096 logs:  38
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 29 total: 37!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  29 =>   37} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{newShard    8                  -1   -1    2 map[] map[] map[]} cmdIndex:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  528 logs:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  528 logs:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   4 LeaderCommit:   3 rfCommit:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  2 total:  3!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {   2 =>    3} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  3 total:  4!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   3 =>    4} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{newShard    9                  -1   -1    2 map[] map[] map[]} cmdIndex:   5
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  571 logs:   5
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  528 logs:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   4 LeaderCommit:   4 rfCommit:   2
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  2 total:  4!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 2096 logs:  38
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  38 LeaderCommit:  37 rfCommit:  29
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 29 total: 37!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {  29 =>   37} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1805461484100958199    5 query map[] []    0   -1} cmdIndex:  39
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 2096 logs:  38
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  38 LeaderCommit:  37 rfCommit:  29
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 29 total: 37!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {  29 =>   37} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2142 logs:  39
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 37 total: 38!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  37 =>   38} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1755071782858945213    3 query map[] []    0   -1} cmdIndex:  40
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2188 logs:  40
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3324922172243674284    5 query map[] []    0   -1} cmdIndex:  41
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {   2 =>    4} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2234 logs:  41
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3659592825229931877    5 query map[] []    0   -1} cmdIndex:  42
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2280 logs:  42
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3191766283734789700    5 query map[] []    0   -1} cmdIndex:  43
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2326 logs:  43
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{4571858957673292314    5 query map[] []    0   -1} cmdIndex:  44
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2372 logs:  44
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{2325385397228646570    5 query map[] []    0   -1} cmdIndex:  45
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2418 logs:  45
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3379045316859153353    5 query map[] []    0   -1} cmdIndex:  46
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2464 logs:  46
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  571 logs:   5
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   5 LeaderCommit:   4 rfCommit:   3
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  3 total:  4!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {   3 =>    4} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  571 logs:   5
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   5 LeaderCommit:   4 rfCommit:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  4 total:  5!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   4 =>    5} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 2464 logs:  46
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  46 LeaderCommit:  38 rfCommit:  37
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 37 total: 38!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {  37 =>   38} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 38 total: 46!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 2464 logs:  46
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  46 LeaderCommit:  38 rfCommit:  37
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 37 total: 38!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {  37 =>   38} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  38 =>   46} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1864543216466087437    5 query map[] []    0   -1} cmdIndex:  47
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2510 logs:  47
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{request    8  put    0 QV3w87YqGAU_mwNS0RS2 4563185439113262691    1    0 map[] map[] map[]} cmdIndex:   6
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{newConfig   -1                  -1   -1    2 map[] map[] map[   5:{}    6:{}    8:{}    9:{}    7:{}]} cmdIndex:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  650 logs:   6
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  409 logs:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  409 logs:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   1 LeaderCommit:   0 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  0 total:  1!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   0 =>    1} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  409 logs:   1
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   1 LeaderCommit:   0 rfCommit:   0
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  650 logs:   6
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   6 LeaderCommit:   5 rfCommit:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  4 total:  5!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {   4 =>    5} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  5 total:  6!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {   5 =>    6} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  650 logs:   6
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   6 LeaderCommit:   5 rfCommit:   4
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  4 total:  5!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {   4 =>    5} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{request    9  put    1 ABtWsQjJnTHtHCWsnOUa 4563185439113262691    2    0 map[] map[] map[]} cmdIndex:   7
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  728 logs:   7
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 2510 logs:  47
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  47 LeaderCommit:  46 rfCommit:  38
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 38 total: 46!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 0 term:  0 | Apply log {  38 =>   46} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 2510 logs:  47
+InfoRaft:2019/07/17 10:45:57 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  47 LeaderCommit:  46 rfCommit:  38
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 38 total: 46!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 2 term:  0 | Apply log {  38 =>   46} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 46 total: 47!
+InfoRaft:2019/07/17 10:45:57 raft.go:517: Raft: 1 term:  0 | Apply log {  46 =>   47} Done!
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3191766283734789700    6 query map[] []    0   -1} cmdIndex:  48
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2556 logs:  48
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{771441539823808208    3 query map[] []    0   -1} cmdIndex:  49
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2602 logs:  49
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3324922172243674284    6 query map[] []    0   -1} cmdIndex:  50
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2648 logs:  50
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3379045316859153353    6 query map[] []    0   -1} cmdIndex:  51
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2694 logs:  51
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{2325385397228646570    6 query map[] []    0   -1} cmdIndex:  52
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2740 logs:  52
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3659592825229931877    6 query map[] []    0   -1} cmdIndex:  53
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2786 logs:  53
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1805461484100958199    6 query map[] []    0   -1} cmdIndex:  54
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2832 logs:  54
+InfoRaft:2019/07/17 10:45:57 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{4571858957673292314    6 query map[] []    0   -1} cmdIndex:  55
+InfoRaft:2019/07/17 10:45:57 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2878 logs:  55
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  0 total:  1!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 2 term:  0 | Apply log {   0 =>    1} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  0 total:  1!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 1 term:  0 | Apply log {   0 =>    1} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  728 logs:   7
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   7 LeaderCommit:   6 rfCommit:   5
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  5 total:  6!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 2 term:  0 | Apply log {   5 =>    6} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  6 total:  7!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 0 term:  0 | Apply log {   6 =>    7} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  728 logs:   7
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   7 LeaderCommit:   7 rfCommit:   5
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  5 total:  7!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 1 term:  0 | Apply log {   5 =>    7} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 2878 logs:  55
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  55 LeaderCommit:  47 rfCommit:  46
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 46 total: 47!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 0 term:  0 | Apply log {  46 =>   47} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 47 total: 55!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 2878 logs:  55
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  55 LeaderCommit:  47 rfCommit:  46
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 46 total: 47!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 2 term:  0 | Apply log {  46 =>   47} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{request    0  put    2 huTcz0jcG3mCL6SRz929 4563185439113262691    3    0 map[] map[] map[]} cmdIndex:   2
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 1 term:  0 | Apply log {  47 =>   55} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  485 logs:   2
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1864543216466087437    6 query map[] []    0   -1} cmdIndex:  56
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2924 logs:  56
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  485 logs:   2
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   2 LeaderCommit:   1 rfCommit:   1
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  1 total:  2!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 0 term:  0 | Apply log {   1 =>    2} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  485 logs:   2
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   2 LeaderCommit:   1 rfCommit:   1
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{request    1  put    3 gArbM8DvVVTF8jd5snLB 4563185439113262691    4    0 map[] map[] map[]} cmdIndex:   3
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 0 term:  0 | Persist data! Size:  564 logs:   3
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  6 total:  7!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 2 term:  0 | Apply log {   6 =>    7} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3379045316859153353    7 query map[] []    0   -1} cmdIndex:  57
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 2924 logs:  56
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  56 LeaderCommit:  55 rfCommit:  47
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 47 total: 55!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 2970 logs:  57
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 2924 logs:  56
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  1 curLogLen:  56 LeaderCommit:  55 rfCommit:  47
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 47 total: 55!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 0 term:  0 | Apply log {  47 =>   55} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3191766283734789700    7 query map[] []    0   -1} cmdIndex:  58
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 3016 logs:  58
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{771441539823808208    4 query map[] []    0   -1} cmdIndex:  59
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 3062 logs:  59
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 55 total: 56!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 1 term:  0 | Apply log {  55 =>   56} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3324922172243674284    7 query map[] []    0   -1} cmdIndex:  60
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 3108 logs:  60
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{4571858957673292314    7 query map[] []    0   -1} cmdIndex:  61
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 2 term:  0 | Apply log {  47 =>   55} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 3154 logs:  61
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1805461484100958199    7 query map[] []    0   -1} cmdIndex:  62
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 3200 logs:  62
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{3659592825229931877    7 query map[] []    0   -1} cmdIndex:  63
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 3246 logs:  63
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{2325385397228646570    7 query map[] []    0   -1} cmdIndex:  64
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size: 3293 logs:  64
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 2 term:  0 | Persist data! Size:  564 logs:   3
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   3 LeaderCommit:   2 rfCommit:   1
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 2 term:  0 | start apply log curCommit:  1 total:  2!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 2 term:  0 | Apply log {   1 =>    2} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 0 term:  0 | start apply log curCommit:  2 total:  3!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 0 term:  0 | Apply log {   2 =>    3} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 1 term:  0 | Persist data! Size:  564 logs:   3
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 1 term:  0 | receive new command from leader:  0, term:  0, size:  1 curLogLen:   3 LeaderCommit:   3 rfCommit:   1
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 1 term:  0 | start apply log curCommit:  1 total:  3!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 0 term:  0 | Persist data! Size: 3293 logs:  64
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 0 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  64 LeaderCommit:  56 rfCommit:  55
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 0 term:  0 | start apply log curCommit: 55 total: 56!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 0 term:  0 | Apply log {  55 =>   56} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 1 term:  0 | start apply log curCommit: 56 total: 64!
+InfoRaft:2019/07/17 10:45:58 raft.go:159: Raft: 2 term:  0 | Persist data! Size: 3293 logs:  64
+InfoRaft:2019/07/17 10:45:58 raft.go:348: Raft: 2 term:  0 | receive new command from leader:  1, term:  0, size:  8 curLogLen:  64 LeaderCommit:  56 rfCommit:  55
+InfoRaft:2019/07/17 10:45:58 raft.go:502: Raft: 2 term:  0 | start apply log curCommit: 55 total: 56!
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 2 term:  0 | Apply log {  55 =>   56} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 0 term:  0 | Leader receive a new command:{request    2  put    4 T1pguLzeuCJRK1ZQdyu9 4563185439113262691    5    0 map[] map[] map[]} cmdIndex:   4
+InfoRaft:2019/07/17 10:45:58 raft.go:517: Raft: 1 term:  0 | Apply log {  56 =>   64} Done!
+InfoRaft:2019/07/17 10:45:58 raft.go:592: Raft: 1 term:  0 | Leader receive a new command:{1864543216466087437    7 query map[] []    0   -1} cmdIndex:  65

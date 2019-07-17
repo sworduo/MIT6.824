@@ -210,7 +210,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	kv.skvDB = make(map[int]map[string]string)
 	kv.shards = make(map[int]struct{})
 
-	kv.cfg = shardmaster.Config{}
+	kv.cfg = shardmaster.Config{0, [10]int{}, make(map[int][]string)}
 	kv.newAddShards = make(map[int]struct{})
 	kv.shardToSend = make(map[int]struct{})
 	//kv.shardSendOrNot = false
@@ -253,7 +253,7 @@ func (kv *ShardKV) run(){
 			}
 
 			//更新配置后，发送了一部分（可能全部）shard给其他集群
-			//将这些集群待发送列表
+			//将这些集群移除待发送列表
 			for shard, _ := range kv.shardToSend{
 				if _, ok := op.ShardSend[shard]; ok{
 					//清空该shard,节省快照大小
@@ -359,6 +359,8 @@ func (kv *ShardKV) executeOp(op Op)(wrongLeader, wrongGroup bool){
 		if !kv.haveShard(op.Shard) || ok{
 			raft.ShardInfo.Printf("GID:%2d cfg:%2d | Do not responsible for this shard %2d\n", kv.gid, kv.cfg.Num, op.Shard)
 			raft.ShardInfo.Printf("have:{%v} need to add:{%v}\n", kv.shards, kv.newAddShards)
+			raft.ShardInfo.Printf("db:%v\n", kv.skvDB)
+			raft.ShardInfo.Printf("cfg:%d ==> %v\n\n", kv.cfg.Num, kv.cfg.Shards)
 			kv.mu.Unlock()
 			return
 		}
@@ -423,8 +425,9 @@ func (kv *ShardKV) getCfg(){
 	cfg := kv.sm.Query(-1)
 	if cfg.Num > kv.cfg.Num{
 		//配置更新
-		kv.cfg = cfg
-		raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| Update config to %d\n", kv.gid, kv.cfg.Num, kv.leader, cfg.Num)
+		raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v me:%2d| Update config to %d\n", kv.gid, kv.cfg.Num, kv.leader, kv.me, cfg.Num)
+		raft.ShardInfo.Printf("New shard assign:%v\n", cfg.Shards)
+
 		newShards := make(map[int]struct{})
 
 		for shard, gid := range cfg.Shards{
@@ -435,6 +438,7 @@ func (kv *ShardKV) getCfg(){
 					//所以不重置newAddShards，而是会直接添加
 					kv.newAddShards[shard] = struct{}{}
 				}else{
+					//删除不存在的元素不会报错
 					delete(kv.shards, shard)
 				}
 			}
@@ -465,8 +469,8 @@ func (kv *ShardKV) getCfg(){
 			}
 		}
 		kv.shards = newShards
-		if cfg.Num == 1{
-			//第一次配置并不需要接收其他的shard
+		if kv.cfg.Num == 0 && kv.persister.SnapshotSize() == 0{
+			//第一次加载配置，并且快照为0,直接初始化.
 			kv.newAddShards = make(map[int]struct{})
 			//第一次配置不会接收其他shard，因此不会同步newShard日志，因此不会创建相应的skvdDB和sClerkLog
 			for shard, _ := range kv.shards{
@@ -477,13 +481,18 @@ func (kv *ShardKV) getCfg(){
 		if kv.leader == true {
 			kv.sendShard()
 		}
+		kv.cfg = cfg
 	}
 }
 
 func (kv *ShardKV) checkCfg(){
 	//周期性检查配置信息
 	for{
+		isleader := kv.checkLeader()
 		kv.mu.Lock()
+		//检查自己是否时Leader
+		//由follower转为leader后，检查待发送列表
+		kv.leader = isleader
 		kv.getCfg()
 		kv.mu.Unlock()
 		time.Sleep(time.Duration(100) * time.Millisecond)

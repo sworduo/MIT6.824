@@ -1,0 +1,103 @@
+InfoShard:2019/07/17 10:45:56 server.go:302: ShardMaster: 0 |Create a new shardmaster!
+InfoShard:2019/07/17 10:45:56 server.go:302: ShardMaster: 1 |Create a new shardmaster!
+InfoShard:2019/07/17 10:45:56 server.go:302: ShardMaster: 2 |Create a new shardmaster!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:100 Me: 0 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:100 Me: 1 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:100 Me: 2 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:101 Me: 0 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:101 Me: 1 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:101 Me: 2 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:102 Me: 0 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:102 Me: 1 -> Create a new server!
+InfoShard:2019/07/17 10:45:56 server.go:219: gid:102 Me: 2 -> Create a new server!
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:102 cfg: 0 leader: false me: 1| Update config to 1
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 100 100 100 100 100]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:101 cfg: 0 leader: false me: 1| Update config to 1
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 100 100 100 100 100]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:100 cfg: 0 leader: false me: 0| Update config to 1
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 100 100 100 100 100]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:102 cfg: 0 leader: false me: 0| Update config to 1
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 100 100 100 100 100]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:101 cfg: 0 leader: false me: 2| Update config to 1
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 100 100 100 100 100]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:101 cfg: 0 leader: false me: 0| Update config to 1
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 100 100 100 100 100]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:102 cfg: 0 leader: false me: 2| Update config to 1
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 100 100 100 100 100]
+InfoShard:2019/07/17 10:45:57 client.go:128: Client:4563185439113262691 num:  1 | putappend{{0 QV3w87YqGAU_mwNS0RS2 Put 4563185439113262691 1 8}} to gid: 0
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:100 cfg: 0 leader: false me: 1| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:100 cfg: 0 leader: false me: 2| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:102 cfg: 1 leader:  true me: 2| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:102 cfg: 1 leader: false me: 0| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:101 cfg: 1 leader:  true me: 0| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:102 cfg: 1 leader: false me: 1| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:100 cfg: 1 leader:  true me: 0| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:590: GID:100 cfg: 2 leader:  true| cfgnum: 2 transfer 5 shard
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:101 cfg: 1 leader: false me: 1| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:605: GID:100 cfg: 2 me: 0 leader:  true| transfer shard  7 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:552: GID:101 cfg: 2 leader:  true| receive shard  7 from gid:100
+InfoShard:2019/07/17 10:45:57 server.go:428: GID:101 cfg: 1 leader: false me: 2| Update config to 2
+InfoShard:2019/07/17 10:45:57 server.go:429: New shard assign:[100 100 100 100 100 101 101 101 101 101]
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:101 cfg: 2 leader:  true| command{{newShard 7    -1 -1 2 map[] map[] map[]}} begin! index: 1
+InfoShard:2019/07/17 10:45:57 server.go:412: GID:101 cfg: 2 leader:  true| command{{newShard 7    -1 -1 2 map[] map[] map[]}} index: 1 Done!
+InfoShard:2019/07/17 10:45:57 server.go:573: GID:101 cfg: 2 leader:  true| add new shard 7 done! 
+InfoShard:2019/07/17 10:45:57 server.go:620: GID:100 cfg: 2 leader:  true| OK! transfer shard  7 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:605: GID:100 cfg: 2 me: 0 leader:  true| transfer shard  5 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:552: GID:101 cfg: 2 leader:  true| receive shard  5 from gid:100
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:101 cfg: 2 leader:  true| command{{newShard 5    -1 -1 2 map[] map[] map[]}} begin! index: 2
+InfoShard:2019/07/17 10:45:57 client.go:128: Client:4563185439113262691 num:  1 | putappend{{0 QV3w87YqGAU_mwNS0RS2 Put 4563185439113262691 1 8}} to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:360: GID:101 cfg: 2 | Do not responsible for this shard  8
+InfoShard:2019/07/17 10:45:57 server.go:361: have:{map[9:{} 5:{} 6:{} 7:{} 8:{}]} need to add:{map[5:{} 6:{} 8:{} 9:{}]}
+InfoShard:2019/07/17 10:45:57 server.go:362: db:map[7:map[]]
+InfoShard:2019/07/17 10:45:57 server.go:363: cfg:2 ==> [100 100 100 100 100 101 101 101 101 101]
+
+InfoShard:2019/07/17 10:45:57 server.go:412: GID:101 cfg: 2 leader:  true| command{{newShard 5    -1 -1 2 map[] map[] map[]}} index: 2 Done!
+InfoShard:2019/07/17 10:45:57 server.go:573: GID:101 cfg: 2 leader:  true| add new shard 5 done! 
+InfoShard:2019/07/17 10:45:57 server.go:620: GID:100 cfg: 2 leader:  true| OK! transfer shard  5 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:605: GID:100 cfg: 2 me: 0 leader:  true| transfer shard  6 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:552: GID:101 cfg: 2 leader:  true| receive shard  6 from gid:100
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:101 cfg: 2 leader:  true| command{{newShard 6    -1 -1 2 map[] map[] map[]}} begin! index: 3
+InfoShard:2019/07/17 10:45:57 server.go:412: GID:101 cfg: 2 leader:  true| command{{newShard 6    -1 -1 2 map[] map[] map[]}} index: 3 Done!
+InfoShard:2019/07/17 10:45:57 server.go:573: GID:101 cfg: 2 leader:  true| add new shard 6 done! 
+InfoShard:2019/07/17 10:45:57 server.go:620: GID:100 cfg: 2 leader:  true| OK! transfer shard  6 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:605: GID:100 cfg: 2 me: 0 leader:  true| transfer shard  8 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:552: GID:101 cfg: 2 leader:  true| receive shard  8 from gid:100
+InfoShard:2019/07/17 10:45:57 client.go:128: Client:4563185439113262691 num:  1 | putappend{{0 QV3w87YqGAU_mwNS0RS2 Put 4563185439113262691 1 8}} to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:101 cfg: 2 leader:  true| command{{newShard 8    -1 -1 2 map[] map[] map[]}} begin! index: 4
+InfoShard:2019/07/17 10:45:57 server.go:360: GID:101 cfg: 2 | Do not responsible for this shard  8
+InfoShard:2019/07/17 10:45:57 server.go:361: have:{map[5:{} 6:{} 7:{} 8:{} 9:{}]} need to add:{map[8:{} 9:{}]}
+InfoShard:2019/07/17 10:45:57 server.go:362: db:map[6:map[] 7:map[] 5:map[]]
+InfoShard:2019/07/17 10:45:57 server.go:363: cfg:2 ==> [100 100 100 100 100 101 101 101 101 101]
+
+InfoShard:2019/07/17 10:45:57 server.go:412: GID:101 cfg: 2 leader:  true| command{{newShard 8    -1 -1 2 map[] map[] map[]}} index: 4 Done!
+InfoShard:2019/07/17 10:45:57 server.go:573: GID:101 cfg: 2 leader:  true| add new shard 8 done! 
+InfoShard:2019/07/17 10:45:57 server.go:620: GID:100 cfg: 2 leader:  true| OK! transfer shard  8 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:605: GID:100 cfg: 2 me: 0 leader:  true| transfer shard  9 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:552: GID:101 cfg: 2 leader:  true| receive shard  9 from gid:100
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:101 cfg: 2 leader:  true| command{{newShard 9    -1 -1 2 map[] map[] map[]}} begin! index: 5
+InfoShard:2019/07/17 10:45:57 client.go:128: Client:4563185439113262691 num:  1 | putappend{{0 QV3w87YqGAU_mwNS0RS2 Put 4563185439113262691 1 8}} to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:412: GID:101 cfg: 2 leader:  true| command{{newShard 9    -1 -1 2 map[] map[] map[]}} index: 5 Done!
+InfoShard:2019/07/17 10:45:57 server.go:573: GID:101 cfg: 2 leader:  true| add new shard 9 done! 
+InfoShard:2019/07/17 10:45:57 server.go:620: GID:100 cfg: 2 leader:  true| OK! transfer shard  9 to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:101 cfg: 2 leader:  true| command{{request 8 put 0 QV3w87YqGAU_mwNS0RS2 4563185439113262691 1 0 map[] map[] map[]}} begin! index: 6
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:100 cfg: 2 leader:  true| command{{newConfig -1    -1 -1 2 map[] map[] map[7:{} 5:{} 6:{} 8:{} 9:{}]}} begin! index: 1
+InfoShard:2019/07/17 10:45:57 server.go:412: GID:100 cfg: 2 leader:  true| command{{newConfig -1    -1 -1 2 map[] map[] map[5:{} 6:{} 8:{} 9:{} 7:{}]}} index: 1 Done!
+InfoShard:2019/07/17 10:45:57 server.go:412: GID:101 cfg: 2 leader:  true| command{{request 8 put 0 QV3w87YqGAU_mwNS0RS2 4563185439113262691 1 0 map[] map[] map[]}} index: 6 Done!
+InfoShard:2019/07/17 10:45:57 client.go:128: Client:4563185439113262691 num:  2 | putappend{{1 ABtWsQjJnTHtHCWsnOUa Put 4563185439113262691 2 9}} to gid:101
+InfoShard:2019/07/17 10:45:57 server.go:400: GID:101 cfg: 2 leader:  true| command{{request 9 put 1 ABtWsQjJnTHtHCWsnOUa 4563185439113262691 2 0 map[] map[] map[]}} begin! index: 7
+InfoShard:2019/07/17 10:45:58 server.go:412: GID:101 cfg: 2 leader:  true| command{{request 9 put 1 ABtWsQjJnTHtHCWsnOUa 4563185439113262691 2 0 map[] map[] map[]}} index: 7 Done!
+InfoShard:2019/07/17 10:45:58 client.go:128: Client:4563185439113262691 num:  3 | putappend{{2 huTcz0jcG3mCL6SRz929 Put 4563185439113262691 3 0}} to gid:100
+InfoShard:2019/07/17 10:45:58 server.go:400: GID:100 cfg: 2 leader:  true| command{{request 0 put 2 huTcz0jcG3mCL6SRz929 4563185439113262691 3 0 map[] map[] map[]}} begin! index: 2
+InfoShard:2019/07/17 10:45:58 server.go:412: GID:100 cfg: 2 leader:  true| command{{request 0 put 2 huTcz0jcG3mCL6SRz929 4563185439113262691 3 0 map[] map[] map[]}} index: 2 Done!
+InfoShard:2019/07/17 10:45:58 client.go:128: Client:4563185439113262691 num:  4 | putappend{{3 gArbM8DvVVTF8jd5snLB Put 4563185439113262691 4 1}} to gid:100
+InfoShard:2019/07/17 10:45:58 server.go:400: GID:100 cfg: 2 leader:  true| command{{request 1 put 3 gArbM8DvVVTF8jd5snLB 4563185439113262691 4 0 map[] map[] map[]}} begin! index: 3
+InfoShard:2019/07/17 10:45:58 server.go:412: GID:100 cfg: 2 leader:  true| command{{request 1 put 3 gArbM8DvVVTF8jd5snLB 4563185439113262691 4 0 map[] map[] map[]}} index: 3 Done!
+InfoShard:2019/07/17 10:45:58 client.go:128: Client:4563185439113262691 num:  5 | putappend{{4 T1pguLzeuCJRK1ZQdyu9 Put 4563185439113262691 5 2}} to gid:100

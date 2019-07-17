@@ -1,0 +1,24 @@
+WarnRaft:2019/07/17 10:45:57 raft.go:481: Raft: 0 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 2 term:  0 | vote to candidate   0
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 1 term:  0 | vote to candidate   0
+WarnRaft:2019/07/17 10:45:57 raft.go:465: Raft: 0 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/07/17 10:45:57 raft.go:481: Raft: 0 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 1 term:  0 | vote to candidate   0
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:465: Raft: 0 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 2 term:  0 | vote to candidate   0
+WarnRaft:2019/07/17 10:45:57 raft.go:481: Raft: 1 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 2 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 2 term:  0 | vote to candidate   1
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 0 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 0 term:  0 | vote to candidate   1
+WarnRaft:2019/07/17 10:45:57 raft.go:465: Raft: 1 term:  0 |    Candidate convert role to Leader!
+WarnRaft:2019/07/17 10:45:57 raft.go:481: Raft: 2 term:  0 |     Follower convert role to Candidate!
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 0 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:484: Raft: 1 term:  0 |     Follower convert role to Follower!
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 0 term:  0 | vote to candidate   2
+WarnRaft:2019/07/17 10:45:57 raft.go:422: Raft: 1 term:  0 | vote to candidate   2
+WarnRaft:2019/07/17 10:45:57 raft.go:465: Raft: 2 term:  0 |    Candidate convert role to Leader!
