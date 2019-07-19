@@ -218,7 +218,8 @@ func (sm *ShardMaster) Query(args *QueryArgs, reply *QueryReply) {
 	if !reply.WrongLeader{
 		sm.mu.Lock()
 		defer sm.mu.Unlock()
-		if op.QueryNum == -1{
+		if op.QueryNum == -1 || op.QueryNum > sm.configs[len(sm.configs)-1].Num{
+			//所要求的config比拥有的config大，返回最新的config
 			reply.Config = *sm.getLastCfg()
 		}else{
 			reply.Config = sm.configs[op.QueryNum]

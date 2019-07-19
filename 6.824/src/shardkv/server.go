@@ -23,6 +23,9 @@ const (
 	newConfig = "newConfig"
 	newShard = "newShard"
 	newSend = "newsend"
+	Cfg_Get_Time = time.Duration(66) * time.Millisecond
+	Send_Shard_Wait = time.Duration(49) * time.Millisecond //发送shard的等待间隔
+	RPC_CALL_TIMEOUT = time.Duration(500) * time.Millisecond //执行指令等待超时时间
 )
 
 type Op struct {
@@ -40,7 +43,6 @@ type Op struct {
 
 	NewConfig NewConfig
 	NewShards NewShards
-	ShardSended map[int]struct{}
 
 }
 
@@ -53,11 +55,11 @@ type NewShards struct{
 type NewConfig struct{
 	//判断是否执行了新配置，若是,则更新shardSendOrNot
 	Cfg 	shardmaster.Config
-	Shards 	map[int]struct{}
-	NewAddShards map[int]struct{}
-	ShardToSend 	map[int]struct{}
+	//Shards 	map[int]struct{}
+	//NewAddShards map[int]struct{}
+	//ShardToSend 	map[int]struct{}
 	Initial 	bool //是否是  第一次启动且无快照且需要默认初始化
-	ShardCnt int //发送配置时，接受了多少shard
+	//ShardCnt int //发送配置时，接受了多少shard
 }
 
 type ShardKV struct {
@@ -77,16 +79,15 @@ type ShardKV struct {
 	sm *shardmaster.Clerk
 	shards 	map[int]struct{} //集群所管理的shard
 
-	//shardSendOrNot 	bool //shard是否已经发送给新集群->通过判断shardToSend是否为即可
-	shardToSend 	map[int]struct{}//配置更新后需要发送的shard
-	newAddShards map[int]struct{} //新配置中应该接到的新的shard，去重
+	shardToSend 	[]int//配置更新后需要发送的shard
+	//newAddShards map[int]struct{} //新配置中应该接到的新的shard，去重
 	cfg 	shardmaster.Config
 	leader 	bool // 判断本server是不是leader
 
 	persister *raft.Persister
 
-	shardCnt int //计算接受了多少shard
-	shardSendOrNot bool //保证一次只有一个发送shard的goroutine在运行
+	//shardCnt int //计算接受了多少shard
+	//shardSendOrNot bool //保证一次只有一个发送shard的goroutine在运行
 }
 
 func (kv *ShardKV) Get(args *GetArgs, reply *GetReply) {
@@ -99,8 +100,7 @@ func (kv *ShardKV) Get(args *GetArgs, reply *GetReply) {
 												args.Clerk,
 												args.CmdIndex,
 												NewConfig{},
-												NewShards{},
-												make(map[int]struct{})})
+												NewShards{}})
 	reply.WrongLeader = wrongLeader
 	if wrongGroup{
 		reply.Err = ErrWrongGroup
@@ -137,8 +137,7 @@ func (kv *ShardKV) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 												args.Clerk,
 												args.CmdIndex,
 												NewConfig{},
-												NewShards{},
-												make(map[int]struct{})})
+												NewShards{}})
 	reply.WrongLeader = wrongLeader
 	reply.Err = OK
 	if wrongGroup{
@@ -156,7 +155,7 @@ func (kv *ShardKV) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 func (kv *ShardKV) Kill() {
 	kv.rf.Kill()
 	// Your code here, if desired.
-	raft.ShardInfo.Printf("GID:%2d me:%2d  <- I am died!\n", kv.gid, kv.me)
+	raft.ShardInfo.Printf("GID:%2d me:%2d leader:%6v <- I am died!\n", kv.gid, kv.me, kv.leader)
 }
 
 
@@ -214,20 +213,27 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	kv.shards = make(map[int]struct{})
 
 	kv.cfg = shardmaster.Config{0, [10]int{}, make(map[int][]string)}
-	kv.newAddShards = make(map[int]struct{})
-	kv.shardToSend = make(map[int]struct{})
+	//kv.newAddShards = make(map[int]struct{})
+	kv.shardToSend = make([]int, 0)
 	//kv.shardSendOrNot = false
 	kv.persister = persister
-	kv.shardCnt = 0
-	kv.shardSendOrNot = false
+	//kv.shardCnt = 0
+	//kv.shardSendOrNot = false
 	kv.leader = false
 
 	raft.ShardInfo.Printf("GID:%2d me:%2d -> Create a new server!\n", kv.gid, kv.me)
 
 	kv.loadSnapshot()
+	if kv.persister.SnapshotSize() == 0{
+		//没有快照，强制从cfg 1开始
+		go kv.checkCfg(true)
+	}else{
+		//有快照，生成发送列表
+		kv.parseCfg()
+		go kv.checkCfg(false)
+	}
 	//加载数据库和client历史后
 	//检查配置信息，更新cfgIndex并且发送shard给其他可能需要的集群。
-	go kv.checkCfg()
 	go kv.run()
 
 
@@ -246,65 +252,51 @@ func (kv *ShardKV) run(){
 			//snapshot
 			op := msg.Command.([]byte)
 			kv.decodedSnapshot(op)
+			//恢复快照后，生成新的shards
+			kv.parseCfg()
 			kv.mu.Unlock()
 			continue
 		}
 		op := msg.Command.(Op)
+		//raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|get a lock{%v}\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op)
+
 		msgToChan := cmdOk
 		switch op.Type{
 		case newSend:
 			//发送新的shard
-			for shard, _ := range kv.shardToSend{
-				if _, ok := op.ShardSended[shard]; ok{
-					//已经被发送了
-					delete(kv.skvDB, shard)
-					delete(kv.sClerkLog, shard)
-					delete(kv.shardToSend, shard)
-				}
+			//发送一个，同步一个
+			//防止生成发送列表，发送时配置更新，发送给了自己
+			_, ok := kv.skvDB[op.Shard]
+			if !kv.haveShard(op.Shard) && ok{
+				delete(kv.skvDB, op.Shard)
+				delete(kv.sClerkLog, op.Shard)
 			}
 		case newConfig:
-			//更新配置后，发送了一部分（可能全部）shard给其他集群
-			//将这些集群移除待发送列表
+			//更新配置
 			nc := op.NewConfig
-			if nc.ShardCnt < kv.shardCnt{
-				//发出newConfig日志后，又接收到新的shard
-				//忽略本次配置更新
-				msgToChan = noLongerHandleThis
-			}else if nc.Cfg.Num > kv.cfg.Num{
+			//防止一个cfg更新两次
+			if nc.Cfg.Num > kv.cfg.Num{
+				//raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|execute config\n", kv.gid, kv.me, kv.cfg.Num, kv.leader)
 				//收到新的配置
 				kv.cfg = nc.Cfg
-				kv.newAddShards = kv.copyShard(nc.NewAddShards)
-				kv.shardToSend = kv.copyShard(nc.ShardToSend)
-				kv.shards = kv.copyShard(nc.Shards)
+				kv.parseCfg()
+				//raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|execute parse done\n", kv.gid, kv.me, kv.cfg.Num, kv.leader)
+
 				if nc.Initial{
+					raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|Default initialize\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, kv.shards)
 					for shard, _ := range kv.shards{
 						kv.skvDB[shard] = make(map[string]string)
 						kv.sClerkLog[shard] = make(map[int64]int)
 					}
 				}
 			}
-				//else{
-					//有新的shard被发送了,修改待发送列表ShardToSend
-					//如果发起了两次相同的cfg呢，第二个cfg不就会取消所有待发送列表了吗
-					//比如正常getCfg一次，然后收到moveShard又发起一次getCfg
-					//for shard, _ := range kv.shardToSend{
-					//	if _, ok := nc.ShardToSend[shard]; ok{
-					//		//已经被发送了
-					//		delete(kv.skvDB, shard)
-					//		delete(kv.sClerkLog, shard)
-					//		delete(kv.shardToSend, shard)
-					//	}
-					//}
-				//}
 		case newShard:
 			if !kv.haveShard(op.Shard){
 				msgToChan = noLongerHandleThis
-			}else if _, ok := kv.newAddShards[op.Shard]; ok{
+			}else if _, ok := kv.skvDB[op.Shard]; !ok{
 				//考虑在真正add shard前收到了两次相同的moveShard
 				//防止执行两次
-				kv.shardCnt++
 				ns := op.NewShards
-				delete(kv.newAddShards, op.Shard)
 				kv.skvDB[op.Shard] = make(map[string]string)
 				kv.sClerkLog[op.Shard] = make(map[int64]int)
 				kv.copyDB(ns.ShardDB, kv.skvDB[op.Shard])
@@ -314,11 +306,17 @@ func (kv *ShardKV) run(){
 			//raft.ShardInfo.Printf("GID:%d cfg:%2d leader:%6v | Shard:%2d have{%v}\n", kv.gid, kv.cfg.Num, kv.leader, op.Shard, kv.shards)
 			if ind, ok := kv.sClerkLog[op.Shard][op.Clerk]; ok && ind >= op.CmdIndex {
 				//如果clerk存在，并且该指令已经执行，啥也不做
+				raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|op{%v}have done! index:%4d \n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
+
 			}else if !kv.haveShard(op.Shard){
 				//本集群不再负责这个shard
+				raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|op{%v}no responsible! index:%4d \n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
+
 				msgToChan = noLongerHandleThis
 			}else{
 				//执行指令
+				raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|apply op{%v} index:%4d\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
+
 				kv.sClerkLog[op.Shard][op.Clerk] = op.CmdIndex
 				switch op.Operation {
 				case putOp:
@@ -334,11 +332,13 @@ func (kv *ShardKV) run(){
 			}
 		}
 
-		if ch, ok := kv.msgCh[index]; ok{
+		ch, ok := kv.msgCh[index];
+		if ok{
 			ch <- msgToChan
 		}else if kv.leader{
 			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} no channel index:%2d!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 		}
+		//raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|finish a command\n", kv.gid, kv.me, kv.cfg.Num, kv.leader)
 
 		//要放在指令执行之后才检查状态
 		//因为index是所保存快照最后一条执行的指令
@@ -356,6 +356,16 @@ func (kv *ShardKV)haveShard(shard int) bool{
 	//判断集群是否有这个shard
 	_, ok := kv.shards[shard]
 	return ok
+}
+
+func (kv *ShardKV)needShard()(res []int){
+	res = make([]int, 0)
+	for shard, _ := range kv.shards{
+		if _, ok := kv.skvDB[shard]; !ok{
+			res = append(res, shard)
+		}
+	}
+	return
 }
 
 func (kv *ShardKV) copyDB(src map[string]string, des map[string]string){
@@ -396,11 +406,12 @@ func (kv *ShardKV) executeOp(op Op)(wrongLeader, wrongGroup bool){
 	if isOp{
 		kv.mu.Lock()
 		//判断指令需要的shard加载完成没有
-		_, ok := kv.newAddShards[op.Shard]
+		_, ok := kv.skvDB[op.Shard]
 		if kv.leader{
-			if !kv.haveShard(op.Shard) || ok{
-				raft.ShardInfo.Printf("GID:%2d cfg:%2d | Do not responsible for this shard %2d\n", kv.gid, kv.cfg.Num, op.Shard)
-				raft.ShardInfo.Printf("have:{%v} need to add:{%v}\n", kv.shards, kv.newAddShards)
+			if !kv.haveShard(op.Shard) || !ok{
+				raft.ShardInfo.Printf("GID:%2d me%2d cfg:%2d | Do not responsible for this shard %2d\n", kv.gid, kv.me, kv.cfg.Num, op.Shard)
+				raft.ShardInfo.Printf("responsible:{%v} need{%v}\n", kv.shards, kv.needShard())
+
 				//raft.ShardInfo.Printf("db:%v\n", kv.skvDB)
 				raft.ShardInfo.Printf("cfg:%d ==> %v\n\n", kv.cfg.Num, kv.cfg.Shards)
 				kv.mu.Unlock()
@@ -408,7 +419,7 @@ func (kv *ShardKV) executeOp(op Op)(wrongLeader, wrongGroup bool){
 			}
 			if ind, ok := kv.sClerkLog[op.Shard][op.Clerk]; ok && ind >= op.CmdIndex && kv.leader{
 				//指令已经执行过
-				//raft.ShardInfo.Printf("GID:%2d me:%2d | Command{%v} have done before\n", kv.gid, kv.me, cmd)
+				raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d | Command{%v} have done before\n", kv.gid, kv.me, kv.cfg.Num, op)
 				wrongLeader, wrongGroup = false, false
 				kv.mu.Unlock()
 				return
@@ -440,38 +451,76 @@ func (kv *ShardKV) executeOp(op Op)(wrongLeader, wrongGroup bool){
 	ch := make(chan bool)
 	kv.msgCh[index] = ch
 	kv.mu.Unlock()
-	//raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} begin! index:%2d\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
+	raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} begin! index:%2d\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 
 	select {
-	case <- time.After(time.Duration(300) * time.Millisecond):
+	case <- time.After(RPC_CALL_TIMEOUT):
 		wrongLeader = true
-		raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| command{%v} index:%2d timeout!\n", kv.gid, kv.cfg.Num, kv.leader, op, index)
+		raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} index:%2d timeout!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 	case res := <- ch:
 		if res == noLongerHandleThis{
 			//不再负责这个shard
-			raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| exclude command{%v} index:%2d!\n", kv.gid, kv.cfg.Num, kv.leader, op, index)
+			raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v me:%2d| exclude command{%v} index:%2d!\n", kv.gid, kv.cfg.Num, kv.leader, kv.me, op, index)
 			wrongGroup = true
 		}else{
-			//raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| command{%v} index:%2d Done!\n", kv.gid, kv.cfg.Num,kv.leader, op, index)
+			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} index:%2d Done!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 		}
 	}
 	//raft.ShardInfo.Printf("GID:%2d me:%2d | command{%T} Done!\n", kv.gid, kv.me, op)
-	go kv.closeCh(index)
+	kv.closeCh(index)
 	return
 }
 
 //===============================================================================
 //获取配置信息
 //===============================================================================
-func (kv *ShardKV) getCfg(){
-	//调用函数默认有锁
 
+func (kv *ShardKV) parseCfg(){
+	//从cfg中生成待发送列表、待接收列表
+	//凡是我有的且不属于我的，都发送出去
+	shards := make(map[int]struct{})
+
+	//此时cfg已经更新
+	for shard, gid := range kv.cfg.Shards{
+		if gid == kv.gid {
+			shards[shard] = struct{}{}
+		}
+	}
+
+
+	kv.shards = shards
+	raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| New shards:%v\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, kv.shards)
+
+	if !kv.leader{
+		//只有leader需要维护待发送列表
+		return
+	}
+
+	shardToSend := make([]int, 0) //待发送列表
+	for shard, _ := range kv.skvDB{
+		if !kv.haveShard(shard){
+			shardToSend = append(shardToSend, shard)
+		}
+	}
+	kv.shardToSend = shardToSend
+	raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| New shardToSend:%v\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, kv.shardToSend)
+
+}
+
+func (kv *ShardKV) getCfg(start bool){
+	//调用函数默认有锁
+	var cfg shardmaster.Config
 	for {
-		//若更新配置失败
-		//可能是发出更新配置后又收到了新的shard
-		//此时立刻进行新的更新
-		cfg := kv.sm.Query(-1)
-		if cfg.Num == kv.cfg.Num{
+		if start{
+			cfg = kv.sm.Query(1)
+			if cfg.Num < 1{
+				time.Sleep(time.Duration(5) * time.Millisecond)
+				continue
+			}
+		}else{
+			cfg = kv.sm.Query(-1)
+		}
+		if !kv.leader || cfg.Num <= kv.cfg.Num{
 			//最新，返回
 			return
 		}
@@ -479,62 +528,6 @@ func (kv *ShardKV) getCfg(){
 		raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v me:%2d| Update config to %d\n", kv.gid, kv.cfg.Num, kv.leader, kv.me, cfg.Num)
 		raft.ShardInfo.Printf("New shard assign:%v\n", cfg.Shards)
 
-		shards := make(map[int]struct{})
-		oldShards := kv.copyShard(kv.shards)
-		newAddShards := make(map[int]struct{}) //只在乎新配置中应该收到的shard
-		shardToSend := kv.copyShard(kv.shardToSend) //上一个配置没发送成功的shard，继续发送
-
-		for shard, gid := range cfg.Shards{
-			if gid == kv.gid{
-				shards[shard] = struct{}{}
-				if !kv.haveShard(shard){
-					//加入待接收列表
-					newAddShards[shard] = struct{}{}
-				}else{
-					if _, ok := kv.newAddShards[shard]; ok{
-						//配置9,10都有shard8
-						//但是配置9没收到
-						//配置10接着收
-						newAddShards[shard] = struct{}{}
-					}
-					delete(oldShards, shard)
-				}
-			}
-		}
-
-		//kv.shardSendOrNot = false
-		//没有删除的shard代表本集群不再负责该shard
-		for staleShard, _ := range oldShards{
-			//如果上一轮的shard没发送完，继续发送
-			//所以shardToSend不需要清空
-			//比如配置10,本集群应该将数据D发送给集群B
-			//但是集群B在配置10一直集体当即无法发送
-			//更新到配置11，数据D分配给集群C
-			//此时，本集群直接将数据发送给C，不发给B
-			if _, ok := kv.newAddShards[staleShard]; ok{
-				//如果上一个配置中，一直没接到某个shard的数据
-				//那么新配置中，不会发送这个shard的数据（因为没有）
-				//负责这个shard（在kv.shards）中
-				//却没收到这个shard（在kv.newAddShards）中
-				//更新后却要发送给其他集群
-
-				//按照实现，会由上一个shard集群直接发给下一个集群
-				//所以不再等待这个shard
-
-				//这里似乎永远不会执行
-				delete(newAddShards, staleShard)
-			}else{
-				//只将新集群不再负责，并且旧集群收到的shard放到待发送列表
-				shardToSend[staleShard] = struct{}{}
-			}
-		}
-
-		for shard, _ := range shardToSend{
-			//经过几个配置，待发送shard又属于本集群，不发送
-			if cfg.Shards[shard] == kv.gid{
-				delete(shardToSend, shard)
-			}
-		}
 		//同步新配置
 		op := Op{
 			newConfig,
@@ -545,57 +538,61 @@ func (kv *ShardKV) getCfg(){
 			1,
 			1,
 			NewConfig{cfg,
-								shards,
-								newAddShards,
-								shardToSend,
-								false,
-								kv.shardCnt},
-			NewShards{},
-			make(map[int]struct{})}
+								false},
+			NewShards{}}
 
-		if kv.cfg.Num == 0 && kv.persister.SnapshotSize() == 0{
-			//第一次加载配置，并且快照为0,直接初始化.
-			op.NewConfig.NewAddShards = make(map[int]struct{})
+		if start {
+			//第一次加载配置，直接初始化.
 			op.NewConfig.Initial = true
 		}
 
 		kv.mu.Unlock()
-		//在执行newConfig日志时，才会修改cfg,shards,newaddshards,shardToSend
-		//因此即便该指令同步失败，也没有影响
-		//大不了再来一次
+
 		wl, wg := kv.executeOp(op)
 		kv.mu.Lock()
 
 		if !wl && !wg {
-			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader: true | Update to cfg:%2d successful!\n", kv.gid, kv.me, kv.cfg.Num, kv.cfg.Num)
-			go kv.sendShard()
+			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:  true| Update to cfg:%2d successful!\n", kv.gid, kv.me, kv.cfg.Num, kv.cfg.Num)
 			//更新配置成功，返回
+			//可以保证，获取了配置1,才会去正常获取其他配置。
+			kv.broadShard()
 			return
 		}
 	}
 }
 
-func (kv *ShardKV) checkCfg(){
+func (kv *ShardKV) checkCfg(startFromOne bool){
 	//周期性检查配置信息
+	start := startFromOne
 	for{
 		isleader := kv.checkLeader()
 		kv.mu.Lock()
-		//检查自己是否时Leader
+		oldleader := kv.leader
+		oldcfg := kv.cfg.Num
+		kv.leader = isleader
+		if kv.leader{
+			//只有leader会检查配置
+			kv.getCfg(start)
+			if start{
+				start = false
+			}
+		}
+		//检查自己是否是Leader
 		//由follower转为leader后，检查待发送列表
-		if kv.leader != isleader && isleader {
+		if kv.leader != oldleader && kv.leader && oldcfg == kv.cfg.Num{
 			//由follower转为leader
 			//检查待发送列表是否为空，并发送
 			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d | follower turn to leader!\n", kv.gid, kv.me, kv.cfg.Num)
 			//在sendShard执行前(需要kv.mu)，已经修改了kv.leader
-			go kv.sendShard()
-		}
-		kv.leader = isleader
-		if kv.leader{
-			//只有leader会检查配置
-			kv.getCfg()
+			//变为leader，生成待发送列表
+			//同一个配置转换leader，继续未完成的发送
+			kv.parseCfg()
+			//raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d | parse done!\n", kv.gid, kv.me, kv.cfg.Num)
+			kv.broadShard()
+			//raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d | broad done!\n", kv.gid, kv.me, kv.cfg.Num)
 		}
 		kv.mu.Unlock()
-		time.Sleep(time.Duration(100) * time.Millisecond)
+		time.Sleep(Cfg_Get_Time)
 	}
 }
 
@@ -631,16 +628,18 @@ func (kv *ShardKV) MoveShard(args *MoveShardArgs, reply *MoveShardReply){
 
 	kv.leader = isleader
 
-	if args.CfgNum < kv.cfg.Num{
+	raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| receive shard %2d from gid:%2d cfg:%2d need{%v}\n", kv.gid, kv.cfg.Num, kv.leader, args.Shard, args.GID, args.CfgNum, kv.needShard())
+
+
+	if args.CfgNum < kv.cfg.Num {
 		kv.mu.Unlock()
 		return
 	}
 	reply.StaleCfg = false
-	if !kv.leader {
+	if !kv.leader || args.CfgNum > kv.cfg.Num || !kv.haveShard(args.Shard){
 		kv.mu.Unlock()
 		return
 	}
-	raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| receive shard %2d from gid:%2d cfg:%2d need{%v}\n", kv.gid, kv.cfg.Num, kv.leader, args.Shard, args.GID, args.CfgNum, kv.newAddShards)
 	//if !kv.haveShard(args.Shard) || args.CfgNum < kv.cfg.Num{
 	//	raft.ShardInfo.Printf("GID:%2d me:%2d leader:%6v| cfg{arg:%2d->kv:%2d}\n", kv.gid, kv.me, kv.leader, args.CfgNum, kv.cfg.Num)
 	//	raft.ShardInfo.Printf("GID:%2d me:%2d leader:%6v| shard:%2d  {%v}\n", kv.gid, kv.me, kv.leader, args.Shard, kv.shards)
@@ -649,15 +648,18 @@ func (kv *ShardKV) MoveShard(args *MoveShardArgs, reply *MoveShardReply){
 	//	kv.mu.Unlock()
 	//	return
 	//}
-	if args.CfgNum > kv.cfg.Num{
-		//更新
-		kv.getCfg()
-	}
+	//if args.CfgNum > kv.cfg.Num{
+	//	//更新
+	//	kv.getCfg()
+	//}
+
 	//raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| get shard %2d from gid:%2d\n", kv.gid, kv.cfg.Num, kv.leader, args.Shard, args.GID)
 	//raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| %v\n", kv.gid, kv.cfg.Num, kv.leader, kv.newAddShards)
 
-	if _, ok := kv.newAddShards[args.Shard]; !ok {
+	if _, ok := kv.skvDB[args.Shard]; ok {
+		//已经接收过了，返回成功
 		kv.mu.Unlock()
+		reply.WrongLeader = false
 		return
 	}
 	kv.mu.Unlock()
@@ -671,8 +673,7 @@ func (kv *ShardKV) MoveShard(args *MoveShardArgs, reply *MoveShardReply){
 			-1,
 			-1,
 			NewConfig{},
-			NewShards{args.ShardDB,args.ClerkLog},
-			make(map[int]struct{})}
+			NewShards{args.ShardDB,args.ClerkLog}}
 
 
 	wrongLeader, wrongGroup := kv.executeOp(op)
@@ -689,104 +690,107 @@ func (kv *ShardKV) MoveShard(args *MoveShardArgs, reply *MoveShardReply){
 
 }
 
-func (kv *ShardKV) sendShard(){
+func (kv *ShardKV) broadShard(){
+	//调用者默认有锁，广播需要迁移的shard
+	for _, shard := range kv.shardToSend{
+		go kv.sendShard(shard, kv.cfg.Num)
+	}
+	raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v|Begin to transfer {%v}\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, kv.shardToSend)
+}
+
+func (kv *ShardKV) sendShard(shard int, cfg int){
 
 	//旧集群发送shard逻辑
 	for {
 		kv.mu.Lock()
-		if len(kv.shardToSend) == 0 || !kv.leader || kv.shardSendOrNot{
-			//没有需要发送的shard
-			//或者已经有在发送shard的goroutine了，不重复发起相同的goroutine
+		_, ok := kv.skvDB[shard]
+		if !kv.leader || cfg != kv.cfg.Num || !ok{
+			//配置已过期，或者该shard已发送，返回
+			//即便两次配置都需要发送这个shard
+			//但是新配置肯定也发起了新的goroutine
 			kv.mu.Unlock()
 			return
 		}
-		kv.shardSendOrNot = true
-		raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| cfgnum:%2d move %d shard\n", kv.gid, kv.cfg.Num, kv.leader, kv.cfg.Num, len(kv.shardToSend))
-		//发送shard
-		shardsend := make(map[int]struct{})
 
-		for shard, _ := range kv.shardToSend {
-			gid := kv.cfg.Shards[shard]
-			if gid == kv.gid{
-				//不需要发给自己
-				continue
-			}
-			kvDB := make(map[string]string)
-			ckLog := make(map[int64]int)
-			kv.copyDB(kv.skvDB[shard], kvDB)
-			kv.copyCL(kv.sClerkLog[shard], ckLog)
+		gid := kv.cfg.Shards[shard]
+		if gid == kv.gid{
+			kv.mu.Unlock()
+			return
+		}
 
-			args := MoveShardArgs{kv.cfg.Num, shard, kvDB, ckLog, kv.gid}
+		kvDB := make(map[string]string)
+		ckLog := make(map[int64]int)
+		kv.copyDB(kv.skvDB[shard], kvDB)
+		kv.copyCL(kv.sClerkLog[shard], ckLog)
 
-			if servers, ok := kv.cfg.Groups[gid]; ok {
-				// try each server for the shard.
-				raft.ShardInfo.Printf("GID:%2d cfg:%2d me:%2d leader:%6v| transfer shard %2d to gid:%2d\n", kv.gid, kv.cfg.Num, kv.me, kv.leader, shard, gid)
-				for si := 0; si < len(servers); si++ {
-					srv := kv.make_end(servers[si])
-					var reply MoveShardReply
+		args := MoveShardArgs{cfg, shard, kvDB, ckLog, kv.gid}
+
+		if servers, ok := kv.cfg.Groups[gid]; ok {
+			// try each server for the shard.
+			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| transfer shard %2d to gid:%2d\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, shard, gid)
+			for si := 0; si < len(servers); si++ {
+				srv := kv.make_end(servers[si])
+				var reply MoveShardReply
+				kv.mu.Unlock()
+
+				ok := srv.Call("ShardKV.MoveShard", &args, &reply)
+
+				kv.mu.Lock()
+				if !kv.leader{
 					kv.mu.Unlock()
-					ok := srv.Call("ShardKV.MoveShard", &args, &reply)
+					return
+				}
+				if ok && reply.StaleCfg{
+					//配置信息太旧
+					//等待更新配置后发送
+					kv.mu.Unlock()
+					return
+				}
+
+				if ok && reply.WrongLeader == false {
+					//发送完一个，在记录中删除
+					//交付日志时会删除
+					// delete(kv.shardToSend, shard)
+					//清除该shard数据
+					//delete(kv.skvDB, shard)
+					//delete(kv.sClerkLog, shard)
+
+					raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| OK! transfer shard %2d to gid:%2d args{%v}\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, shard, gid, args)
+					kv.mu.Unlock()
+
+					//同步发送成功日志
+					op := Op{newSend,
+						shard,
+						"",
+						"",
+						"",
+						-1,
+						-1,
+						NewConfig{},
+						NewShards{}}
+					wl, wg := kv.executeOp(op)
+					//调用函数默认有锁情况下
+					//必须用goroutine
+					//否则run->sendShard->executeOp->start等待rf.mu->阻塞executeOp->阻塞sendShard->阻塞run
+					//run阻塞->raft无法交付日志->ApplyMsg 一直占用rf.mu->start无法获取rf.mu
+					//死锁
+					//go kv.executeOp(op)
+
+					if !wl && !wg {
+						//同步成功
+						return
+					}
+					//同步失败，继续
 					kv.mu.Lock()
-					if ok && reply.StaleCfg{
-						//配置信息太旧
-						//更新配置，再来一次
-						kv.getCfg()
-						si--
-						continue
-					}
-					if ok && reply.WrongLeader == false {
-						//发送完一个，在记录中删除
-						//交付日志时会删除
-						// delete(kv.shardToSend, shard)
-						//清除该shard数据
-						//delete(kv.skvDB, shard)
-						//delete(kv.sClerkLog, shard)
-
-						raft.ShardInfo.Printf("GID:%2d cfg:%2d leader:%6v| OK! transfer shard %2d to gid:%2d\n", kv.gid, kv.cfg.Num, kv.leader, shard, gid)
-
-						//记录本轮发送完的shard
-						shardsend[shard] = struct{}{}
-						break
-					}
+					break
 				}
 			}
+			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| Fail to transfer shard %2d to gid:%2d\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, shard, gid)
 		}
 
-		length := len(kv.shardToSend)
 		kv.mu.Unlock()
-		if len(shardsend) > 0 {
-			//本轮有没有发送shard给其他集群
-			//有时候目标集群一直无法发送
-			//如果没有发送shard就不同步日志
-
-			op := Op{newSend,
-				-1,
-				"",
-				"",
-				"",
-				-1,
-				-1,
-				NewConfig{},
-				NewShards{},
-				kv.copyShard(shardsend)}
-
-			wl, wg := kv.executeOp(op)
-			//调用函数默认有锁情况下
-			//必须用goroutine
-			//否则run->sendShard->executeOp->start等待rf.mu->阻塞executeOp->阻塞sendShard->阻塞run
-			//run阻塞->raft无法交付日志->ApplyMsg 一直占用rf.mu->start无法获取rf.mu
-			//死锁
-			//go kv.executeOp(op)
-			if !wl && !wg && length == len(shardsend){
-				//发送成功 并且 全部待发送shard都发送完成
-				kv.mu.Lock()
-				defer kv.mu.Unlock()
-				kv.shardSendOrNot = false
-				return
-			}
-		}
-		//隔100ms再发一次
-		time.Sleep(time.Duration(100) * time.Millisecond)
+		//发送失败，等等再尝试
+		time.Sleep(Send_Shard_Wait)
 	}
 }
 
@@ -801,22 +805,15 @@ func (kv *ShardKV) decodedSnapshot(data []byte){
 
 	var db	map[int]map[string]string
 	var cl  map[int]map[int64]int
-	var nas map[int]struct{}
-	var sts map[int]struct{}
-	var sd map[int]struct{}
 	var cfg shardmaster.Config
 
-	if dec.Decode(&db) != nil || dec.Decode(&cl) != nil || dec.Decode(&nas) != nil || dec.Decode(&sts) != nil || dec.Decode(&sd) != nil || dec.Decode(&cfg) != nil{
+	if dec.Decode(&db) != nil || dec.Decode(&cl) != nil || dec.Decode(&cfg) != nil{
 		raft.ShardInfo.Printf("GID:%2d me:%2d leader:%6v| KV Failed to recover by snapshot!\n", kv.gid, kv.me, kv.leader)
 	}else{
 		kv.skvDB = db
 		kv.sClerkLog = cl
-		kv.newAddShards = nas
-		kv.shardToSend = sts
-		kv.shards = sd
 		kv.cfg = cfg
 		raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| KV recover from snapshot successful! \n", kv.gid, kv.me, kv.cfg.Num, kv.leader)
-		raft.ShardInfo.Printf("cfg{%v} have{%v} need{%v} send{%v}\n",kv.cfg.Shards, kv.shards, kv.newAddShards, kv.shardToSend)
 	}
 }
 
@@ -845,9 +842,6 @@ func (kv *ShardKV) encodeSnapshot() []byte {
 	enc := labgob.NewEncoder(w)
 	enc.Encode(kv.skvDB)
 	enc.Encode(kv.sClerkLog)
-	enc.Encode(kv.newAddShards)
-	enc.Encode(kv.shardToSend)
-	enc.Encode(kv.shards)
 	enc.Encode(kv.cfg)
 	data := w.Bytes()
 	return data

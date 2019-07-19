@@ -13,7 +13,7 @@ import "crypto/rand"
 import "math/big"
 import "shardmaster"
 import "time"
-//import "raft"
+import "raft"
 
 //
 // which shard is a key in?
@@ -82,7 +82,7 @@ func (ck *Clerk) Get(key string) string {
 
 	for {
 		gid := ck.config.Shards[shard]
-		//raft.ShardInfo.Printf("Client:%12d num:%3d | get{%v} from gid:%2d\n", ck.me, ck.cmdIndex, args, gid)
+		raft.ShardInfo.Printf("Client:%12d num:%3d | get{%v} from gid:%2d\n", ck.me, ck.cmdIndex, args, gid)
 		if servers, ok := ck.config.Groups[gid]; ok {
 			// try each server for the shard.
 			for si := 0; si < len(servers); si++ {
@@ -125,7 +125,7 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 
 	for {
 		gid := ck.config.Shards[shard]
-		//raft.ShardInfo.Printf("Client:%12d num:%3d | putappend{%v} to gid:%2d\n", ck.me, ck.cmdIndex, args, gid)
+		raft.ShardInfo.Printf("Client:%12d num:%3d | putappend{%v} to gid:%2d\n", ck.me, ck.cmdIndex, args, gid)
 		if servers, ok := ck.config.Groups[gid]; ok {
 			for si := 0; si < len(servers); si++ {
 				srv := ck.make_end(servers[si])
