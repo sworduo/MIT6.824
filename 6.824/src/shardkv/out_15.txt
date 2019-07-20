@@ -1,0 +1,2 @@
+exit status 1
+FAIL	shardkv	0.002s

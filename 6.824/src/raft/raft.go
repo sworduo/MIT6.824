@@ -514,7 +514,8 @@ func (rf *Raft) applyLogs(){
 		rf.applyCh <- ApplyMsg{true, rf.logs[rf.subIdx(i)].Command, i, rf.currentTerm, rf.role}
 		//InfoRaft.Printf("Raft:%2d term:%3d | %12v commit! CommitIndex:%3d total:%3d\n", rf.me ,rf.currentTerm, rf.role, i, rf.commitIndex)
 	}
-	InfoRaft.Printf("Raft:%2d term:%3d | Apply log {%4d => %4d} Done!\n", rf.me, rf.currentTerm, rf.lastApplied, rf.commitIndex)
+	InfoRaft.Printf("Raft:%2d term:%3d | apply log {%4d => %4d} Done!\n", rf.me, rf.currentTerm, rf.lastApplied, rf.commitIndex)
+	InfoRaft.Printf("Raft:%2d term:%3d | index{%4d} cmd{%v}\n", rf.me, rf.currentTerm, rf.commitIndex, rf.logs[rf.subIdx(rf.commitIndex)].Command)
 	rf.lastApplied = rf.commitIndex
 }
 
@@ -607,10 +608,12 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 //关闭这一个raft实例的log
 func (rf *Raft) Kill() {
 	// Your code here, if desired.
-	rf.mu.Lock()
-	WarnRaft.Printf("Sever index:[%3d]  Term:[%3d]  role:[%10s] has been killed.Turn off its log\n", rf.me, rf.currentTerm, rf.role)
-	rf.mu.Unlock()
+	//WarnRaft.Printf(">== Someone prepare to kill\n")
 	rf.exitCh <- true
+	//WarnRaft.Printf("=>= Send signal kill\n")
+	//rf.mu.Lock()
+	WarnRaft.Printf("==> Sever index:[%3d]  Term:[%3d]  role:[%10s] has been killed.Turn off its log\n", rf.me, rf.currentTerm, rf.role)
+	//rf.mu.Unlock()
 }
 
 //

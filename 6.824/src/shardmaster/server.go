@@ -114,7 +114,7 @@ func (sm *ShardMaster) navieAssign(){
 	shardToAssigh := make([]int, 0)
 	for shard, gid := range cfg.Shards{
 		if gid == 0{
-			//记录还未被分配的sahrd
+			//记录还未被分配的shard
 			shardToAssigh = append(shardToAssigh, shard)
 		}
 	}
@@ -149,6 +149,7 @@ func (sm *ShardMaster) navieAssign(){
 	}
 
 
+
 	//有新的shard需要分配
 	//一般是有group leave了
 	for len(shardToAssigh) != 0{
@@ -172,7 +173,8 @@ func (sm *ShardMaster) navieAssign(){
 			gmap[tplus] = append(gmap[tplus], gid)
 		}
 	}
-
+	//raft.ShardInfo.Printf("ShardMaster:%2d gmap:{%v} tless:{%v} tok:{%v} tplus:{%v} tmore:{%v} g2shard:{%v}\n", sm.me, gmap, gmap[tless], gmap[tok], gmap[tplus], gmap[tmore], sm.g2shard)
+	//raft.ShardInfo.Printf("ShardMaster:%2d |%v\n", sm.me, sm.configs)
 	for len(gmap[tless]) != 0{
 		//极端情况是所有group对应的shard数量都是t
 		//当tless非空时，tplus也非空，注意，tmore在上面已经清空了
@@ -192,6 +194,7 @@ func (sm *ShardMaster) navieAssign(){
 
 func (sm *ShardMaster) Join(args *JoinArgs, reply *JoinReply) {
 	// Your code here.
+	raft.ShardInfo.Printf("ShardMaster:%2d join:%v\n", sm.me, args.Servers)
 	op := Op{args.Clerk,args.Index,join,args.Servers,[]int{},0,0}
 	reply.WrongLeader = sm.executeOp(op)
 	return
@@ -199,6 +202,7 @@ func (sm *ShardMaster) Join(args *JoinArgs, reply *JoinReply) {
 
 func (sm *ShardMaster) Leave(args *LeaveArgs, reply *LeaveReply) {
 	// Your code here.
+	raft.ShardInfo.Printf("ShardMaster:%2d leave:%v\n", sm.me, args.GIDs)
 	op := Op{args.Clerk,args.Index,leave,map[int][]string{},args.GIDs,0,0}
 	reply.WrongLeader = sm.executeOp(op)
 	return
@@ -206,6 +210,7 @@ func (sm *ShardMaster) Leave(args *LeaveArgs, reply *LeaveReply) {
 
 func (sm *ShardMaster) Move(args *MoveArgs, reply *MoveReply) {
 	// Your code here.
+	raft.ShardInfo.Printf("ShardMaster:%2d move shard:%v to gid:%v\n", sm.me, args.Shard, args.GID)
 	op := Op{args.Clerk,args.Index,move,map[int][]string{},[]int{args.GID},args.Shard,0}
 	reply.WrongLeader = sm.executeOp(op)
 	return
@@ -317,25 +322,38 @@ func (sm *ShardMaster) run(){
 		}else{
 			switch op.Operation {
 			case join:
+				flag := false
 				sm.addConfig()
 				cfg := sm.getLastCfg()
 				for gid, srvs := range op.Servers{
-					cfg.Groups[gid] = srvs
-					sm.g2shard[gid] = []int{}
+					if _, ok := sm.g2shard[gid]; !ok{
+						//防止同样的server join两次
+						flag = true
+						cfg.Groups[gid] = srvs
+						sm.g2shard[gid] = []int{}
+					}
 				}
-				sm.navieAssign()
+				if flag{
+					sm.navieAssign()
+				}
 			case leave:
+				flag := false
 				sm.addConfig()
 				cfg := sm.getLastCfg()
 				for _, gid := range op.GIDs{
-					for _, shard := range sm.g2shard[gid]{
-						//0表示没有分配
-						cfg.Shards[shard] = 0
+					if _, ok := sm.g2shard[gid]; ok {
+						flag = true
+						for _, shard := range sm.g2shard[gid] {
+							//0表示没有分配
+							cfg.Shards[shard] = 0
+						}
+						delete(sm.g2shard, gid)
+						delete(cfg.Groups, gid)
 					}
-					delete(sm.g2shard, gid)
-					delete(cfg.Groups, gid)
 				}
-				sm.navieAssign()
+				if flag{
+					sm.navieAssign()
+				}
 			case move:
 				sm.addConfig()
 				cfg := sm.getLastCfg()

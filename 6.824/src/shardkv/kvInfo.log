@@ -1,0 +1,87 @@
+InfoKV:2019/07/20 22:36:48 raft.go:1049: Raft: 2 term:  0 | Leader send snapshot{index:   1 term:   0} to follower  0
+InfoKV:2019/07/20 22:36:48 raft.go:998: Raft: 0 term:  0 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:36:48 raft.go:1044: Raft: 0 term:  0 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:49 raft.go:1049: Raft: 2 term:  0 | Leader send snapshot{index:   2 term:   0} to follower  0
+InfoKV:2019/07/20 22:36:49 raft.go:998: Raft: 0 term:  0 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:36:49 raft.go:1044: Raft: 0 term:  0 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:49 raft.go:1049: Raft: 2 term:  0 | Leader send snapshot{index:   3 term:   0} to follower  0
+InfoKV:2019/07/20 22:36:49 raft.go:998: Raft: 0 term:  0 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:36:49 raft.go:1044: Raft: 0 term:  0 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:52 raft.go:1049: Raft: 1 term:  2 | Leader send snapshot{index:  54 term:   2} to follower  0
+InfoKV:2019/07/20 22:36:52 raft.go:998: Raft: 0 term:  2 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:52 raft.go:1044: Raft: 0 term:  2 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:52 raft.go:1049: Raft: 1 term:  2 | Leader send snapshot{index:  55 term:   2} to follower  0
+InfoKV:2019/07/20 22:36:52 raft.go:998: Raft: 0 term:  2 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:52 raft.go:1044: Raft: 0 term:  2 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:52 raft.go:1049: Raft: 1 term:  2 | Leader send snapshot{index:  57 term:   2} to follower  0
+InfoKV:2019/07/20 22:36:52 raft.go:998: Raft: 0 term:  2 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:52 raft.go:1044: Raft: 0 term:  2 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:52 raft.go:1049: Raft: 1 term:  2 | Leader send snapshot{index:  60 term:   2} to follower  0
+InfoKV:2019/07/20 22:36:52 raft.go:998: Raft: 0 term:  2 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:52 raft.go:1044: Raft: 0 term:  2 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:53 raft.go:1049: Raft: 1 term:  3 | Leader send snapshot{index:  63 term:   2} to follower  0
+InfoKV:2019/07/20 22:36:53 raft.go:998: Raft: 0 term:  3 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:53 raft.go:1044: Raft: 0 term:  3 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:53 raft.go:1049: Raft: 1 term:  3 | Leader send snapshot{index:  69 term:   3} to follower  0
+InfoKV:2019/07/20 22:36:53 raft.go:998: Raft: 0 term:  3 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:53 raft.go:1044: Raft: 0 term:  3 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:53 raft.go:1049: Raft: 1 term:  3 | Leader send snapshot{index:  72 term:   3} to follower  0
+InfoKV:2019/07/20 22:36:53 raft.go:998: Raft: 0 term:  3 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:53 raft.go:1044: Raft: 0 term:  3 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:53 raft.go:1049: Raft: 1 term:  3 | Leader send snapshot{index:  76 term:   3} to follower  0
+InfoKV:2019/07/20 22:36:53 raft.go:998: Raft: 0 term:  3 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:53 raft.go:1044: Raft: 0 term:  3 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:56 raft.go:1049: Raft: 1 term:  4 | Leader send snapshot{index: 115 term:   4} to follower  0
+InfoKV:2019/07/20 22:36:56 raft.go:998: Raft: 0 term:  4 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:56 raft.go:1044: Raft: 0 term:  4 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:56 raft.go:1049: Raft: 1 term:  6 | Leader send snapshot{index: 281 term:   6} to follower  0
+InfoKV:2019/07/20 22:36:56 raft.go:998: Raft: 0 term:  6 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:56 raft.go:1044: Raft: 0 term:  6 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:56 raft.go:1049: Raft: 1 term:  5 | Leader send snapshot{index: 117 term:   5} to follower  0
+InfoKV:2019/07/20 22:36:56 raft.go:998: Raft: 0 term:  5 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:56 raft.go:1044: Raft: 0 term:  5 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:56 raft.go:1049: Raft: 1 term:  5 | Leader send snapshot{index: 119 term:   5} to follower  0
+InfoKV:2019/07/20 22:36:56 raft.go:998: Raft: 0 term:  5 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:56 raft.go:1044: Raft: 0 term:  5 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:57 raft.go:1049: Raft: 1 term:  5 | Leader send snapshot{index: 122 term:   5} to follower  0
+InfoKV:2019/07/20 22:36:57 raft.go:998: Raft: 0 term:  5 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:57 raft.go:1044: Raft: 0 term:  5 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:57 raft.go:1049: Raft: 1 term:  5 | Leader send snapshot{index: 123 term:   5} to follower  0
+InfoKV:2019/07/20 22:36:57 raft.go:998: Raft: 0 term:  5 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:57 raft.go:1044: Raft: 0 term:  5 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:57 raft.go:1049: Raft: 1 term:  5 | Leader send snapshot{index: 126 term:   5} to follower  0
+InfoKV:2019/07/20 22:36:57 raft.go:998: Raft: 0 term:  5 | receive snapshot from leader: 1 
+InfoKV:2019/07/20 22:36:57 raft.go:1044: Raft: 0 term:  5 | Install snapshot Done!
+InfoKV:2019/07/20 22:36:59 raft.go:1049: Raft: 2 term:  7 | Leader send snapshot{index: 157 term:   7} to follower  0
+InfoKV:2019/07/20 22:36:59 raft.go:998: Raft: 0 term:  7 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:36:59 raft.go:1044: Raft: 0 term:  7 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:00 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 159 term:   7} to follower  0
+InfoKV:2019/07/20 22:37:00 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:00 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:00 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 166 term:   9} to follower  0
+InfoKV:2019/07/20 22:37:00 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:00 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:00 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 167 term:   9} to follower  0
+InfoKV:2019/07/20 22:37:00 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:00 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:00 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 168 term:   9} to follower  0
+InfoKV:2019/07/20 22:37:00 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:00 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:00 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 169 term:   9} to follower  0
+InfoKV:2019/07/20 22:37:00 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:00 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:00 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 170 term:   9} to follower  0
+InfoKV:2019/07/20 22:37:00 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:00 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:01 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 171 term:   9} to follower  0
+InfoKV:2019/07/20 22:37:01 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:01 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:01 raft.go:1049: Raft: 2 term:  9 | Leader send snapshot{index: 172 term:   9} to follower  0
+InfoKV:2019/07/20 22:37:01 raft.go:998: Raft: 0 term:  9 | receive snapshot from leader: 2 
+InfoKV:2019/07/20 22:37:01 raft.go:1044: Raft: 0 term:  9 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:04 raft.go:1049: Raft: 0 term: 10 | Leader send snapshot{index: 720 term:  10} to follower  1
+InfoKV:2019/07/20 22:37:04 raft.go:998: Raft: 1 term: 10 | receive snapshot from leader: 0 
+InfoKV:2019/07/20 22:37:04 raft.go:1044: Raft: 1 term: 10 | Install snapshot Done!
+InfoKV:2019/07/20 22:37:04 raft.go:1049: Raft: 0 term: 10 | Leader send snapshot{index: 721 term:  10} to follower  1
+InfoKV:2019/07/20 22:37:04 raft.go:998: Raft: 1 term: 10 | receive snapshot from leader: 0 
+InfoKV:2019/07/20 22:37:04 raft.go:1044: Raft: 1 term: 10 | Install snapshot Done!
