@@ -1,9 +1,0 @@
-Test: concurrent configuration change and restart (challenge 1)...
---- FAIL: TestChallenge1Concurrent (17.17s)
-	test_test.go:18: Get(5): expected:
-		fwM19V5sdWFPXEBrsd1_IWDAb-ouqRXPC_KigjCVNtwpB2yK7CJTFEcXemhfs9fHniFCrs3IL_KeJsQ
-		received:
-		fwM19V5sdWFPXEBrsd1_IWDAb-ouqRXPC_KigjCVNtwpB2yKCJTFEcXemhfs9fHniFCrs3IL_KeJsQ
-FAIL
-exit status 1
-FAIL	shardkv	17.171s

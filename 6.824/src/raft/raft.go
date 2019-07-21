@@ -612,7 +612,7 @@ func (rf *Raft) Kill() {
 	rf.exitCh <- true
 	//WarnRaft.Printf("=>= Send signal kill\n")
 	//rf.mu.Lock()
-	WarnRaft.Printf("==> Sever index:[%3d]  Term:[%3d]  role:[%10s] has been killed.Turn off its log\n", rf.me, rf.currentTerm, rf.role)
+//	WarnRaft.Printf("==> Sever index:[%3d]  Term:[%3d]  role:[%10s] has been killed.Turn off its log\n", rf.me, rf.currentTerm, rf.role)
 	//rf.mu.Unlock()
 }
 

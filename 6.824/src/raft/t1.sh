@@ -1,5 +1,5 @@
 #!/bin/bash
-for((i=1; i<=10; i++))
+for((i=1; i<=30; i++))
 do
-	go test -race -run=TestFigure8Unreliable2C > $"out_"$i$".txt"  && rm infoRaft.log warnRaft.log infoKV.log
+	go test -race > $"out_"$i$".txt"  && rm raftInfo.log raftWarn.log shardInfo.log kvInfo.log
 done

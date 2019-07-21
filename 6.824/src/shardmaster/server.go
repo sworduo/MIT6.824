@@ -194,7 +194,7 @@ func (sm *ShardMaster) navieAssign(){
 
 func (sm *ShardMaster) Join(args *JoinArgs, reply *JoinReply) {
 	// Your code here.
-	raft.ShardInfo.Printf("ShardMaster:%2d join:%v\n", sm.me, args.Servers)
+	//raft.ShardInfo.Printf("ShardMaster:%2d join:%v\n", sm.me, args.Servers)
 	op := Op{args.Clerk,args.Index,join,args.Servers,[]int{},0,0}
 	reply.WrongLeader = sm.executeOp(op)
 	return
@@ -202,7 +202,7 @@ func (sm *ShardMaster) Join(args *JoinArgs, reply *JoinReply) {
 
 func (sm *ShardMaster) Leave(args *LeaveArgs, reply *LeaveReply) {
 	// Your code here.
-	raft.ShardInfo.Printf("ShardMaster:%2d leave:%v\n", sm.me, args.GIDs)
+	//raft.ShardInfo.Printf("ShardMaster:%2d leave:%v\n", sm.me, args.GIDs)
 	op := Op{args.Clerk,args.Index,leave,map[int][]string{},args.GIDs,0,0}
 	reply.WrongLeader = sm.executeOp(op)
 	return
@@ -210,7 +210,7 @@ func (sm *ShardMaster) Leave(args *LeaveArgs, reply *LeaveReply) {
 
 func (sm *ShardMaster) Move(args *MoveArgs, reply *MoveReply) {
 	// Your code here.
-	raft.ShardInfo.Printf("ShardMaster:%2d move shard:%v to gid:%v\n", sm.me, args.Shard, args.GID)
+	//raft.ShardInfo.Printf("ShardMaster:%2d move shard:%v to gid:%v\n", sm.me, args.Shard, args.GID)
 	op := Op{args.Clerk,args.Index,move,map[int][]string{},[]int{args.GID},args.Shard,0}
 	reply.WrongLeader = sm.executeOp(op)
 	return
@@ -335,6 +335,7 @@ func (sm *ShardMaster) run(){
 				}
 				if flag{
 					sm.navieAssign()
+					raft.ShardInfo.Printf("ShardMaster:%2d | new config:{%v}\n", sm.me, sm.getLastCfg())
 				}
 			case leave:
 				flag := false
@@ -353,6 +354,7 @@ func (sm *ShardMaster) run(){
 				}
 				if flag{
 					sm.navieAssign()
+					raft.ShardInfo.Printf("ShardMaster:%2d | new config:{%v}\n", sm.me, sm.getLastCfg())
 				}
 			case move:
 				sm.addConfig()

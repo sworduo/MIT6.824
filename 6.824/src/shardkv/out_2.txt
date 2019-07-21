@@ -1,4 +1,0 @@
-Test: concurrent configuration change and restart (challenge 1)...
-  ... Passed
-PASS
-ok  	shardkv	17.346s
