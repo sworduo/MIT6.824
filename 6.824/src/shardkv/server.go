@@ -58,6 +58,11 @@ type NewConfig struct{
 	Cfg 	shardmaster.Config
 }
 
+type msgInCh struct{
+	isOk bool
+	op Op
+}
+
 type ShardKV struct {
 	mu           sync.Mutex
 	me           int
@@ -69,7 +74,7 @@ type ShardKV struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	msgCh 	map[int]chan bool
+	msgCh 	map[int]chan msgInCh
 	sClerkLog 	map[int]map[int64]int //shard -> clerkLog
 	skvDB 	map[int]map[string]string //shard -> kvDB
 	sm *shardmaster.Clerk
@@ -208,7 +213,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.sm = shardmaster.MakeClerk(kv.masters)
-	kv.msgCh = make(map[int]chan bool)
+	kv.msgCh = make(map[int]chan msgInCh)
 	kv.sClerkLog = make(map[int]map[int64]int)
 	kv.skvDB = make(map[int]map[string]string)
 	kv.shards = make(map[int]struct{})
@@ -339,7 +344,7 @@ func (kv *ShardKV) run(){
 				}
 			}
 			if ch, ok := kv.msgCh[index]; ok{
-				ch <- msgToChan
+				ch <- msgInCh{msgToChan, op}
 			}else if kv.leader{
 				raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} no channel index:%2d!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 			}
@@ -357,6 +362,15 @@ func (kv *ShardKV) run(){
 //===============================================================================
 //一些辅助函数
 //===============================================================================
+func (kv *ShardKV) equal(begin,done Op)bool{
+	//判断执行成功的命令是否和发起的相同。
+	equal := begin.Type == done.Type && begin.Shard == done.Shard && begin.Clerk == done.Clerk && begin.CmdIndex == done.CmdIndex
+	if equal{
+		return true
+	}
+	return false
+}
+
 func (kv *ShardKV)haveShard(shard int) bool{
 	//调用函数默认有锁
 	//判断集群是否负责这个shard
@@ -495,7 +509,7 @@ func (kv *ShardKV) executeOp(op Op)(wrongLeader, wrongGroup bool){
 	}
 	wrongLeader = false
 
-	ch := make(chan bool, 1) //必须为1,防止阻塞
+	ch := make(chan msgInCh, 1) //必须为1,防止阻塞
 	kv.msgCh[index] = ch
 	kv.mu.Unlock()
 	raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} begin! index:%2d\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
@@ -505,10 +519,13 @@ func (kv *ShardKV) executeOp(op Op)(wrongLeader, wrongGroup bool){
 		wrongLeader = true
 		raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} index:%2d timeout!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 	case res := <- ch:
-		if res == cmdFail{
+		if res.isOk == cmdFail{
 			//不再负责这个shard
 			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| exclude command{%v} index:%2d!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 			wrongGroup = true
+		}else if !kv.equal(res.op, op){
+			wrongLeader = true
+			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} index:%2d different between post and apply!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 		}else{
 			raft.ShardInfo.Printf("GID:%2d me:%2d cfg:%2d leader:%6v| command{%v} index:%2d Done!\n", kv.gid, kv.me, kv.cfg.Num, kv.leader, op, index)
 		}
