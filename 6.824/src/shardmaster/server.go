@@ -218,6 +218,9 @@ func (sm *ShardMaster) Move(args *MoveArgs, reply *MoveReply) {
 
 func (sm *ShardMaster) Query(args *QueryArgs, reply *QueryReply) {
 	// Your code here.
+	//必须要同步
+	//因为测试时，开始配置中11更新之后的query指令期待收到配置11
+	//如果不同步就返回配置，可能配置11的日志还在同步中还未执行，因此返回配置10,因此出错
 	op := Op{args.Clerk,args.Index,query,map[int][]string{},[]int{},0,args.Num}
 	reply.WrongLeader = sm.executeOp(op)
 	if !reply.WrongLeader{
